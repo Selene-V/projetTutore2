@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.css">
+
+    <title>Detail</title>
+</head>
+<body class="bg-gray-900">
+
+<!--MENU-->
+<nav class="bg-gray-800">
+    <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+        <div class="relative flex items-center justify-between h-16">
+            <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
+                <div class="flex-shrink-0 flex items-center">
+                    <img class="block lg:hidden h-8 w-auto"
+                         src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg" alt="Workflow">
+                    <img class="hidden lg:block h-8 w-auto"
+                         src="https://tailwindui.com/img/logos/workflow-logo-indigo-500-mark-white-text.svg"
+                         alt="Workflow">
+                </div>
+            </div>
+            <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                <div class="ml-3 relative">
+                    <div>
+                        <button class="bg-gray-500 p-2 flex text-sm rounded-lg text-lg font-medium text-gray-100
+                        transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:transform-none delay-100 hover:bg-gray-100 hover:text-gray-500"
+                                aria-haspopup="true"> Connection
+                        </button>
+                    </div>
+                </div>
+                <div class="ml-3 relative">
+                    <div>
+                        <button class="bg-gray-500 p-2 flex text-sm rounded-lg text-lg font-medium text-gray-100
+                        transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:transform-none delay-100 hover:bg-gray-100 hover:text-gray-500"
+                                aria-haspopup="true"> Disconnection
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+<div class="flex">
+    <div class="w-1/12"></div>
+    <div class="w-10/12">
+        <div class="flex mt-8 text-2xl">
+            <div class="w-3/12">
+
+                <img src="https://marketing-nova.com/wp-content/uploads/2020/10/1200x630wa.png" alt="test">
+
+            </div>
+            <div class="w-8/12 ml-4 text-white">
+                <div class="flex mt-5 text-5xl">
+                    <p>Game Title</p>
+                </div>
+                <div class="flex mt-5 space-x-3 text-lg">
+                    <div>
+                        <p>10/10/2020</p>
+                    </div>
+                    <div><p>-</p></div>
+                    <div>
+                        <p>Windows / Mac / Linux</p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="w-1/12 text-center justify-center place-self-center text-white ">
+                <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
+            </div>
+        </div>
+        <div class="flex mt-20">
+            <div class="w-3/5 text-lg">
+                <div>
+                    <!-- CAROUSEL -->
+
+                    <div class="carousel relative shadow-2xl bg-white">
+                        <div class="carousel-inner relative overflow-hidden w-full">
+                            <!--Slide 1-->
+                            <input class="carousel-open" type="radio" id="carousel-1" name="carousel" aria-hidden="true"
+                                   hidden="" checked="checked">
+                            <div class="carousel-item absolute opacity-0" style="height:50vh;">
+                                <div class="block h-full w-full bg-green-500 text-white text-5xl text-center">
+                                    <!-- Emplacement slide 1 -->
+                                    <img src="https://marketing-nova.com/wp-content/uploads/2020/10/1200x630wa.png"
+                                         alt="test">
+                                </div>
+                            </div>
+                            <label for="carousel-3"
+                                   class="prev control-1 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 left-0 my-auto">‹</label>
+                            <label for="carousel-2"
+                                   class="next control-1 w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 right-0 my-auto">›</label>
+
+                            <!--Slide 2-->
+                            <input class="carousel-open" type="radio" id="carousel-2" name="carousel" aria-hidden="true"
+                                   hidden="">
+                            <div class="carousel-item absolute opacity-0" style="height:50vh;">
+                                <div class="block h-full w-full bg-green-500 text-white text-5xl text-center">
+                                    <!-- Emplacement slide 2 -->
+                                    Slide 2
+                                </div>
+                            </div>
+                            <label for="carousel-1"
+                                   class="prev control-2 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 left-0 my-auto">‹</label>
+                            <label for="carousel-3"
+                                   class="next control-2 w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 right-0 my-auto">›</label>
+
+                            <!--Slide 3-->
+                            <input class="carousel-open" type="radio" id="carousel-3" name="carousel" aria-hidden="true"
+                                   hidden="">
+                            <div class="carousel-item absolute opacity-0" style="height:50vh;">
+                                <div class="block h-full w-full bg-green-500 text-white text-5xl text-center">
+                                    <!-- Emplacement slide 3 -->
+                                    Slide 3
+                                </div>
+                            </div>
+                            <label for="carousel-2"
+                                   class="prev control-3 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 left-0 my-auto">‹</label>
+                            <label for="carousel-1"
+                                   class="next control-3 w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 right-0 my-auto">›</label>
+
+                            <!-- Add additional indicators for each slide-->
+                            <ol class="carousel-indicators">
+                                <li class="inline-block mr-3">
+                                    <label for="carousel-1"
+                                           class="carousel-bullet cursor-pointer block text-4xl text-white hover:text-blue-700">•</label>
+                                </li>
+                                <li class="inline-block mr-3">
+                                    <label for="carousel-2"
+                                           class="carousel-bullet cursor-pointer block text-4xl text-white hover:text-blue-700">•</label>
+                                </li>
+                                <li class="inline-block mr-3">
+                                    <label for="carousel-3"
+                                           class="carousel-bullet cursor-pointer block text-4xl text-white hover:text-blue-700">•</label>
+                                </li>
+                            </ol>
+
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="flex space-x-5 mt-8">
+                    <div class="bg-white rounded-xl w-4/12">
+                        <div class="bg-green-500 rounded-t-xl">
+                            <p class="ml-2">System Requirement</p>
+                        </div>
+                        <div class="m-1 p-2 ">
+                            <ul>
+                                <li>I5 9600K</li>
+                                <li>16 GO RAM</li>
+                                <li>70 GO</li>
+                                <li>RTX 2070</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl w-4/12">
+                        <div class="bg-green-500 rounded-t-xl">
+                            <p class="ml-2">Category</p>
+                        </div>
+                        <div class="m-1 p-2 text-justify">
+                            <p>m Ipsum is simply dummy text of the printing and</p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl w-4/12">
+                        <div class="bg-green-500 rounded-t-xl">
+                            <p class="ml-2">Kind</p>
+                        </div>
+                        <div class="m-1 p-2 text-justify">
+                            <p>m Ipsum is simply dummy text of the printing and</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-8 bg-white rounded-xl w-12/12">
+                    <div class="bg-green-500 rounded-t-xl">
+                        <p class="ml-2">Long description</p>
+                    </div>
+                    <div class=" text-base m-1 p-2 text-justify">
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+                            been
+                            the industry's standard dummy text ever since the 1500s, when an unknown printer took a
+                            galley
+                            of type and scrambled it to make a type specimen book. It has survived not only five
+                            centuries,
+                            but also the leap into electronic typesetting, remaining essentially unchanged. It was
+                            popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
+                            passages,
+                            and more recently with desktop publishing software like Aldus PageMaker including versions
+                            of
+                            Lorem Ipsum.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="w-2/5 ml-4 text-lg">
+                <div class="bg-white rounded-xl">
+                    <div class="bg-green-500 rounded-t-xl">
+                        <p class="ml-2">Short Description</p>
+                    </div>
+                    <div class="m-1 p-2 text-justify">
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+                            been
+                            the
+                            industry's standard dummy text ever since the 1500s, </p>
+                    </div>
+                </div>
+                <div class="mt-8 bg-white rounded-xl">
+                    <div class="bg-green-500 rounded-t-xl">
+                        <p class="ml-2">Developer</p>
+                    </div>
+                    <div class="m-1 p-2">
+                        <p>m Ipsum is simply dummy text of the printing and</p>
+                    </div>
+                </div>
+                <div class="mt-8 bg-white rounded-xl">
+                    <div class="bg-green-500 rounded-t-xl">
+                        <p class="ml-2">Publisher</p>
+                    </div>
+                    <div class="m-1 p-2">
+                        <p>m Ipsum is simply dummy text of the printing and</p>
+                    </div>
+                </div>
+                <div class="mt-8 bg-white rounded-xl">
+                    <div class="bg-green-500 rounded-t-xl">
+                        <p class="ml-2">Tag Clan</p>
+                    </div>
+                    <div class="flex flex-wrap space-x-3 p-2">
+                        <div class="bg-green-100 px-2 py-1 rounded-md mt-2">
+                            <p>Action</p>
+                        </div>
+                        <div class="bg-green-100 px-2 py-1 rounded-md mt-2">
+                            <p>Aventure</p>
+                        </div>
+                        <div class="bg-green-100 px-2 py-1 rounded-md mt-2">
+                            <p>Action</p>
+                        </div>
+                        <div class="bg-green-100 px-2 py-1 rounded-md mt-2">
+                            <p>Aventure</p>
+                        </div>
+                        <div class="bg-green-100 px-2 py-1 rounded-md mt-2">
+                            <p>Action</p>
+                        </div>
+                        <div class="bg-green-100 px-2 py-1 rounded-md mt-2">
+                            <p>Aventure</p>
+                        </div>
+                        <div class="bg-green-100 px-2 py-1 rounded-md mt-2">
+                            <p>Action</p>
+                        </div>
+                        <div class="bg-green-100 px-2 py-1 rounded-md mt-2">
+                            <p>Aventure</p>
+                        </div>
+                        <div class="bg-green-100 px-2 py-1 rounded-md mt-2">
+                            <p>Action</p>
+                        </div>
+                        <div class="bg-green-100 px-2 py-1 rounded-md mt-2">
+                            <p>Action</p>
+                        </div>
+                        <div class="bg-green-100 px-2 py-1 rounded-md mt-2">
+                            <p>Aventure</p>
+                        </div>
+                        <div class="bg-green-100 px-2 py-1 rounded-md mt-2">
+                            <p>Action</p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="mt-4 bg-white rounded-xl">
+                    <div class="bg-green-500 rounded-t-xl">
+                        <p class="ml-2">Related Games</p>
+                    </div>
+                    <div class="mx-4">
+                        <div class="place-items-auto  rounded-3xl">
+                            <div class="my-2 pb-4">
+                                <div class="flex overflow-y-scroll max-h-96">
+                                    <table class="rounded-t-lg m-4 w-11/12 mx-auto bg-gray-500 text-center">
+                                        <tr class="bg-gray-200 border-b border-gray-200 hover:bg-gray-400 hover:text-gray-50 transition ease-in-out duration-150">
+                                            <td class="px-4 py-3">Fortnite</td>
+                                            <td class="px-4 py-3">10/12/2020</td>
+                                            <td class="px-4 py-3">70/100</td>
+                                        </tr>
+                                        <tr class="bg-gray-200 border-b border-gray-200 hover:bg-gray-400 hover:text-gray-50 transition ease-in-out duration-150">
+                                            <td class="px-4 py-3">Fortnite</td>
+                                            <td class="px-4 py-3">10/12/2020</td>
+                                            <td class="px-4 py-3">70/100</td>
+                                        </tr>
+                                        <tr class="bg-gray-200 border-b border-gray-200 hover:bg-gray-400 hover:text-gray-50 transition ease-in-out duration-150">
+                                            <td class="px-4 py-3">Fortnite</td>
+                                            <td class="px-4 py-3">10/12/2020</td>
+                                            <td class="px-4 py-3">70/100</td>
+                                        </tr>
+                                        <tr class="bg-gray-200 border-b border-gray-200 hover:bg-gray-400 hover:text-gray-50 transition ease-in-out duration-150">
+                                            <td class="px-4 py-3">Fortnite</td>
+                                            <td class="px-4 py-3">10/12/2020</td>
+                                            <td class="px-4 py-3">70/100</td>
+                                        </tr>
+                                        <tr class="bg-gray-200 border-b border-gray-200 hover:bg-gray-400 hover:text-gray-50 transition ease-in-out duration-150">
+                                            <td class="px-4 py-3">Fortnite</td>
+                                            <td class="px-4 py-3">10/12/2020</td>
+                                            <td class="px-4 py-3">70/100</td>
+                                        </tr>
+                                        <tr class="bg-gray-200 border-b border-gray-200 hover:bg-gray-400 hover:text-gray-50 transition ease-in-out duration-150">
+                                            <td class="px-4 py-3">Fortnite</td>
+                                            <td class="px-4 py-3">10/12/2020</td>
+                                            <td class="px-4 py-3">70/100</td>
+                                        </tr>
+                                        <tr class="bg-gray-200 border-b border-gray-200 hover:bg-gray-400 hover:text-gray-50 transition ease-in-out duration-150">
+                                            <td class="px-4 py-3">Fortnite</td>
+                                            <td class="px-4 py-3">10/12/2020</td>
+                                            <td class="px-4 py-3">70/100</td>
+                                        </tr>
+                                        <tr class="bg-gray-200 border-b border-gray-200 hover:bg-gray-400 hover:text-gray-50 transition ease-in-out duration-150">
+                                            <td class="px-4 py-3">Fortnite</td>
+                                            <td class="px-4 py-3">10/12/2020</td>
+                                            <td class="px-4 py-3">70/100</td>
+                                        </tr>
+                                        <tr class="bg-gray-200 border-b border-gray-200 hover:bg-gray-400 hover:text-gray-50 transition ease-in-out duration-150">
+                                            <td class="px-4 py-3">Fortnite</td>
+                                            <td class="px-4 py-3">10/12/2020</td>
+                                            <td class="px-4 py-3">70/100</td>
+                                        </tr>
+                                        <tr class="bg-gray-200 border-b border-gray-200 hover:bg-gray-400 hover:text-gray-50 transition ease-in-out duration-150">
+                                            <td class="px-4 py-3">Fortnite</td>
+                                            <td class="px-4 py-3">10/12/2020</td>
+                                            <td class="px-4 py-3">70/100</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div>
+            <div class=" mx-48 mt-8 bg-white rounded-xl  text-lg">
+                <div class="bg-green-500 rounded-t-xl">
+                    <p class="ml-2">Review Ban</p>
+                </div>
+                <div class="mx-10 my-4 space-y-2">
+                    <div class="bg-green-200 rounded-xl">
+                        <div class="bg-green-100 rounded-t-xl">
+                            <p class="ml-2 mt-2">Jean michel</p>
+                        </div>
+                        <p class="mx-5 my-1 text-base">m Ipsum is simply dummy text of the printing and m Ipsum is
+                            simply
+                            dummy text of the printing and
+                            m Ipsum is simply dummy text of the printing and m Ipsum is simply dummy text of the
+                            printing
+                            and</p>
+                    </div>
+                    <div class="bg-green-200 rounded-xl">
+                        <div class="bg-green-100 rounded-t-xl">
+                            <p class="ml-2 mt-2">Jean michel</p>
+                        </div>
+                        <p class="mx-5 my-1 text-base">m Ipsum is simply dummy text of the printing and m Ipsum is
+                            simply
+                            dummy text of the printing and
+                            m Ipsum is simply dummy text of the printing and m Ipsum is simply dummy text of the
+                            printing
+                            and</p>
+                    </div>
+                    <div class="bg-green-200 rounded-xl">
+                        <div class="bg-green-100 rounded-t-xl">
+                            <p class="ml-2 mt-2">Jean michel</p>
+                        </div>
+                        <p class="mx-5 my-1 text-base">m Ipsum is simply dummy text of the printing and m Ipsum is
+                            simply
+                            dummy text of the printing and
+                            m Ipsum is simply dummy text of the printing and m Ipsum is simply dummy text of the
+                            printing
+                            and</p>
+                    </div>
+                    <div class="bg-green-200 rounded-xl">
+                        <div class="bg-green-100 rounded-t-xl">
+                            <p class="ml-2 mt-2">Jean michel</p>
+                        </div>
+                        <p class="mx-5 my-1 text-base">m Ipsum is simply dummy text of the printing and m Ipsum is
+                            simply
+                            dummy text of the printing and
+                            m Ipsum is simply dummy text of the printing and m Ipsum is simply dummy text of the
+                            printing
+                            and</p>
+                    </div>
+                    <div class="bg-green-200 rounded-xl">
+                        <div class="bg-green-100 rounded-t-xl">
+                            <p class="ml-2 mt-2">Jean michel</p>
+                        </div>
+                        <p class="mx-5 my-1 text-base">m Ipsum is simply dummy text of the printing and m Ipsum is
+                            simply
+                            dummy text of the printing and
+                            m Ipsum is simply dummy text of the printing and m Ipsum is simply dummy text of the
+                            printing
+                            and</p>
+                    </div>
+                    <div class="bg-green-200 rounded-xl">
+                        <div class="bg-green-100 rounded-t-xl">
+                            <p class="ml-2 mt-2">Jean michel</p>
+                        </div>
+                        <p class="mx-5 my-1 text-base">m Ipsum is simply dummy text of the printing and m Ipsum is
+                            simply
+                            dummy text of the printing and
+                            m Ipsum is simply dummy text of the printing and m Ipsum is simply dummy text of the
+                            printing
+                            and</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="w-1/12"></div>
+</div>
+
+</body>
+</html>
