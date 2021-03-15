@@ -1,4 +1,6 @@
-const Menu = (props) => {
+import React from "react";
+
+const Menu = () => {
 
     return (
         <nav className="bg-gray-800 w-full">

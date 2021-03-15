@@ -1,6 +1,7 @@
+import React from "react";
 import Carousel from "../Carousel/Carousel";
 
-const Detail = (props) => {
+const Detail = () => {
 
     return (
 
