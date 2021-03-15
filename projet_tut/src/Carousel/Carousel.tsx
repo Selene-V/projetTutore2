@@ -1,4 +1,5 @@
 import React from "react";
+import "./Carousel.css"
 
 const Carousel = () => {
 
@@ -7,11 +8,11 @@ const Carousel = () => {
             <div className="carousel-inner relative overflow-hidden">
 
                 <input className="carousel-open" type="radio" id="carousel-1" name={"carousel"} checked={true} hidden={true}/>
-                <div className="carousel-item absolute opacity-0 carousel_size">
-                    <div className="block h-full w-full bg-green-500 text-white text-5xl text-center">
+                <div className="carousel-item absolute opacity-0 carousel_size flex items-start">
+                    <div className="block h-full w-full bg-green-500 text-white text-5xl text-center p-16">
                         <img src="https://marketing-nova.com/wp-content/uploads/2020/10/1200x630wa.png"
                              alt="test"
-                             className=" mx-auto h-96"/>
+                             className=" mx-auto sizeImg"/>
                     </div>
                 </div>
                 <label htmlFor="carousel-3"
@@ -21,10 +22,10 @@ const Carousel = () => {
 
                 <input className="carousel-open" type="radio" id="carousel-2" name={"carousel"} checked={true} hidden={true}/>
                 <div className="carousel-item absolute opacity-0 carousel_size">
-                    <div className="block h-full w-full bg-green-500 text-white text-5xl text-center">
+                    <div className="block h-full w-full bg-green-500 text-white text-5xl text-center p-16">
                         <img src="https://res.klook.com/images/fl_lossy.progressive,q_65/c_fill,w_1295,h_720,f_auto/w_80,x_15,y_15,g_south_west,l_klook_water/activities/t9ur9cc1khkup1dmcbzd/IMGWorldsofAdventure.jpg"
                              alt="test"
-                             className=" mx-auto h-96"/>
+                             className=" mx-auto sizeImg"/>
                     </div>
                 </div>
                 <label htmlFor="carousel-1"
@@ -35,10 +36,10 @@ const Carousel = () => {
 
                 <input className="carousel-open" type="radio" id="carousel-3" name={"carousel"} checked={true} hidden={true}/>
                 <div className="carousel-item absolute opacity-0 carousel_size">
-                    <div className="block h-full w-full bg-green-500 text-white text-5xl text-center">
+                    <div className="block h-full w-full bg-green-500 text-white text-5xl text-center p-16">
                         <img src="https://upload.wikimedia.org/wikipedia/fr/9/9d/PetitBamBouLogo.png"
                              alt="test"
-                             className=" mx-auto h-96"/>
+                             className=" mx-auto sizeImg"/>
                     </div>
                 </div>
                 <label htmlFor="carousel-2"
