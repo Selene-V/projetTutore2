@@ -49,7 +49,7 @@ const Detail = (props) => {
                                 <div className="bg-green-500 rounded-t-xl">
                                     <p className="ml-2">System Requirement</p>
                                 </div>
-                                <div className="m-1 p-2 ">
+                                <div className="m-1 p-2 text-black">
                                     <ul>
                                         <li>I5 9600K</li>
                                         <li>16 GO RAM</li>
@@ -62,7 +62,7 @@ const Detail = (props) => {
                                 <div className="bg-green-500 rounded-t-xl">
                                     <p className="ml-2">Category</p>
                                 </div>
-                                <div className="m-1 p-2 text-justify">
+                                <div className="m-1 p-2 text-justify text-black">
                                     <p>m Ipsum is simply dummy text of the printing and</p>
                                 </div>
                             </div>
@@ -70,7 +70,7 @@ const Detail = (props) => {
                                 <div className="bg-green-500 rounded-t-xl">
                                     <p className="ml-2">Kind</p>
                                 </div>
-                                <div className="m-1 p-2 text-justify">
+                                <div className="m-1 p-2 text-justify text-black">
                                     <p>m Ipsum is simply dummy text of the printing and</p>
                                 </div>
                             </div>
@@ -79,7 +79,7 @@ const Detail = (props) => {
                             <div className="bg-green-500 rounded-t-xl">
                                 <p className="ml-2">Long description</p>
                             </div>
-                            <div className=" text-base m-1 p-2 text-justify">
+                            <div className=" text-base m-1 p-2 text-justify text-black">
                                 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
                                     Ipsum has
                                     been
@@ -105,7 +105,7 @@ const Detail = (props) => {
                             <div className="bg-green-500 rounded-t-xl">
                                 <p className="ml-2">Short Description</p>
                             </div>
-                            <div className="m-1 p-2 text-justify">
+                            <div className="m-1 p-2 text-justify text-black">
                                 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
                                     Ipsum has
                                     been
@@ -117,7 +117,7 @@ const Detail = (props) => {
                             <div className="bg-green-500 rounded-t-xl">
                                 <p className="ml-2">Developer</p>
                             </div>
-                            <div className="m-1 p-2">
+                            <div className="m-1 p-2 text-black">
                                 <p>m Ipsum is simply dummy text of the printing and</p>
                             </div>
                         </div>
@@ -125,7 +125,7 @@ const Detail = (props) => {
                             <div className="bg-green-500 rounded-t-xl">
                                 <p className="ml-2">Publisher</p>
                             </div>
-                            <div className="m-1 p-2">
+                            <div className="m-1 p-2 text-black">
                                 <p>m Ipsum is simply dummy text of the printing and</p>
                             </div>
                         </div>
@@ -133,7 +133,7 @@ const Detail = (props) => {
                             <div className="bg-green-500 rounded-t-xl">
                                 <p className="ml-2">Tag Clan</p>
                             </div>
-                            <div className="flex flex-wrap space-x-3 p-2">
+                            <div className="flex flex-wrap space-x-3 p-2 text-black">
                                 <div className="bg-green-100 px-2 py-1 rounded-md mt-2">
                                     <p>Action</p>
                                 </div>
@@ -178,7 +178,7 @@ const Detail = (props) => {
                             <div className="bg-green-500 rounded-t-xl">
                                 <p className="ml-2">Related Games</p>
                             </div>
-                            <div className="mx-4">
+                            <div className="mx-4 text-black">
                                 <div className="place-items-auto  rounded-3xl">
                                     <div className="my-2 pb-4">
                                         <div className="flex overflow-y-scroll max-h-96">
@@ -247,7 +247,7 @@ const Detail = (props) => {
                         <div className="bg-green-500 rounded-t-xl">
                             <p className="ml-2">Review Ban</p>
                         </div>
-                        <div className="mx-10 my-4 space-y-2">
+                        <div className="mx-10 my-4 space-y-2 text-black text-left">
                             <div className="bg-green-200 rounded-xl">
                                 <div className="bg-green-100 rounded-t-xl">
                                     <p className="ml-2 mt-2">Jean michel</p>
