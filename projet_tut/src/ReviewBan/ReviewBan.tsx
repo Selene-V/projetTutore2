@@ -1,5 +1,4 @@
 import React from "react";
-import Carousel from "../Detail/Carousel/Carousel";
 
 const ReviewBan = (props: { reviewBan: { name: React.ReactNode; description: React.ReactNode; }[]; }) => {
     return (

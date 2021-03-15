@@ -5,6 +5,12 @@ import ShortDescription from "./ShortDescription/ShortDescription";
 import Developer from "./Developer/Developer";
 import Publicher from "./Publisher/Publisher";
 import TagClan from "./TagClan/TagClan";
+import SystemRequirement from "./SystemRequirement/SystemRequirement";
+import "./Detail.css"
+import Category from "./Category/Category";
+import Kind from "./Kind/Kind";
+import LongDescription from "./LongDescription/LongDescription";
+import RelatedGames from "./RelatedGames/RelatedGames";
 
 const Detail = () => {
     const [info, setInfo] = useState(
@@ -13,16 +19,27 @@ const Detail = () => {
             title: "Game Title",
             release_date: "10/12/2020",
             os: ["Windows", "Mac", "Linux"],
-            img: ["", "", "", ""],
+            img: [
+                "https://marketing-nova.com/wp-content/uploads/2020/10/1200x630wa.png",
+                "https://res.klook.com/images/fl_lossy.progressive,q_65/c_fill,w_1295,h_720,f_auto/w_80,x_15,y_15,g_south_west,l_klook_water/activities/t9ur9cc1khkup1dmcbzd/IMGWorldsofAdventure.jpg",
+                "https://upload.wikimedia.org/wikipedia/fr/9/9d/PetitBamBouLogo.png",
+                "https://www.fine-s.fr/9959/test.jpg",
+            ],
             short_description: "blablablablabla",
             developer: "blablablablabla",
             publisher: "blablablablabla",
             tag_clan: ["Action", "Aventure", "gaming", "tata", "pipo", "scurt", "olala", "rrrrr", "fefefe f efe", "test", "Action", "1234567899", "Action"],
             related_games: [
-                {name: "Fortnite", release_date: "10/12/2020", score: "70"},
-                {name: "Fortnite", release_date: "10/12/2020", score: "70"},
-                {name: "Fortnite", release_date: "10/12/2020", score: "70"},
-                {name: "Fortnite", release_date: "10/12/2020", score: "70"},
+                {title: "a", release_date: "10/12/2020", score: "47"},
+                {title: "b", release_date: "10/11/2020", score: "52"},
+                {title: "c", release_date: "11/10/2020", score: "44"},
+                {title: "d", release_date: "10/09/2020", score: "12"},
+                {title: "e", release_date: "24/08/2020", score: "70"},
+                {title: "f", release_date: "10/07/2020", score: "88"},
+                {title: "g", release_date: "10/05/2020", score: "70"},
+                {title: "h", release_date: "25/02/2020", score: "54"},
+                {title: "i", release_date: "01/10/2020", score: "96"},
+                {title: "j", release_date: "10/11/2020", score: "38"},
             ],
             system_requirement: ["I5 9600K", "16 GO RAM", "70 GO SSD", "RTX 2070"],
             category: "blablablablabla",
@@ -64,167 +81,45 @@ const Detail = () => {
             <div className="w-1/12"/>
             <div className="w-10/12">
                 <div className="flex mt-8 text-2xl">
-                    <div className="w-3/12">
-
-                        <img src="https://marketing-nova.com/wp-content/uploads/2020/10/1200x630wa.png" alt="test"/>
-
+                    <div className="w-3/12 img_size">
+                        <img src={info.img[0]} className="sizeImg mx-auto" alt="test"/>
                     </div>
                     <div className="w-8/12 ml-4 text-white">
                         <div className="flex mt-5 text-5xl">
-                            <p>Game Title</p>
+                            <p>{info.title}</p>
                         </div>
                         <div className="flex mt-5 space-x-3 text-lg">
                             <div>
-                                <p>10/10/2020</p>
+                                <p>{info.release_date}</p>
                             </div>
-                            <div><p>-</p></div>
+                            <div>-</div>
                             <div>
-                                <p>Windows / Mac / Linux</p>
+                                <p>{info.os.map(value => value + " ")}</p>
                             </div>
                         </div>
-
                     </div>
                     <div className="w-1/12 text-center justify-center place-self-center text-white ">
                         <i className="fa fa-plus fa-2x" aria-hidden="true"/>
                     </div>
                 </div>
-                <div className="flex mt-20">
-
-
+                <div className="text-left flex mt-20">
                     <div className="w-3/5 text-lg">
                         <Carousel/>
                         <div className="flex space-x-5 mt-8">
-                            <div className="bg-white rounded-xl w-4/12">
-                                <div className="bg-green-500 rounded-t-xl">
-                                    <p className="ml-2">System Requirement</p>
-                                </div>
-                                <div className="m-1 p-2 text-black">
-                                    <ul>
-                                        <li>I5 9600K</li>
-                                        <li>16 GO RAM</li>
-                                        <li>70 GO</li>
-                                        <li>RTX 2070</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div className="bg-white rounded-xl w-4/12">
-                                <div className="bg-green-500 rounded-t-xl">
-                                    <p className="ml-2">Category</p>
-                                </div>
-                                <div className="m-1 p-2 text-justify text-black">
-                                    <p>m Ipsum is simply dummy text of the printing and</p>
-                                </div>
-                            </div>
-                            <div className="bg-white rounded-xl w-4/12">
-                                <div className="bg-green-500 rounded-t-xl">
-                                    <p className="ml-2">Kind</p>
-                                </div>
-                                <div className="m-1 p-2 text-justify text-black">
-                                    <p>m Ipsum is simply dummy text of the printing and</p>
-                                </div>
-                            </div>
+                            <SystemRequirement system_requirement={info.system_requirement}/>
+                            <Category category={info.category}/>
+                            <Kind kind={info.kind}/>
                         </div>
-                        <div className="mt-8 bg-white rounded-xl w-12/12">
-                            <div className="bg-green-500 rounded-t-xl">
-                                <p className="ml-2">Long description</p>
-                            </div>
-                            <div className=" text-base m-1 p-2 text-justify text-black">
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                    Ipsum has
-                                    been
-                                    the industry's standard dummy text ever since the 1500s, when an unknown printer
-                                    took a
-                                    galley
-                                    of type and scrambled it to make a type specimen book. It has survived not only five
-                                    centuries,
-                                    but also the leap into electronic typesetting, remaining essentially unchanged. It
-                                    was
-                                    popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
-                                    passages,
-                                    and more recently with desktop publishing software like Aldus PageMaker including
-                                    versions
-                                    of
-                                    Lorem Ipsum.</p>
-                            </div>
-                        </div>
+                        <LongDescription long_description={info.long_description}/>
                     </div>
-
                     <div className="w-2/5 ml-4 text-lg">
                         <ShortDescription short_description={info.short_description}/>
                         <Developer developer={info.developer}/>
                         <Publicher publisher={info.publisher}/>
                         <TagClan tag_clan={info.tag_clan}/>
-
-
-                        <div className="mt-4 bg-white rounded-xl">
-                            <div className="bg-green-500 rounded-t-xl">
-                                <p className="ml-2">Related Games</p>
-                            </div>
-                            <div className="mx-4 text-black">
-                                <div className="place-items-auto  rounded-3xl">
-                                    <div className="my-2 pb-4">
-                                        <div className="flex overflow-y-scroll max-h-96">
-                                            <table className="rounded-t-lg m-4 w-11/12 mx-auto bg-gray-500 text-center">
-                                                <tr className="bg-gray-200 border-b border-gray-200 hover:bg-gray-400 hover:text-gray-50 transition ease-in-out duration-150">
-                                                    <td className="px-4 py-3">Fortnite</td>
-                                                    <td className="px-4 py-3">10/12/2020</td>
-                                                    <td className="px-4 py-3">70/100</td>
-                                                </tr>
-                                                <tr className="bg-gray-200 border-b border-gray-200 hover:bg-gray-400 hover:text-gray-50 transition ease-in-out duration-150">
-                                                    <td className="px-4 py-3">Fortnite</td>
-                                                    <td className="px-4 py-3">10/12/2020</td>
-                                                    <td className="px-4 py-3">70/100</td>
-                                                </tr>
-                                                <tr className="bg-gray-200 border-b border-gray-200 hover:bg-gray-400 hover:text-gray-50 transition ease-in-out duration-150">
-                                                    <td className="px-4 py-3">Fortnite</td>
-                                                    <td className="px-4 py-3">10/12/2020</td>
-                                                    <td className="px-4 py-3">70/100</td>
-                                                </tr>
-                                                <tr className="bg-gray-200 border-b border-gray-200 hover:bg-gray-400 hover:text-gray-50 transition ease-in-out duration-150">
-                                                    <td className="px-4 py-3">Fortnite</td>
-                                                    <td className="px-4 py-3">10/12/2020</td>
-                                                    <td className="px-4 py-3">70/100</td>
-                                                </tr>
-                                                <tr className="bg-gray-200 border-b border-gray-200 hover:bg-gray-400 hover:text-gray-50 transition ease-in-out duration-150">
-                                                    <td className="px-4 py-3">Fortnite</td>
-                                                    <td className="px-4 py-3">10/12/2020</td>
-                                                    <td className="px-4 py-3">70/100</td>
-                                                </tr>
-                                                <tr className="bg-gray-200 border-b border-gray-200 hover:bg-gray-400 hover:text-gray-50 transition ease-in-out duration-150">
-                                                    <td className="px-4 py-3">Fortnite</td>
-                                                    <td className="px-4 py-3">10/12/2020</td>
-                                                    <td className="px-4 py-3">70/100</td>
-                                                </tr>
-                                                <tr className="bg-gray-200 border-b border-gray-200 hover:bg-gray-400 hover:text-gray-50 transition ease-in-out duration-150">
-                                                    <td className="px-4 py-3">Fortnite</td>
-                                                    <td className="px-4 py-3">10/12/2020</td>
-                                                    <td className="px-4 py-3">70/100</td>
-                                                </tr>
-                                                <tr className="bg-gray-200 border-b border-gray-200 hover:bg-gray-400 hover:text-gray-50 transition ease-in-out duration-150">
-                                                    <td className="px-4 py-3">Fortnite</td>
-                                                    <td className="px-4 py-3">10/12/2020</td>
-                                                    <td className="px-4 py-3">70/100</td>
-                                                </tr>
-                                                <tr className="bg-gray-200 border-b border-gray-200 hover:bg-gray-400 hover:text-gray-50 transition ease-in-out duration-150">
-                                                    <td className="px-4 py-3">Fortnite</td>
-                                                    <td className="px-4 py-3">10/12/2020</td>
-                                                    <td className="px-4 py-3">70/100</td>
-                                                </tr>
-                                                <tr className="bg-gray-200 border-b border-gray-200 hover:bg-gray-400 hover:text-gray-50 transition ease-in-out duration-150">
-                                                    <td className="px-4 py-3">Fortnite</td>
-                                                    <td className="px-4 py-3">10/12/2020</td>
-                                                    <td className="px-4 py-3">70/100</td>
-                                                </tr>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
+                        <RelatedGames related_games={info.related_games}/>
                     </div>
                 </div>
-
                 <ReviewBan reviewBan={info.review_ban}/>
             </div>
             <div className="w-1/12"/>
