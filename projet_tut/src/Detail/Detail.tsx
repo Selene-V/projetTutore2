@@ -104,7 +104,7 @@ const Detail = () => {
                 </div>
                 <div className="text-left flex mt-20">
                     <div className="w-3/5 text-lg">
-                        <Carousel/>
+                        <Carousel img={info.img}/>
                         <div className="flex space-x-5 mt-8">
                             <SystemRequirement system_requirement={info.system_requirement}/>
                             <Category category={info.category}/>
