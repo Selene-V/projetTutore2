@@ -1,4 +1,3 @@
-import Publicher from "../Publisher/Publisher";
 import React from "react";
 
 const TagClan = (props: { tag_clan: React.ReactNode[]; }) => {
@@ -9,7 +8,7 @@ const TagClan = (props: { tag_clan: React.ReactNode[]; }) => {
             </div>
             <div className="flex flex-wrap space-x-3 p-2 text-black">
                 {
-                    props.tag_clan.map((value: React.ReactNode) => <div
+                    props.tag_clan.map((value: React.ReactNode,index) => <div key={index}
                         className="bg-green-100 px-2 py-1 rounded-md mt-2">
                         <p>{value}</p>
                     </div>)

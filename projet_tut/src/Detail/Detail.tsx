@@ -1,4 +1,3 @@
-import React, {useState} from "react";
 import Carousel from "./Carousel/Carousel";
 import ReviewBan from "../ReviewBan/ReviewBan";
 import ShortDescription from "./ShortDescription/ShortDescription";
@@ -13,7 +12,7 @@ import LongDescription from "./LongDescription/LongDescription";
 import RelatedGames from "./RelatedGames/RelatedGames";
 
 const Detail = () => {
-    const [info, setInfo] = useState(
+    const info=
         {
             id: 1,
             title: "Game Title",
@@ -73,7 +72,7 @@ const Detail = () => {
                 }
             ]
         }
-    )
+
 
 
     return (
@@ -94,7 +93,7 @@ const Detail = () => {
                             </div>
                             <div>-</div>
                             <div>
-                                <p>{info.os.map(value => value + " ")}</p>
+                                <p>{info.os.map(value => value+" ")}</p>
                             </div>
                         </div>
                     </div>

@@ -1,4 +1,3 @@
-import Developer from "../Developer/Developer";
 import React from "react";
 
 const Publicher = (props: { publisher: React.ReactNode; }) => {
