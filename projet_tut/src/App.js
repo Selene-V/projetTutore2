@@ -8,7 +8,7 @@ function App() {
         <div className="App">
             <header className="App-header">
                 <Menu/>
-                {false ? <Home/> : <Detail/>}
+                {true ? <Home/> : <Detail/>}
             </header>
         </div>
     );
