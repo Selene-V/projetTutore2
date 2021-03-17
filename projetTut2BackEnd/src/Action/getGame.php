@@ -2,7 +2,7 @@
 
 namespace App\Action;
 
-use App\Core\Connection\Connection;
+use App\Connection\Connection;
 use Elasticsearch\Client;
 
 /**

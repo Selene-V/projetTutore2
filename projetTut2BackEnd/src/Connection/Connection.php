@@ -7,7 +7,6 @@ use Elasticsearch\ClientBuilder;
 
 class Connection
 {
-
     private Client $client;
 
     public function __construct()

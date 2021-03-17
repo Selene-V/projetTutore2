@@ -30,10 +30,10 @@ services:
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
 
-mysearch:
-    type: "elasticsearch:7.2"
-    disk: 1024
-    configuration:
-        plugins:
-            - analysis-icu
-            - lang-python
+# mysearch:
+#     type: "elasticsearch:7.10"
+#     disk: 1024
+#     configuration:
+#         plugins:
+#             - analysis-icu
+#             - lang-python

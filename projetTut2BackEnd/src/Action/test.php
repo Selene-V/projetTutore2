@@ -6,4 +6,8 @@ use App\Connection\Connection;
 
 $connection = new Connection();
 
-var_dump($connection->getClient()->info());
+// $params = [
+
+// ]
+
+// var_dump($connection->getClient()->get());
