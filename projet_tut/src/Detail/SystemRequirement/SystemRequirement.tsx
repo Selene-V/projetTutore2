@@ -7,8 +7,8 @@ const SystemRequirement = (props: { system_requirement: React.ReactNode[]; }) =>
         </div>
         <div className="m-1 p-2 text-black">
             <ul>
-                {props.system_requirement.map((value: React.ReactNode) =>
-                    <li>{value}</li>)}
+                {props.system_requirement.map((value: React.ReactNode,index) =>
+                    <li key={index}>{value}</li>)}
             </ul>
         </div>
     </div>);

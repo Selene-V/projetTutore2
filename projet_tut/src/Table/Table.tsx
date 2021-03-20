@@ -2,8 +2,7 @@ import React from "react";
 
 const Table = (props: {
     tableInfo: any[];
-    setIsClickForDetail: (arg0: boolean) => React.MouseEventHandler<HTMLTableRowElement> | undefined;
-    isClickForDetail: any;
+    setIsClickForDetail: any;
 }) => {
     return (
         <table className="rounded-t-lg m-4 w-11/12 mx-auto bg-gray-500 text-center">
@@ -17,7 +16,7 @@ const Table = (props: {
             <tbody>
             {props.tableInfo.map((value, index) => (
                 <tr key={index}
-                    onClick={()=>props.setIsClickForDetail(!props.isClickForDetail)}
+                    onClick={()=>props.setIsClickForDetail(true)}
                     className="bg-gray-200 border-b border-gray-200 hover:bg-gray-400 hover:text-gray-50 transition ease-in-out duration-150">
                     <td className="px-4 py-3">{value.name}</td>
                     <td className="px-4 py-3">{value.release_date}</td>

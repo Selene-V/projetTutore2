@@ -13,11 +13,11 @@ function App() {
     return (
         <div className="App">
             <header className="App-header">
-                <Menu/>
+                <Menu setIsClickForDetail={setIsClickForDetail}/>
                 {isClickForDetail ? <Detail setIsClickForDetail={setIsClickForDetail}
-                                            isClickForDetail={isClickForDetail}/> :
+                                            /> :
                     <Home setIsClickForDetail={setIsClickForDetail}
-                          isClickForDetail={isClickForDetail}/>}
+                          />}
             </header>
         </div>
     );

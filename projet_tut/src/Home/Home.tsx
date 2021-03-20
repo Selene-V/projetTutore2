@@ -7,7 +7,6 @@ import Search from "./Search/Search";
 
 const Home = (props: {
     setIsClickForDetail: any;
-    isClickForDetail: any;
 }) => {
     const [switchButton, setSwitchButton] = useState(false);
 
@@ -70,7 +69,6 @@ const Home = (props: {
             img: "https://www.fine-s.fr/9959/test.jpg"
         },
     ];
-    console.log(props.isClickForDetail);
     return (
         <div className="w-full">
             <div className="flex">
@@ -86,7 +84,7 @@ const Home = (props: {
                                 <div className="z-30 mt-20 place-items-auto  rounded-3xl">
                                     <Icons info={info}
                                            setIsClickForDetail={props.setIsClickForDetail}
-                                           isClickForDetail={props.isClickForDetail}
+
                                     />
                                     <Pagination/>
                                 </div>
@@ -95,7 +93,7 @@ const Home = (props: {
                                     <div className="w-full mx-auto py-10">
                                         <Table tableInfo={info}
                                                setIsClickForDetail={props.setIsClickForDetail}
-                                               isClickForDetail={props.isClickForDetail}/>
+                                               />
                                     </div>
                                     <Pagination/>
                                 </div>

@@ -10,20 +10,20 @@ const Carousel = (props: { img: any; }) => {
     })
 
     return (
-        <div className="carousel relative shadow-2xl bg-white">
+        <div className="carousel relative">
             <div className="carousel-inner relative overflow-hidden">
                 {
                     props.img.map((value: any, index: number) => (
                             <div key={index}>
                                 <input className="carousel-open" type="radio" id={"carousel-" + index} name={"carousel"}
-                                       checked={true}
+                                       defaultChecked={index === 0}
                                        hidden={true}/>
                                 <div className="carousel-item absolute opacity-0 carousel_size flex items-start">
                                     <div
-                                        className="block h-full w-full bg-green-500 text-white text-5xl text-center p-16">
+                                        className="block h-full w-full bg-green-500 text-white text-5xl text-center p-16 rounded-xl">
                                         <img src={value}
                                              alt="test"
-                                             className=" mx-auto sizeImg"/>
+                                             className=" mx-auto sizeImg rounded-2xl"/>
                                     </div>
                                 </div>
 

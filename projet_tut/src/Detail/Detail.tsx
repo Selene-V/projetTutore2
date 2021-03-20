@@ -14,7 +14,6 @@ import React from "react";
 
 const Detail = (props: {
     setIsClickForDetail: any
-    isClickForDetail: any;
 }) => {
     const info =
         {
@@ -95,8 +94,8 @@ const Detail = (props: {
                                 <p>{info.release_date}</p>
                             </div>
                             <div>-</div>
-                            <div>
-                                <p>{info.os.map(value => value + " ")}</p>
+                            <div className="flex space-x-2">
+                                {info.os.map((value, index) => <div key={index}>{value}</div>)}
                             </div>
                         </div>
                     </div>
@@ -104,6 +103,10 @@ const Detail = (props: {
                         <i className="fa fa-plus fa-2x" aria-hidden="true"/>
                     </div>
                 </div>
+
+
+
+
                 <div className="text-left flex mt-20">
                     <div className="w-3/5 text-lg">
                         <Carousel img={info.img}/>
@@ -120,10 +123,15 @@ const Detail = (props: {
                         <Publicher publisher={info.publisher}/>
                         <TagClan tag_clan={info.tag_clan}/>
                         <RelatedGames related_games={info.related_games}
-                                      setIsClickForDetail={props.setIsClickForDetail()}
-                                      isClickForDetail={props.isClickForDetail}/>
+                                      setIsClickForDetail={props.setIsClickForDetail}
+                        />
                     </div>
                 </div>
+
+
+
+
+
                 <ReviewBan reviewBan={info.review_ban}/>
             </div>
             <div className="w-1/12"/>
