@@ -6,7 +6,6 @@ const Switch = (props: { switchButton: (arg0: boolean) => void; }) => {
 
     function changeBoolean(bool: boolean) {
         props.switchButton(bool);
-        console.log(bool);
         if (bool) {
             setClassCss(["bg-yellow-600", "bg-gray-500"]);
             //forme  tableau en 3 colone
@@ -15,11 +14,9 @@ const Switch = (props: { switchButton: (arg0: boolean) => void; }) => {
             //forme vignette
         }
     }
-    console.log(classCss);
 
     return (
         <div className="kk">
-            <div>
                 <div className="flex flex-row-reverse rounded-xl">
                     <div className=" flex border-4 border-gray-400 rounded-xl">
                         <div className={classCss[0]+" border-4 border-gray-400 hover:bg-yellow-600 p-1"}>
@@ -40,7 +37,6 @@ const Switch = (props: { switchButton: (arg0: boolean) => void; }) => {
                             </label>
                         </div>
                     </div>
-                </div>
             </div>
         </div>);
 }

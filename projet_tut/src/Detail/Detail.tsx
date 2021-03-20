@@ -10,9 +10,13 @@ import Category from "./Category/Category";
 import Kind from "./Kind/Kind";
 import LongDescription from "./LongDescription/LongDescription";
 import RelatedGames from "./RelatedGames/RelatedGames";
+import React from "react";
 
-const Detail = () => {
-    const info=
+const Detail = (props: {
+    setIsClickForDetail: any
+    isClickForDetail: any;
+}) => {
+    const info =
         {
             id: 1,
             title: "Game Title",
@@ -74,7 +78,6 @@ const Detail = () => {
         }
 
 
-
     return (
         <div className="flex">
             <div className="w-1/12"/>
@@ -93,7 +96,7 @@ const Detail = () => {
                             </div>
                             <div>-</div>
                             <div>
-                                <p>{info.os.map(value => value+" ")}</p>
+                                <p>{info.os.map(value => value + " ")}</p>
                             </div>
                         </div>
                     </div>
@@ -116,7 +119,9 @@ const Detail = () => {
                         <Developer developer={info.developer}/>
                         <Publicher publisher={info.publisher}/>
                         <TagClan tag_clan={info.tag_clan}/>
-                        <RelatedGames related_games={info.related_games}/>
+                        <RelatedGames related_games={info.related_games}
+                                      setIsClickForDetail={props.setIsClickForDetail()}
+                                      isClickForDetail={props.isClickForDetail}/>
                     </div>
                 </div>
                 <ReviewBan reviewBan={info.review_ban}/>

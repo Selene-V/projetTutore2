@@ -10,9 +10,9 @@ const Menu = () => {
                         <div className="flex-shrink-0 flex items-center">
                             <img className="block lg:hidden h-8 w-auto"
                                  src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg" alt="Workflow"/>
-                                <img className="hidden lg:block h-8 w-auto"
-                                     src="https://tailwindui.com/img/logos/workflow-logo-indigo-500-mark-white-text.svg"
-                                     alt="Workflow"/>
+                            <img className="hidden lg:block h-8 w-auto"
+                                 src="https://tailwindui.com/img/logos/workflow-logo-indigo-500-mark-white-text.svg"
+                                 alt="Workflow"/>
                         </div>
                     </div>
                     <div
@@ -26,17 +26,15 @@ const Menu = () => {
                             </div>
                         </div>
                         <div className="ml-3 relative">
-                            <div>
-                                <button className="bg-gray-500 p-2 flex text-sm rounded-lg text-lg font-medium text-gray-100
+                            <button className="bg-gray-500 p-2 flex text-sm rounded-lg text-lg font-medium text-gray-100
                         transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:transform-none delay-100 hover:bg-gray-100 hover:text-gray-500"
-                                        aria-haspopup="true"> Disconnection
-                                </button>
-                            </div>
+                                    aria-haspopup="true"> Disconnection
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
         </nav>
-);
+    );
 }
 export default Menu;

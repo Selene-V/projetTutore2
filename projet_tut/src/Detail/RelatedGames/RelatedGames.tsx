@@ -1,7 +1,10 @@
 import React from "react";
 import Table from "../../Table/Table";
 
-const RelatedGames = (props: { related_games: any[]; }) => {
+const RelatedGames = (props: {
+    related_games: any[];
+    setIsClickForDetail: any;
+    isClickForDetail: any; }) => {
     return (
         <div className="mt-4 bg-white rounded-xl">
             <div className="bg-green-500 rounded-t-xl">
@@ -11,7 +14,9 @@ const RelatedGames = (props: { related_games: any[]; }) => {
                 <div className="place-items-auto  rounded-3xl">
                     <div className="my-2 pb-4">
                         <div className="flex overflow-y-scroll max-h-96">
-                            <Table tableInfo={props.related_games}/>
+                            <Table tableInfo={props.related_games}
+                                   setIsClickForDetail={props.setIsClickForDetail}
+                                   isClickForDetail={props.isClickForDetail}/>
                         </div>
                     </div>
                 </div>
