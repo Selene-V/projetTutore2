@@ -2,7 +2,7 @@ import React from "react";
 import "./Carousel.css"
 
 const Carousel = (props: { img: any; }) => {
-    console.log(props.img);
+
     props.img.map((value: any, index: string) => {
         document.head.insertAdjacentHTML("beforeend", `<style>#carousel-` + index + `:checked ~ .control-` + index + `{
     display: block;

@@ -23,7 +23,7 @@ const Switch = (props: { switchButton: (arg0: boolean) => void; }) => {
                             <label className="inline-flex items-center">
                                 <input name="test" type="radio"
                                        className=" test form-radio h-5 w-5 text-gray-600"
-                                       checked/>
+                                       />
                                 <i className="fa fa-bars fa-3x" aria-hidden="true" onClick={() => changeBoolean(true)}/>
 
                             </label>
@@ -32,7 +32,7 @@ const Switch = (props: { switchButton: (arg0: boolean) => void; }) => {
                             <label className="inline-flex items-center">
                                 <input name="test" type="radio"
                                        className=" test form-radio h-5 w-5 text-red-600"
-                                       checked/>
+                                       />
                                 <i className="fa fa-th fa-3x" aria-hidden="true" onClick={() => changeBoolean(false)}/>
                             </label>
                         </div>
