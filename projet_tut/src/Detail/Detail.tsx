@@ -10,9 +10,12 @@ import Category from "./Category/Category";
 import Kind from "./Kind/Kind";
 import LongDescription from "./LongDescription/LongDescription";
 import RelatedGames from "./RelatedGames/RelatedGames";
+import React from "react";
 
-const Detail = () => {
-    const info=
+const Detail = (props: {
+    setIsClickForDetail: any
+}) => {
+    const info =
         {
             id: 1,
             title: "Game Title",
@@ -29,16 +32,16 @@ const Detail = () => {
             publisher: "blablablablabla",
             tag_clan: ["Action", "Aventure", "gaming", "tata", "pipo", "scurt", "olala", "rrrrr", "fefefe f efe", "test", "Action", "1234567899", "Action"],
             related_games: [
-                {title: "a", release_date: "10/12/2020", score: "47"},
-                {title: "b", release_date: "10/11/2020", score: "52"},
-                {title: "c", release_date: "11/10/2020", score: "44"},
-                {title: "d", release_date: "10/09/2020", score: "12"},
-                {title: "e", release_date: "24/08/2020", score: "70"},
-                {title: "f", release_date: "10/07/2020", score: "88"},
-                {title: "g", release_date: "10/05/2020", score: "70"},
-                {title: "h", release_date: "25/02/2020", score: "54"},
-                {title: "i", release_date: "01/10/2020", score: "96"},
-                {title: "j", release_date: "10/11/2020", score: "38"},
+                {name: "a", release_date: "10/12/2020", score: "47"},
+                {name: "b", release_date: "10/11/2020", score: "52"},
+                {name: "c", release_date: "11/10/2020", score: "44"},
+                {name: "d", release_date: "10/09/2020", score: "12"},
+                {name: "e", release_date: "24/08/2020", score: "70"},
+                {name: "f", release_date: "10/07/2020", score: "88"},
+                {name: "g", release_date: "10/05/2020", score: "70"},
+                {name: "h", release_date: "25/02/2020", score: "54"},
+                {name: "i", release_date: "01/10/2020", score: "96"},
+                {name: "j", release_date: "10/11/2020", score: "38"},
             ],
             system_requirement: ["I5 9600K", "16 GO RAM", "70 GO SSD", "RTX 2070"],
             category: "blablablablabla",
@@ -74,7 +77,6 @@ const Detail = () => {
         }
 
 
-
     return (
         <div className="flex">
             <div className="w-1/12"/>
@@ -92,8 +94,8 @@ const Detail = () => {
                                 <p>{info.release_date}</p>
                             </div>
                             <div>-</div>
-                            <div>
-                                <p>{info.os.map(value => value+" ")}</p>
+                            <div className="flex space-x-2">
+                                {info.os.map((value, index) => <div key={index}>{value}</div>)}
                             </div>
                         </div>
                     </div>
@@ -101,6 +103,10 @@ const Detail = () => {
                         <i className="fa fa-plus fa-2x" aria-hidden="true"/>
                     </div>
                 </div>
+
+
+
+
                 <div className="text-left flex mt-20">
                     <div className="w-3/5 text-lg">
                         <Carousel img={info.img}/>
@@ -116,9 +122,16 @@ const Detail = () => {
                         <Developer developer={info.developer}/>
                         <Publicher publisher={info.publisher}/>
                         <TagClan tag_clan={info.tag_clan}/>
-                        <RelatedGames related_games={info.related_games}/>
+                        <RelatedGames related_games={info.related_games}
+                                      setIsClickForDetail={props.setIsClickForDetail}
+                        />
                     </div>
                 </div>
+
+
+
+
+
                 <ReviewBan reviewBan={info.review_ban}/>
             </div>
             <div className="w-1/12"/>
