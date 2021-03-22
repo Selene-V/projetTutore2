@@ -81,7 +81,7 @@ const Home = (props: {
                     <div>
                         {
                             !switchButton ?
-                                <div className="z-30 mt-20 place-items-auto  rounded-3xl">
+                                <div className="z-30 mt-20 mb-5 place-items-auto  rounded-3xl">
                                     <Icons info={info}
                                            setIsClickForDetail={props.setIsClickForDetail}
 
@@ -89,7 +89,7 @@ const Home = (props: {
                                     <Pagination/>
                                 </div>
                                 :
-                                <div className="z-30 mt-20 place-items-auto rounded-2xl text-black">
+                                <div className="z-30 mt-20 mb-5 place-items-auto rounded-2xl text-black">
                                     <div className="w-full mx-auto py-10">
                                         <Table tableInfo={info}
                                                setIsClickForDetail={props.setIsClickForDetail}
