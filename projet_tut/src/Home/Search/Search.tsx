@@ -3,17 +3,20 @@ import React, {useState} from "react";
 
 const Search = () => {
     const [classCss, setClassCss] = useState("transition ease-out duration-100 transform opacity-0 scale-95");
+    const [changeZIndex, setChangeZIndex] = useState("");
 
     function change() {
         if (classCss === "transition ease-out duration-100 transform opacity-0 scale-95") {
             setClassCss("transition ease-in duration-75 transform opacity-100 scale-100")
+            setChangeZIndex("z-40")
         } else {
             setClassCss("transition ease-out duration-100 transform opacity-0 scale-95")
+            setChangeZIndex("")
         }
     }
 
     return (
-        <div className="fixed w-4/12 relative inline-block min-w-min h-full z-40 text-black">
+        <div className={changeZIndex+" fixed w-4/12 relative inline-block min-w-min h-full text-black"}>
             <div>
                 <button type="button"
                         onClick={() => change()}
