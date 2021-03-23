@@ -8,25 +8,26 @@ import Sort from "./Sort/Sort";
 
 const Home = (props: {
     setIsClickForDetail: any;
-    isClickForDetail : any;
+    isClickForDetail: any;
 }) => {
     const [switchButton, setSwitchButton] = useState(false);
 
     async function getValue() {
         return await fetch("http://projettutore2back/games/1").then(reponse => reponse.json())
-        .then(function (json){
-            return [
-                json.hits.hits
-            ];
-        });
+            .then(function (json) {
+                return json["hits"]["hits"];
+            });
     }
 
-    const [infoGame, setInfoGame] = useState([]);
+    const [infoGame, setInfoGame] = useState<any>();
 
-    useEffect(()=>{
-        getValue().then(x=>setInfoGame(x[0]))
-    },[]);
+    useEffect(() => {
+        getValue().then(x => setInfoGame(x))
+    }, []);
 
+    if (infoGame === undefined) {
+        return (<div> Loading ...</div>)
+    }
     return (
         <div className="w-full">
             <div className="flex">
@@ -43,7 +44,7 @@ const Home = (props: {
                                 <div className="z-30 mt-20 mb-5 place-items-auto  rounded-3xl">
                                     <Icons info={infoGame}
                                            setIsClickForDetail={props.setIsClickForDetail}
-                                           isClickForDetail={props.isClickForDetail} 
+                                           isClickForDetail={props.isClickForDetail}
                                     />
                                     <Pagination/>
                                 </div>

@@ -20,8 +20,6 @@ const Detail = (props: {
     async function getValue() {
         return await fetch("http://projettutore2back/game/"+props.isClickForDetail).then(reponse => reponse.json())
         .then(function (json){
-            console.log(json._source.data);
-            console.log(json['_source']['data']);
             return json['_source']['data'];
         });
     }
@@ -116,7 +114,9 @@ const Detail = (props: {
                             </div>
                             <div>-</div>
                             <div className="flex space-x-2">
-                                {info.os.map((value, index) => <div key={index}>{value}</div>)}
+                                {detailGame.platforms.split(";").map((value: string, index: number) => <div key={index}>
+                                    {value.charAt(0).toUpperCase() + value.slice(1)}</div>
+                                )}
                             </div>
                         </div>
                     </div>
@@ -133,16 +133,16 @@ const Detail = (props: {
                         <Carousel img={info.img}/>
                         <div className="flex space-x-5 mt-8">
                             <SystemRequirement system_requirement={info.system_requirement}/>
-                            <Category category={info.category}/>
-                            <Kind kind={detailGame.genres}/>
+                            <Category categories={detailGame.categories.split(';')}/>
+                            <Kind kind={detailGame.genres.split(';')}/>
                         </div>
                         <LongDescription long_description={info.long_description}/>
                     </div>
                     <div className="w-2/5 ml-4 text-lg">
                         <ShortDescription short_description={info.short_description}/>
                         <Developer developer={detailGame.developer}/>
-                        <Publicher publisher={detailGame.publisher}/>
-                        <TagClan tag_clan={detailGame.steamspy_tags}/>
+                        <Publicher publisher={detailGame.publisher.split(';')}/>
+                        <TagClan tag_clan={detailGame.steamspy_tags.split(';')}/>
                         {true?<div/>:
                         <RelatedGames related_games={info.related_games}
                                       setIsClickForDetail={props.setIsClickForDetail}
