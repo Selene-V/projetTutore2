@@ -124,12 +124,12 @@ const Detail = (props: {
                         <Developer developer={info.developer}/>
                         <Publicher publisher={info.publisher}/>
                         <TagClan tag_clan={info.tag_clan}/>
-                        
+                        {true?<div/>:
                         <RelatedGames related_games={info.related_games}
                                       setIsClickForDetail={props.setIsClickForDetail}
                                       isClickForDetail={props.isClickForDetail}
                         />
-                        
+                        }
                     </div>
                 </div>
 
