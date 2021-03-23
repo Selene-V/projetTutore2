@@ -93,7 +93,7 @@ const Home = (props: {
                                     <div className="w-full mx-auto py-10">
                                         <Table tableInfo={info}
                                                setIsClickForDetail={props.setIsClickForDetail}
-                                               />
+                                        />
                                     </div>
                                     <Pagination/>
                                 </div>
