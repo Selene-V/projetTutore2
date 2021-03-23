@@ -10,13 +10,29 @@ import Category from "./Category/Category";
 import Kind from "./Kind/Kind";
 import LongDescription from "./LongDescription/LongDescription";
 import RelatedGames from "./RelatedGames/RelatedGames";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const Detail = (props: {
     setIsClickForDetail: any;
     isClickForDetail: any;
 }) => {
     console.log(props.isClickForDetail);
+
+    async function getValue() {
+        return await fetch("http://projettutore2back/game/"+props.isClickForDetail).then(reponse => reponse.json())
+        .then(function (json){
+            console.log(json);
+            return json;
+        });
+    }
+
+    const [infoGame, setInfoGame] = useState([]);
+
+    useEffect(()=>{
+        getValue().then(x=>setInfoGame(x))
+    },[]);
+
+
     const info =
         {
             id: 1,
