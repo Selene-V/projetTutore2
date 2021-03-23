@@ -2,16 +2,16 @@ import React, {useState} from "react";
 
 
 const Search = () => {
-    const [classCss, setClassCss] = useState("h-0 overflow-hidden transition ease-out duration-100 transform opacity-0 scale-95");
-    const [changeZIndex, setChangeZIndex] = useState("");
+    const [classCss, setClassCss] = useState("transition ease-out duration-100 transform opacity-0 scale-95");
+    const [changeZIndex, setChangeZIndex] = useState("h-0 overflow-hidden");
 
     function change() {
         if (classCss === "transition ease-out duration-100 transform opacity-0 scale-95") {
             setClassCss("transition ease-in duration-75 transform opacity-100 scale-100")
             setChangeZIndex("z-40")
         } else {
-            setClassCss("h-0 overflow-hidden transition ease-out duration-100 transform opacity-0 scale-95")
-            setChangeZIndex("")
+            setClassCss("transition ease-out duration-100 transform opacity-0 scale-95")
+            setChangeZIndex("h-0 overflow-hidden")
         }
     }
 
