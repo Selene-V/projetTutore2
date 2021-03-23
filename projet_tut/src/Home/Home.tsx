@@ -4,6 +4,7 @@ import Table from "../Table/Table";
 import Pagination from "./Pagination/Pagination";
 import Icons from "./Icons/Icons";
 import Search from "./Search/Search";
+import Sort from "./Sort/Sort";
 
 const Home = (props: {
     setIsClickForDetail: any;
@@ -76,6 +77,7 @@ const Home = (props: {
                 <div className="w-10/12">
                     <div className="flex mx-3 justify-between mt-5">
                         <Search/>
+                        <Sort/>
                         <Switch switchButton={setSwitchButton}/>
                     </div>
                     <div>
