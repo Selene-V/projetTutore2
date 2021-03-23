@@ -27,8 +27,6 @@ const Home = (props: {
         getValue().then(x=>setInfoGame(x[0]))
     },[]);
 
-    console.log(infoGame);
-
     return (
         <div className="w-full">
             <div className="flex">

@@ -16,22 +16,21 @@ const Detail = (props: {
     setIsClickForDetail: any;
     isClickForDetail: any;
 }) => {
-    console.log(props.isClickForDetail);
 
     async function getValue() {
         return await fetch("http://projettutore2back/game/"+props.isClickForDetail).then(reponse => reponse.json())
         .then(function (json){
-            console.log(json);
-            return json;
+            console.log(json._source.data);
+            console.log(json['_source']['data']);
+            return json['_source']['data'];
         });
     }
 
-    const [infoGame, setInfoGame] = useState([]);
+    const [detailGame, setDetailGame] = useState<any>();
 
     useEffect(()=>{
-        getValue().then(x=>setInfoGame(x))
+        getValue().then(x=>setDetailGame(x))
     },[]);
-
 
     const info =
         {
@@ -94,6 +93,10 @@ const Detail = (props: {
             ]
         }
 
+    //console.log(detailGame.name)
+    if(detailGame === undefined){
+        return(<div> Loading ... </div>)
+    }
 
     return (
         <div className="flex">
@@ -105,11 +108,11 @@ const Detail = (props: {
                     </div>
                     <div className="w-8/12 ml-4 text-white">
                         <div className="flex mt-5 text-5xl">
-                            <p>{info.title}</p>
+                            <p>{detailGame.name}</p>
                         </div>
                         <div className="flex mt-5 space-x-3 text-lg">
                             <div>
-                                <p>{info.release_date}</p>
+                                <p>{detailGame.release_date}</p>
                             </div>
                             <div>-</div>
                             <div className="flex space-x-2">
@@ -131,15 +134,15 @@ const Detail = (props: {
                         <div className="flex space-x-5 mt-8">
                             <SystemRequirement system_requirement={info.system_requirement}/>
                             <Category category={info.category}/>
-                            <Kind kind={info.kind}/>
+                            <Kind kind={detailGame.genres}/>
                         </div>
                         <LongDescription long_description={info.long_description}/>
                     </div>
                     <div className="w-2/5 ml-4 text-lg">
                         <ShortDescription short_description={info.short_description}/>
-                        <Developer developer={info.developer}/>
-                        <Publicher publisher={info.publisher}/>
-                        <TagClan tag_clan={info.tag_clan}/>
+                        <Developer developer={detailGame.developer}/>
+                        <Publicher publisher={detailGame.publisher}/>
+                        <TagClan tag_clan={detailGame.steamspy_tags}/>
                         {true?<div/>:
                         <RelatedGames related_games={info.related_games}
                                       setIsClickForDetail={props.setIsClickForDetail}
@@ -158,5 +161,6 @@ const Detail = (props: {
             <div className="w-1/12"/>
         </div>
     );
+
 }
 export default Detail;
