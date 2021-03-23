@@ -2,7 +2,7 @@ import React, {useState} from "react";
 
 
 const Search = () => {
-    const [classCss, setClassCss] = useState("transition ease-out duration-100 transform opacity-0 scale-95");
+    const [classCss, setClassCss] = useState("h-0 overflow-hidden transition ease-out duration-100 transform opacity-0 scale-95");
     const [changeZIndex, setChangeZIndex] = useState("");
 
     function change() {
@@ -10,7 +10,7 @@ const Search = () => {
             setClassCss("transition ease-in duration-75 transform opacity-100 scale-100")
             setChangeZIndex("z-40")
         } else {
-            setClassCss("transition ease-out duration-100 transform opacity-0 scale-95")
+            setClassCss("h-0 overflow-hidden transition ease-out duration-100 transform opacity-0 scale-95")
             setChangeZIndex("")
         }
     }
