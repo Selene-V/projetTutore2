@@ -5,7 +5,7 @@ import Menu from "./Menu/Menu";
 import {useEffect, useState} from "react";
 
 function App() {
-    const [isClickForDetail, setIsClickForDetail] = useState(false)
+    const [isClickForDetail, setIsClickForDetail] = useState("")
     console.log(isClickForDetail);
     useEffect(() => {
         setIsClickForDetail(isClickForDetail);
@@ -14,9 +14,9 @@ function App() {
         <div className="App">
             <header className="App-header">
                 <Menu setIsClickForDetail={setIsClickForDetail}/>
-                {isClickForDetail ? <Detail setIsClickForDetail={setIsClickForDetail}
+                {isClickForDetail ? <Detail setIsClickForDetail={setIsClickForDetail} isClickForDetail={isClickForDetail}
                                             /> :
-                    <Home setIsClickForDetail={setIsClickForDetail}
+                    <Home setIsClickForDetail={setIsClickForDetail} isClickForDetail={isClickForDetail}
                           />}
             </header>
         </div>

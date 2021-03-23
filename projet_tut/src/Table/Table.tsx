@@ -3,6 +3,7 @@ import React from "react";
 const Table = (props: {
     tableInfo: any[];
     setIsClickForDetail: any;
+    isClickForDetail: any;
 }) => {
     return (
         <table className="rounded-t-lg m-4 w-11/12 mx-auto bg-gray-500 text-center">
@@ -16,11 +17,11 @@ const Table = (props: {
             <tbody>
             {props.tableInfo.map((value, index) => (
                 <tr key={index}
-                    onClick={()=>props.setIsClickForDetail(true)}
+                    onClick={()=>props.setIsClickForDetail(value._id)}
                     className="bg-gray-200 border-b border-gray-200 hover:bg-gray-400 hover:text-gray-50 transition ease-in-out duration-150">
-                    <td className="px-4 py-3">{value.name}</td>
-                    <td className="px-4 py-3">{value.release_date}</td>
-                    <td className="px-4 py-3">{value.score}</td>
+                    <td className="px-4 py-3">{value._source.data.name}</td>
+                    <td className="px-4 py-3">{value._source.data.release_date}</td>
+                    <td className="px-4 py-3">{value._source.data.positive_ratings}</td>
                 </tr>
             ))}
             </tbody>

@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import Switch from "./Switch/Switch";
 import Table from "../Table/Table";
 import Pagination from "./Pagination/Pagination";
@@ -8,68 +8,27 @@ import Sort from "./Sort/Sort";
 
 const Home = (props: {
     setIsClickForDetail: any;
+    isClickForDetail : any;
 }) => {
     const [switchButton, setSwitchButton] = useState(false);
 
+    async function getValue() {
+        return await fetch("http://projettutore2back/games/1").then(reponse => reponse.json())
+        .then(function (json){
+            return [
+                json.hits.hits
+            ];
+        });
+    }
 
-    const info = [
-        {
-            id: 1,
-            name: "fortnite",
-            release_date: "10/10/2021",
-            score: "70",
-            img: "https://www.fine-s.fr/9959/test.jpg"
-        },
-        {
-            id: 2,
-            name: "fffortnite",
-            release_date: "10/10/2021",
-            score: "70",
-            img: "https://www.fine-s.fr/9959/test.jpg"
-        },
-        {
-            id: 3,
-            name: "fortnite",
-            release_date: "10/10/2021",
-            score: "70",
-            img: "https://www.fine-s.fr/9959/test.jpg"
-        },
-        {
-            id: 4,
-            name: "fortnite",
-            release_date: "10/10/2021",
-            score: "70",
-            img: "https://www.fine-s.fr/9959/test.jpg"
-        },
-        {
-            id: 5,
-            name: "fortnite",
-            release_date: "10/10/2021",
-            score: "70",
-            img: "https://www.fine-s.fr/9959/test.jpg"
-        },
-        {
-            id: 6,
-            name: "fortnite",
-            release_date: "10/10/2021",
-            score: "70",
-            img: "https://www.fine-s.fr/9959/test.jpg"
-        },
-        {
-            id: 7,
-            name: "fortnite",
-            release_date: "10/10/2021",
-            score: "70",
-            img: "https://www.fine-s.fr/9959/test.jpg"
-        },
-        {
-            id: 8,
-            name: "fortnite",
-            release_date: "10/10/2021",
-            score: "70",
-            img: "https://www.fine-s.fr/9959/test.jpg"
-        },
-    ];
+    const [infoGame, setInfoGame] = useState([]);
+
+    useEffect(()=>{
+        getValue().then(x=>setInfoGame(x[0]))
+    },[]);
+
+    console.log(infoGame);
+
     return (
         <div className="w-full">
             <div className="flex">
@@ -84,17 +43,18 @@ const Home = (props: {
                         {
                             !switchButton ?
                                 <div className="z-30 mt-20 mb-5 place-items-auto  rounded-3xl">
-                                    <Icons info={info}
+                                    <Icons info={infoGame}
                                            setIsClickForDetail={props.setIsClickForDetail}
-
+                                           isClickForDetail={props.isClickForDetail} 
                                     />
                                     <Pagination/>
                                 </div>
                                 :
                                 <div className="z-30 mt-20 mb-5 place-items-auto rounded-2xl text-black">
                                     <div className="w-full mx-auto py-10">
-                                        <Table tableInfo={info}
+                                        <Table tableInfo={infoGame}
                                                setIsClickForDetail={props.setIsClickForDetail}
+                                               isClickForDetail={props.isClickForDetail}
                                         />
                                     </div>
                                     <Pagination/>

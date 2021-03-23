@@ -13,8 +13,10 @@ import RelatedGames from "./RelatedGames/RelatedGames";
 import React from "react";
 
 const Detail = (props: {
-    setIsClickForDetail: any
+    setIsClickForDetail: any;
+    isClickForDetail: any;
 }) => {
+    console.log(props.isClickForDetail);
     const info =
         {
             id: 1,
@@ -122,9 +124,12 @@ const Detail = (props: {
                         <Developer developer={info.developer}/>
                         <Publicher publisher={info.publisher}/>
                         <TagClan tag_clan={info.tag_clan}/>
+                        
                         <RelatedGames related_games={info.related_games}
                                       setIsClickForDetail={props.setIsClickForDetail}
+                                      isClickForDetail={props.isClickForDetail}
                         />
+                        
                     </div>
                 </div>
 
