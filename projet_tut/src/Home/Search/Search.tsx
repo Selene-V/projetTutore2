@@ -16,7 +16,7 @@ const Search = () => {
     }
 
     return (
-        <div className={changeZIndex+" fixed w-4/12 relative inline-block min-w-min h-full text-black"}>
+        <div className={changeZIndex + " fixed w-4/12 relative inline-block min-w-min h-full text-black"}>
             <div>
                 <button type="button"
                         onClick={() => change()}
