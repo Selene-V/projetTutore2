@@ -52,6 +52,7 @@ const Home = (props: {
                                 <div className="z-30 mt-20 mb-5 place-items-auto rounded-2xl text-black">
                                     <div className="w-full mx-auto py-10">
                                         <Table tableInfo={infoGame}
+                                               choiceFormat={true}
                                                setIsClickForDetail={props.setIsClickForDetail}
                                                isClickForDetail={props.isClickForDetail}
                                         />

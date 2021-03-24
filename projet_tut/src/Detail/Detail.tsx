@@ -10,7 +10,7 @@ import Category from "./Category/Category";
 import Kind from "./Kind/Kind";
 import LongDescription from "./LongDescription/LongDescription";
 import RelatedGames from "./RelatedGames/RelatedGames";
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 
 const Detail = (props: {
     setIsClickForDetail: any;
@@ -18,17 +18,17 @@ const Detail = (props: {
 }) => {
 
     async function getValue() {
-        return await fetch("http://projettutore2back/game/"+props.isClickForDetail).then(reponse => reponse.json())
-        .then(function (json){
-            return json['_source']['data'];
-        });
+        return await fetch("http://projettutore2back/game/" + props.isClickForDetail).then(reponse => reponse.json())
+            .then(function (json) {
+                return json['_source']['data'];
+            });
     }
 
     const [detailGame, setDetailGame] = useState<any>();
 
-    useEffect(()=>{
-        getValue().then(x=>setDetailGame(x))
-    },[]);
+    useEffect(() => {
+        getValue().then(x => setDetailGame(x))
+    }, []);
 
     const info =
         {
@@ -92,8 +92,8 @@ const Detail = (props: {
         }
 
     //console.log(detailGame.name)
-    if(detailGame === undefined){
-        return(<div> Loading ... </div>)
+    if (detailGame === undefined) {
+        return (<div> Loading ... </div>)
     }
 
     return (
@@ -121,11 +121,18 @@ const Detail = (props: {
                         </div>
                     </div>
                     <div className="w-1/12 text-center justify-center place-self-center text-white ">
-                        <i className="fa fa-plus fa-2x" aria-hidden="true"/>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                        </svg>
+
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path fillRule="evenodd"
+                                  d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+                                  clipRule="evenodd"/>
+                        </svg>
                     </div>
                 </div>
-
-
 
 
                 <div className="text-left flex mt-20">
@@ -143,17 +150,14 @@ const Detail = (props: {
                         <Developer developer={detailGame.developer}/>
                         <Publicher publisher={detailGame.publisher.split(';')}/>
                         <TagClan tag_clan={detailGame.steamspy_tags.split(';')}/>
-                        {true?<div/>:
-                        <RelatedGames related_games={info.related_games}
-                                      setIsClickForDetail={props.setIsClickForDetail}
-                                      isClickForDetail={props.isClickForDetail}
-                        />
+                        {true ? <div/> :
+                            <RelatedGames related_games={info.related_games}
+                                          setIsClickForDetail={props.setIsClickForDetail}
+                                          isClickForDetail={props.isClickForDetail}
+                            />
                         }
                     </div>
                 </div>
-
-
-
 
 
                 <ReviewBan reviewBan={info.review_ban}/>

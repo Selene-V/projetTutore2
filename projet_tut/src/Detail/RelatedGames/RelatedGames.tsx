@@ -16,6 +16,7 @@ const RelatedGames = (props: {
                     <div className="my-2 pb-4">
                         <div className="flex overflow-y-scroll max-h-96">
                             <Table tableInfo={props.related_games}
+                                   choiceFormat={false}
                                    setIsClickForDetail={props.setIsClickForDetail}
                                    isClickForDetail={props.isClickForDetail}
                             />
