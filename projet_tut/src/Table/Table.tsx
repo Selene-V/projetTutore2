@@ -1,22 +1,25 @@
 import React from "react";
 
 const Table = (props: {
-    choiceFormat: boolean;
     tableInfo: any[];
     setIsClickForDetail: any;
     isClickForDetail: any;
+    imageInfo:any;
 }) => {
 
-    if (props.choiceFormat) {
+    console.log(props.tableInfo);
+
+
+    if (props.imageInfo!==undefined) {
         return (
             <div>
                 {props.tableInfo.map((value, index) =>
-                    <div key={index} className="bg-white rounded-lg flex space-x-2 w-2/3 mx-auto my-2 h-max">
-                        <div className="relative flex-none w-1/5">
+                    <div key={index} className="bg-white rounded-lg flex space-x-2 w-11/12 mx-auto my-2 h-max">
+                        <div className="relative flex-none w-4/12">
                             <img className="absolute inset-0 w-full h-full object-cover rounded-l-lg"
-                                 src="https://static.posters.cz/image/750/affiches/call-of-duty-black-ops-cold-war-split-i100281.jpg"/>
+                                 src={props.imageInfo[index]._source.data.header_image}/>
                         </div>
-                        <div className="text-left w-full px-5 py-3 space-y-4 w-4/5">
+                        <div className="text-left w-full px-5 py-3 space-y-4 w-6/12">
                             <div className="flex justify-between">
                                 <div>{value._source.data.name}</div>
                                 <div className="font-semibold text-gray-700">${value._source.data.price}</div>
@@ -49,7 +52,7 @@ const Table = (props: {
                                     <div className="text-justify">
                                         <p>
                                             je zsuis une short description
-                                            jesv
+                                            jesve
                                             suis une short ddesczriptdiodn jes suis une short desscridtion je suis une
                                             short
                                             desezzcreizptiodn jde Rdsuis dune sheort descriptdion je suis une short
@@ -57,7 +60,9 @@ const Table = (props: {
                                             unec
                                             short description
                                         </p>
-                                        <button className="transition duration-500 float-right hover:bg-green-200 px-5 py-2 rounded-lg border-2 hover:border-opacity-0 border-gray-400">Look</button>
+                                        <button
+                                            onClick={() => props.setIsClickForDetail(value._id)}
+                                            className="transition duration-500 float-right hover:bg-green-200 px-5 py-2 rounded-lg border-2 hover:border-opacity-0 border-gray-400">Look</button>
                                     </div>
                                 </div>
                             </div>

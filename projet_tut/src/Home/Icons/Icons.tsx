@@ -1,6 +1,8 @@
 import React from "react";
 
 const Icons = (props: { info: any[]; setIsClickForDetail: any; isClickForDetail: any;}) => {
+
+    console.log(props.info)
     return (
         <div className="flex flex-wrap -mx-6 overflow-hidden sm:-mx-4 md:-mx-4 lg:-mx-12 xl:-mx-12">
             {props.info.map(value => (
