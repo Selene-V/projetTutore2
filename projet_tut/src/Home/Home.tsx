@@ -5,6 +5,7 @@ import Pagination from "./Pagination/Pagination";
 import Icons from "./Icons/Icons";
 import Search from "./Search/Search";
 import Sort from "./Sort/Sort";
+import Loading from "../Loading/Loading";
 
 const Home = (props: {
     setIsClickForDetail: any;
@@ -37,7 +38,7 @@ const Home = (props: {
     }, [actualyPage]);
 
     if (infoGame === undefined || imageGame === undefined) {
-        return (<div> Loading ...</div>)
+        return (<Loading/>)
     }
 
     console.log(imageGame);

@@ -11,6 +11,7 @@ import Kind from "./Kind/Kind";
 import LongDescription from "./LongDescription/LongDescription";
 import RelatedGames from "./RelatedGames/RelatedGames";
 import React, {useEffect, useState} from "react";
+import Loading from "../Loading/Loading";
 
 const Detail = (props: {
     setIsClickForDetail: any;
@@ -93,7 +94,7 @@ const Detail = (props: {
 
     //console.log(detailGame.name)
     if (detailGame === undefined) {
-        return (<div> Loading ... </div>)
+        return (<Loading/>)
     }
 
     return (
