@@ -11,9 +11,10 @@ const Home = (props: {
     isClickForDetail: any;
 }) => {
     const [switchButton, setSwitchButton] = useState(false);
+    const [actualyPage,setActualyPage]= useState(1);
 
     async function getValue() {
-        return await fetch("http://projettutore2back/games/1").then(reponse => reponse.json())
+        return await fetch("http://projettutore2back/games/"+actualyPage).then(reponse => reponse.json())
             .then(function (json) {
                 console.log(json)
                 console.log([json[0]['images']['hits']['hits'],json["hits"]["hits"]])
@@ -24,12 +25,16 @@ const Home = (props: {
     const [infoGame, setInfoGame] = useState<any>();
     const [imageGame, setImageGame] = useState<any>();
 
+    console.log(actualyPage);
+
     useEffect(() => {
+        setInfoGame(undefined);
+        setImageGame(undefined);
         getValue()
         .then(
             x => {setInfoGame(x[1]);setImageGame(x[0]);}
             )
-    }, []);
+    }, [actualyPage]);
 
     if (infoGame === undefined || imageGame === undefined) {
         return (<div> Loading ...</div>)
@@ -54,7 +59,7 @@ const Home = (props: {
                                            setIsClickForDetail={props.setIsClickForDetail}
                                            isClickForDetail={props.isClickForDetail}
                                     />
-                                    <Pagination/>
+                                    <Pagination actualyPage={actualyPage} setActualyPage={setActualyPage}/>
                                 </div>
                                 :
                                 <div className="z-30 mt-20 mb-5 place-items-auto rounded-2xl text-black">
@@ -65,7 +70,7 @@ const Home = (props: {
                                                isClickForDetail={props.isClickForDetail}
                                         />
                                     </div>
-                                    <Pagination/>
+                                    <Pagination actualyPage={actualyPage} setActualyPage={setActualyPage}/>
                                 </div>
                         }
                     </div>
