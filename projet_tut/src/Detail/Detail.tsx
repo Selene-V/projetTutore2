@@ -17,18 +17,25 @@ const Detail = (props: {
     setIsClickForDetail: any;
     isClickForDetail: any;
 }) => {
-
     async function getValue() {
         return await fetch("http://projettutore2back/game/" + props.isClickForDetail).then(reponse => reponse.json())
             .then(function (json) {
-                return json['_source']['data'];
+                return [json['_source']['data'],json[0]['images']['hits']['hits'],json[1]['descriptions']['hits']['hits']];
             });
     }
 
     const [detailGame, setDetailGame] = useState<any>();
+    const [imageGame, setImageGame] = useState<any>();
+    const [descriptionGame, setDescriptionGame] = useState<any>();
 
     useEffect(() => {
-        getValue().then(x => setDetailGame(x))
+        setDetailGame(undefined);
+        setImageGame(undefined);
+        setDescriptionGame(undefined);
+        getValue()
+        .then(
+            x => {setDetailGame(x[0]); setImageGame(x[1]); setDescriptionGame(x[2])} 
+            )
     }, []);
 
     const info =
@@ -92,18 +99,17 @@ const Detail = (props: {
             ]
         }
 
-    //console.log(detailGame.name)
-    if (detailGame === undefined) {
+    if (detailGame === undefined || imageGame === undefined || descriptionGame === undefined) {
         return (<Loading/>)
     }
-
+    console.log(imageGame)
     return (
         <div className="flex">
             <div className="w-1/12"/>
             <div className="w-10/12">
                 <div className="flex mt-8 text-2xl">
                     <div className="w-3/12 img_size">
-                        <img src={info.img[0]} className="sizeImg mx-auto" alt="test"/>
+                        <img src={imageGame[0]['_source']['data']['header_image']} className="sizeImg mx-auto" alt="test"/>
                     </div>
                     <div className="w-8/12 ml-4 text-white">
                         <div className="flex mt-5 text-5xl">
@@ -144,10 +150,10 @@ const Detail = (props: {
                             <Category categories={detailGame.categories.split(';')}/>
                             <Kind kind={detailGame.genres.split(';')}/>
                         </div>
-                        <LongDescription long_description={info.long_description}/>
+                        <LongDescription long_description={descriptionGame[0]['_source']['data']['detailed_description'].replaceAll('<br>',' ').replaceAll('<li>','').replaceAll('</li>','').replaceAll('<ul class="bb_ul">').replaceAll('</ul>','')}/>
                     </div>
                     <div className="w-2/5 ml-4 text-lg">
-                        <ShortDescription short_description={info.short_description}/>
+                        <ShortDescription short_description={descriptionGame[0]['_source']['data']['short_description']}/>
                         <Developer developer={detailGame.developer}/>
                         <Publicher publisher={detailGame.publisher.split(';')}/>
                         <TagClan tag_clan={detailGame.steamspy_tags.split(';')}/>

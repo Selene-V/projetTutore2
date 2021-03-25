@@ -17,8 +17,6 @@ const Home = (props: {
     async function getValue() {
         return await fetch("http://projettutore2back/games/"+actualyPage).then(reponse => reponse.json())
             .then(function (json) {
-                console.log(json)
-                console.log([json[0]['images']['hits']['hits'],json["hits"]["hits"]])
                 return [json[0]['images']['hits']['hits'],json["hits"]["hits"]];
             });
     }
@@ -26,7 +24,7 @@ const Home = (props: {
     const [infoGame, setInfoGame] = useState<any>();
     const [imageGame, setImageGame] = useState<any>();
 
-    console.log(actualyPage);
+    //console.log(actualyPage);
 
     useEffect(() => {
         setInfoGame(undefined);
@@ -41,7 +39,7 @@ const Home = (props: {
         return (<Loading/>)
     }
 
-    console.log(imageGame);
+    //console.log(imageGame);
     return (
         <div className="w-full">
             <div className="flex">
@@ -56,7 +54,8 @@ const Home = (props: {
                         {
                             !switchButton ?
                                 <div className="z-30 mt-20 mb-5 place-items-auto  rounded-3xl">
-                                    <Icons info={imageGame}
+                                    <Icons tableInfo={infoGame}
+                                           imageInfo={imageGame}
                                            setIsClickForDetail={props.setIsClickForDetail}
                                            isClickForDetail={props.isClickForDetail}
                                     />
