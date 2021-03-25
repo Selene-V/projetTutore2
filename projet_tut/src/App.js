@@ -6,7 +6,6 @@ import {useEffect, useState} from "react";
 
 function App() {
     const [isClickForDetail, setIsClickForDetail] = useState("")
-    console.log(isClickForDetail);
     useEffect(() => {
         setIsClickForDetail(isClickForDetail);
     });

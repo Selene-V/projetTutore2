@@ -24,8 +24,6 @@ const Home = (props: {
     const [infoGame, setInfoGame] = useState<any>();
     const [imageGame, setImageGame] = useState<any>();
 
-    //console.log(actualyPage);
-
     useEffect(() => {
         setInfoGame(undefined);
         setImageGame(undefined);
@@ -39,7 +37,7 @@ const Home = (props: {
         return (<Loading/>)
     }
 
-    //console.log(imageGame);
+    console.log(imageGame);
     return (
         <div className="w-full">
             <div className="flex">

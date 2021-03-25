@@ -7,7 +7,6 @@ const Icons = (props: {
     isClickForDetail: any;
 }) => {
 
-    console.log(props.tableInfo)
     return (
         <div className="flex flex-wrap -mx-6 overflow-hidden sm:-mx-4 md:-mx-4 lg:-mx-12 xl:-mx-12">
             {props.tableInfo.map((value, index) => (

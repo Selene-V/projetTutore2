@@ -7,9 +7,6 @@ const Table = (props: {
     imageInfo:any;
 }) => {
 
-    console.log(props.tableInfo);
-
-
     if (props.imageInfo!==undefined) {
         return (
             <div>
