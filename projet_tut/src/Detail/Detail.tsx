@@ -21,7 +21,7 @@ const Detail = (props: {
     async function getValue() {
         return await fetch("http://projettutore2back/game/" + props.isClickForDetail).then(reponse => reponse.json())
             .then(function (json) {
-                return [json['_source']['data'],json[0]['images']['hits']['hits'],json[1]['descriptions']['hits']['hits']];
+                return [json['_source']['data'], json[0]['images']['hits']['hits'], json[1]['descriptions']['hits']['hits']];
             })
             .catch(function (error) {
                 return "error"
@@ -37,10 +37,14 @@ const Detail = (props: {
         setImageGame(undefined);
         setDescriptionGame(undefined);
         getValue()
-        .then(
-            x => {setDetailGame(x[0]); setImageGame(x[1]); setDescriptionGame(x[2])} 
+            .then(
+                x => {
+                    setDetailGame(x[0]);
+                    setImageGame(x[1]);
+                    setDescriptionGame(x[2])
+                }
             )
-            .catch(x=>setDetailGame(x))
+            .catch(x => setDetailGame(x))
     }, []);
 
     const info =
@@ -110,77 +114,76 @@ const Detail = (props: {
         return (<Error500/>)
     } else {
         return (
-        <div className="flex">
-            <div className="w-1/12"/>
-            <div className="w-10/12">
-                <div className="flex mt-8 text-2xl">
-                    <div className="w-3/12 img_size">
-                        <img src={imageGame[0]['_source']['data']['header_image']} className="sizeImg mx-auto" alt="test"/>
-                    </div>
-                    <div className="w-8/12 ml-4 text-white">
-                        <div className="flex mt-5 text-5xl">
-                            <p>{detailGame.name}</p>
-                        </div>
-                        <div className="w-8/12 ml-4 text-white">
-                            <div className="flex mt-5 text-5xl">
-                                <p>{detailGame.name}</p>
+            <div className="flex">
+                <div className="w-1/12"/>
+                <div className="w-10/12 ">
+                    <div className=" mt-8 text-2xl">
+                        <div className="flex justify-between">
+                            <div className="w-3/12 img_size">
+                                <img src={imageGame[0]['_source']['data']['header_image']} className="sizeImg mx-auto"
+                                     alt="test"/>
                             </div>
-                            <div className="flex mt-5 space-x-3 text-lg">
-                                <div>
-                                    <p>{detailGame.release_date}</p>
+                            <div className="w-8/12 ml-4 text-white flex justify-between">
+                                <div className="w-8/12 ml-4 text-white">
+                                    <div className="flex mt-5 text-5xl">
+                                        <p>{detailGame.name}</p>
+                                    </div>
+                                    <div className="flex mt-5 space-x-3 text-lg">
+                                        <div>
+                                            <p>{detailGame.release_date}</p>
+                                        </div>
+                                        <div>-</div>
+                                        <div className="flex space-x-2">
+                                            {detailGame.platforms.split(";").map((value: string, index: number) => <div
+                                                key={index}>
+                                                {value.charAt(0).toUpperCase() + value.slice(1)}</div>
+                                            )}
+                                        </div>
+                                    </div>
                                 </div>
-                                <div>-</div>
-                                <div className="flex space-x-2">
-                                    {detailGame.platforms.split(";").map((value: string, index: number) => <div
-                                        key={index}>
-                                        {value.charAt(0).toUpperCase() + value.slice(1)}</div>
-                                    )}
+                                <div className="w-1/12 text-center justify-center place-self-center text-white ">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                         stroke="currentColor">
+                                        <path
+                                            d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                                    </svg>
+
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fillRule="evenodd"
+                                              d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+                                              clipRule="evenodd"/>
+                                    </svg>
                                 </div>
                             </div>
                         </div>
-                        <div className="w-1/12 text-center justify-center place-self-center text-white ">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                 stroke="currentColor">
-                                <path
-                                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
-                            </svg>
-
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                <path fillRule="evenodd"
-                                      d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
-                                      clipRule="evenodd"/>
-                            </svg>
-                        </div>
-                    </div>
-
-
-                    <div className="text-left flex mt-20">
-                        <div className="w-3/5 text-lg">
-                            <Carousel img={info.img}/>
-                            <div className="flex space-x-5 mt-8">
-                                <SystemRequirement system_requirement={info.system_requirement}/>
-                                <Category categories={detailGame.categories.split(';')}/>
-                                <Kind kind={detailGame.genres.split(';')}/>
+                        <div className="text-left flex mt-20">
+                            <div className="w-3/5 text-lg">
+                                <Carousel img={info.img}/>
+                                <div className="flex space-x-5 mt-8">
+                                    <SystemRequirement system_requirement={info.system_requirement}/>
+                                    <Category categories={detailGame.categories.split(';')}/>
+                                    <Kind kind={detailGame.genres.split(';')}/>
+                                </div>
+                                <LongDescription
+                                    long_description={descriptionGame[0]['_source']['data']['detailed_description'].replaceAll('<br>', ' ').replaceAll('<li>', '').replaceAll('</li>', '').replaceAll('<ul class="bb_ul">').replaceAll('</ul>', '')}
+                                />
                             </div>
-                            <LongDescription long_description={info.long_description}/>
+
+                            <div className="w-2/5 ml-4 text-lg">
+                                <ShortDescription
+                                    short_description={descriptionGame[0]['_source']['data']['short_description']}/>
+                                <Developer developer={detailGame.developer}/>
+                                <Publicher publisher={detailGame.publisher.split(';')}/>
+                                <TagClan tag_clan={detailGame.steamspy_tags.split(';')}/>
+                                {true ? <div/> :
+                                    <RelatedGames related_games={info.related_games}
+                                                  setIsClickForDetail={props.setIsClickForDetail}
+                                                  isClickForDetail={props.isClickForDetail}
+                                    />
+                                }
+                            </div>
                         </div>
-                        <LongDescription long_description={descriptionGame[0]['_source']['data']['detailed_description'].replaceAll('<br>',' ').replaceAll('<li>','').replaceAll('</li>','').replaceAll('<ul class="bb_ul">').replaceAll('</ul>','')}/>
                     </div>
-                    <div className="w-2/5 ml-4 text-lg">
-                        <ShortDescription short_description={descriptionGame[0]['_source']['data']['short_description']}/>
-                        <Developer developer={detailGame.developer}/>
-                        <Publicher publisher={detailGame.publisher.split(';')}/>
-                        <TagClan tag_clan={detailGame.steamspy_tags.split(';')}/>
-                        {true ? <div/> :
-                            <RelatedGames related_games={info.related_games}
-                                          setIsClickForDetail={props.setIsClickForDetail}
-                                          isClickForDetail={props.isClickForDetail}
-                            />
-                        }
-                    </div>
-                </div>
-
-
                     <ReviewBan reviewBan={info.review_ban}/>
                 </div>
                 <div className="w-1/12"/>
