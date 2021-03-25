@@ -31,6 +31,7 @@ const Detail = (props: {
     const [detailGame, setDetailGame] = useState<any>();
     const [imageGame, setImageGame] = useState<any>();
     const [descriptionGame, setDescriptionGame] = useState<any>();
+    const [error, setError] = useState("");
 
     useEffect(() => {
         setDetailGame(undefined);
@@ -44,7 +45,6 @@ const Detail = (props: {
                     setDescriptionGame(x[2])
                 }
             )
-            .catch(x => setDetailGame(x))
     }, []);
 
     const info =
@@ -110,8 +110,6 @@ const Detail = (props: {
 
     if (detailGame === undefined || imageGame === undefined || descriptionGame === undefined) {
         return (<Loading/>)
-    } else if (detailGame === "error") {
-        return (<Error500/>)
     } else {
         return (
             <div className="flex">
@@ -124,7 +122,7 @@ const Detail = (props: {
                                      alt="test"/>
                             </div>
                             <div className="w-8/12 ml-4 text-white flex justify-between">
-                                <div className="w-8/12 ml-4 text-white">
+                                <div className="w-8/12 ml-4 text-white text-left">
                                     <div className="flex mt-5 text-5xl">
                                         <p>{detailGame.name}</p>
                                     </div>
