@@ -1,5 +1,4 @@
 import Carousel from "./Carousel/Carousel";
-import ReviewBan from "../ReviewBan/ReviewBan";
 import ShortDescription from "./ShortDescription/ShortDescription";
 import Developer from "./Developer/Developer";
 import Publicher from "./Publisher/Publisher";
@@ -30,12 +29,14 @@ const Detail = (props: {
     useEffect(() => {
         setDetailGame(undefined);
         getValue()
-        .then(
-            x => {setDetailGame(x);} 
+            .then(
+                x => {
+                    setDetailGame(x);
+                }
             )
             .catch((error) => {
-                console.error(error);
-              });
+                return (<Error500/>)
+            });
     }, []);
 
     const info =
@@ -102,106 +103,80 @@ const Detail = (props: {
     if (detailGame === undefined) {
         return (<Loading/>)
     }
-    
-    const jsonx = JSON.parse(detailGame.image.screenshots);
-    console.log('yo')
-    console.log(jsonx.result);
 
-    
+
+    console.log(detailGame);
+
     return (
         <div className="flex">
             <div className="w-1/12"/>
             <div className="w-10/12">
-                <div className="flex mt-8 text-2xl">
-                    <div className="w-3/12 img_size">
-                        <img src={detailGame.image.headerImage} className="sizeImg mx-auto" alt="test"/>
-                    </div>
-                    <div className="w-8/12 ml-4 text-white">
-                        <div className="flex mt-5 text-5xl">
-                            <p>{detailGame.name}</p>
-                        </div>
-                        <div className="flex mt-5 space-x-3 text-lg">
-                            <div>
-                                <p>{detailGame.releaseDate}</p>
-                            </div>
-                            <div className="w-8/12 ml-4 text-white flex justify-between">
-                                <div className="w-8/12 ml-4 text-white text-left">
-                                    <div className="flex mt-5 text-5xl">
-                                        <p>{detailGame.name}</p>
-                                    </div>
-                                    <div className="flex mt-5 space-x-3 text-lg">
-                                        <div>
-                                            <p>{detailGame.release_date}</p>
-                                        </div>
-                                        <div>-</div>
-                                        <div className="flex space-x-2">
-                                            {detailGame.platforms.split(";").map((value: string, index: number) => <div
-                                                key={index}>
-                                                {value.charAt(0).toUpperCase() + value.slice(1)}</div>
-                                            )}
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="w-1/12 text-center justify-center place-self-center text-white ">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                         stroke="currentColor">
-                                        <path
-                                            d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
-                                    </svg>
+                <div className="mt-8 text-2xl">
 
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                        <path fillRule="evenodd"
-                                              d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
-                                              clipRule="evenodd"/>
-                                    </svg>
+                    <div className="ml-4 text-white flex justify-between">
+                        <div className="w-3/12 img_size">
+                            <img src={detailGame.image.headerImage} className="sizeImg mx-auto" alt="test"/>
+                        </div>
+                        <div className="w-8/12 ml-4 text-white text-left">
+                            <div className="flex mt-5 text-5xl">
+                                <p>{detailGame.name}</p>
+                            </div>
+                            <div className="flex mt-5 space-x-3 text-lg">
+                                <div>
+                                    <p>{detailGame.releaseDate}</p>
+                                </div>
+                                <div>-</div>
+                                <div className="flex space-x-2">
+                                    {detailGame.platforms.split(";").map((value: string, index: number) => <div
+                                        key={index}>
+                                        {value.charAt(0).toUpperCase() + value.slice(1)}</div>
+                                    )}
                                 </div>
                             </div>
                         </div>
-                        <div className="text-left flex mt-20">
-                            <div className="w-3/5 text-lg">
-                                <Carousel img={info.img}/>
-                                <div className="flex space-x-5 mt-8">
-                                    <SystemRequirement system_requirement={info.system_requirement}/>
-                                    <Category categories={detailGame.categories.split(';')}/>
-                                    <Kind kind={detailGame.genres.split(';')}/>
-                                </div>
-                                <LongDescription
-                                    long_description={descriptionGame[0]['_source']['data']['detailed_description'].replaceAll('<br>', ' ').replaceAll('<li>', '').replaceAll('</li>', '').replaceAll('<ul class="bb_ul">').replaceAll('</ul>', '')}
+                        <div className="w-1/12 text-center justify-center place-self-center text-white ">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                 stroke="currentColor">
+                                <path
+                                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                            </svg>
+
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                <path fillRule="evenodd"
+                                      d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+                                      clipRule="evenodd"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div className="text-left flex mt-20">
+                        <div className="w-3/5 text-lg">
+                            <Carousel img={info.img}/>
+                            <div className="flex space-x-5 mt-8">
+                                <SystemRequirement system_requirement={info.system_requirement}/>
+                                <Category categories={detailGame.categories.split(';')}/>
+                                <Kind kind={detailGame.genres.split(';')}/>
+                            </div>
+                        </div>
+                        <div className="w-2/5 ml-4 text-lg">
+                            <ShortDescription
+                                short_description={detailGame["description"]['shortDescription']}/>
+                            <Developer developer={detailGame.developer}/>
+                            <Publicher publisher={detailGame.publisher.split(';')}/>
+                            <TagClan tag_clan={detailGame.steamspyTags.split(';')}/>
+                            {true ? <div/> :
+                                <RelatedGames relatedGames={info.related_games}
+                                              setIsClickForDetail={props.setIsClickForDetail}
+                                              isClickForDetail={props.isClickForDetail}
                                 />
-                            </div>
-
-                            <div className="w-2/5 ml-4 text-lg">
-                                <ShortDescription
-                                    short_description={descriptionGame[0]['_source']['data']['short_description']}/>
-                                <Developer developer={detailGame.developer}/>
-                                <Publicher publisher={detailGame.publisher.split(';')}/>
-                                <TagClan tag_clan={detailGame.steamspy_tags.split(';')}/>
-                                {true ? <div/> :
-                                    <RelatedGames related_games={info.related_games}
-                                                  setIsClickForDetail={props.setIsClickForDetail}
-                                                  isClickForDetail={props.isClickForDetail}
-                                    />
-                                }
-                            </div>
+                            }
                         </div>
-                        <LongDescription long_description={detailGame.description.detailedDescription.replace(/<(?:.|\n)*?>/gm, '')}/>
                     </div>
-                    <div className="w-2/5 ml-4 text-lg">
-                        <ShortDescription short_description={detailGame.description.shortDescription}/>
-                        <Developer developer={detailGame.developer}/>
-                        <Publicher publisher={detailGame.publisher.split(';')}/>
-                        <TagClan tag_clan={detailGame.steamspyTags.split(';')}/>
-                        {true ? <div/> :
-                            <RelatedGames relatedGames={info.related_games}
-                                          setIsClickForDetail={props.setIsClickForDetail}
-                                          isClickForDetail={props.isClickForDetail}
-                            />
-                        }
-                    </div>
+                    <LongDescription
+                        long_description={detailGame.description.detailedDescription.replace(/<(?:.|\n)*?>/gm, '')}/>
                 </div>
-                <div className="w-1/12"/>
             </div>
-        );
-    }
+            <div className="w-1/12"/>
+        </div>
+    );
 }
 export default Detail;
