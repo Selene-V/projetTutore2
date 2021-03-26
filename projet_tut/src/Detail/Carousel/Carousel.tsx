@@ -8,7 +8,7 @@ const Carousel = (props: { img: any; }) => {
     display: block;
 }</style>`)
     })
-
+    
     return (
         <div className="carousel relative">
             <div className="carousel-inner relative overflow-hidden">

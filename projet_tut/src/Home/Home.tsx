@@ -17,27 +17,25 @@ const Home = (props: {
     async function getValue() {
         return await fetch("http://projettutore2back/games/"+actualyPage).then(reponse => reponse.json())
             .then(function (json) {
-                return [json[0]['images']['hits']['hits'],json["hits"]["hits"]];
+                return json;
             });
     }
 
     const [infoGame, setInfoGame] = useState<any>();
-    const [imageGame, setImageGame] = useState<any>();
 
     useEffect(() => {
         setInfoGame(undefined);
-        setImageGame(undefined);
         getValue()
         .then(
-            x => {setInfoGame(x[1]);setImageGame(x[0]);}
+            x => {setInfoGame(x);}
             )
     }, [actualyPage]);
 
-    if (infoGame === undefined || imageGame === undefined) {
+    if (infoGame === undefined) {
         return (<Loading/>)
     }
 
-    console.log(imageGame);
+    console.log(infoGame);
     return (
         <div className="w-full">
             <div className="flex">
@@ -53,7 +51,6 @@ const Home = (props: {
                             !switchButton ?
                                 <div className="z-30 mt-20 mb-5 place-items-auto  rounded-3xl">
                                     <Icons tableInfo={infoGame}
-                                           imageInfo={imageGame}
                                            setIsClickForDetail={props.setIsClickForDetail}
                                            isClickForDetail={props.isClickForDetail}
                                     />
@@ -63,7 +60,6 @@ const Home = (props: {
                                 <div className="z-30 mt-20 mb-5 place-items-auto rounded-2xl text-black">
                                     <div className="w-full mx-auto py-10">
                                         <Table tableInfo={infoGame}
-                                               imageInfo={imageGame}
                                                setIsClickForDetail={props.setIsClickForDetail}
                                                isClickForDetail={props.isClickForDetail}
                                         />

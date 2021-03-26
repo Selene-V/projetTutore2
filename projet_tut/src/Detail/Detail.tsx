@@ -21,30 +21,21 @@ const Detail = (props: {
     async function getValue() {
         return await fetch("http://projettutore2back/game/" + props.isClickForDetail).then(reponse => reponse.json())
             .then(function (json) {
-                return [json['_source']['data'], json[0]['images']['hits']['hits'], json[1]['descriptions']['hits']['hits']];
-            })
-            .catch(function (error) {
-                return "error"
+                return json;
             });
     }
 
     const [detailGame, setDetailGame] = useState<any>();
-    const [imageGame, setImageGame] = useState<any>();
-    const [descriptionGame, setDescriptionGame] = useState<any>();
-    const [error, setError] = useState("");
 
     useEffect(() => {
         setDetailGame(undefined);
-        setImageGame(undefined);
-        setDescriptionGame(undefined);
         getValue()
-            .then(
-                x => {
-                    setDetailGame(x[0]);
-                    setImageGame(x[1]);
-                    setDescriptionGame(x[2])
-                }
+        .then(
+            x => {setDetailGame(x);} 
             )
+            .catch((error) => {
+                console.error(error);
+              });
     }, []);
 
     const info =
@@ -108,18 +99,30 @@ const Detail = (props: {
             ]
         }
 
-    if (detailGame === undefined || imageGame === undefined || descriptionGame === undefined) {
+    if (detailGame === undefined) {
         return (<Loading/>)
-    } else {
-        return (
-            <div className="flex">
-                <div className="w-1/12"/>
-                <div className="w-10/12 ">
-                    <div className=" mt-8 text-2xl">
-                        <div className="flex justify-between">
-                            <div className="w-3/12 img_size">
-                                <img src={imageGame[0]['_source']['data']['header_image']} className="sizeImg mx-auto"
-                                     alt="test"/>
+    }
+    
+    const jsonx = JSON.parse(detailGame.image.screenshots);
+    console.log('yo')
+    console.log(jsonx.result);
+
+    
+    return (
+        <div className="flex">
+            <div className="w-1/12"/>
+            <div className="w-10/12">
+                <div className="flex mt-8 text-2xl">
+                    <div className="w-3/12 img_size">
+                        <img src={detailGame.image.headerImage} className="sizeImg mx-auto" alt="test"/>
+                    </div>
+                    <div className="w-8/12 ml-4 text-white">
+                        <div className="flex mt-5 text-5xl">
+                            <p>{detailGame.name}</p>
+                        </div>
+                        <div className="flex mt-5 space-x-3 text-lg">
+                            <div>
+                                <p>{detailGame.releaseDate}</p>
                             </div>
                             <div className="w-8/12 ml-4 text-white flex justify-between">
                                 <div className="w-8/12 ml-4 text-white text-left">
@@ -181,8 +184,20 @@ const Detail = (props: {
                                 }
                             </div>
                         </div>
+                        <LongDescription long_description={detailGame.description.detailedDescription.replace(/<(?:.|\n)*?>/gm, '')}/>
                     </div>
-                    <ReviewBan reviewBan={info.review_ban}/>
+                    <div className="w-2/5 ml-4 text-lg">
+                        <ShortDescription short_description={detailGame.description.shortDescription}/>
+                        <Developer developer={detailGame.developer}/>
+                        <Publicher publisher={detailGame.publisher.split(';')}/>
+                        <TagClan tag_clan={detailGame.steamspyTags.split(';')}/>
+                        {true ? <div/> :
+                            <RelatedGames relatedGames={info.related_games}
+                                          setIsClickForDetail={props.setIsClickForDetail}
+                                          isClickForDetail={props.isClickForDetail}
+                            />
+                        }
+                    </div>
                 </div>
                 <div className="w-1/12"/>
             </div>

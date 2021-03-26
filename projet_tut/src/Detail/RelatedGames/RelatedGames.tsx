@@ -2,7 +2,7 @@ import React from "react";
 import Table from "../../Table/Table";
 
 const RelatedGames = (props: {
-    related_games: any[];
+    relatedGames: any[];
     setIsClickForDetail: any;
     isClickForDetail: any;
 }) => {
@@ -15,8 +15,7 @@ const RelatedGames = (props: {
                 <div className="place-items-auto  rounded-3xl">
                     <div className="my-2 pb-4">
                         <div className="flex overflow-y-scroll max-h-96">
-                            <Table tableInfo={props.related_games}
-                                   imageInfo={undefined}
+                            <Table tableInfo={props.relatedGames}
                                    setIsClickForDetail={props.setIsClickForDetail}
                                    isClickForDetail={props.isClickForDetail}
                              />
