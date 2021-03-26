@@ -11,32 +11,42 @@ import LongDescription from "./LongDescription/LongDescription";
 import RelatedGames from "./RelatedGames/RelatedGames";
 import React, {useEffect, useState} from "react";
 import Loading from "../Loading/Loading";
-import Error500 from "../Error/Error500/Error500";
+import Error from "../Error/Error";
 
 const Detail = (props: {
     setIsClickForDetail: any;
     isClickForDetail: any;
 }) => {
     async function getValue() {
-        return await fetch("http://projettutore2back/game/" + props.isClickForDetail).then(reponse => reponse.json())
+        return await fetch("http://projettutore2back/game/" + props.isClickForDetail)
+            .then(reponse => {
+                if (reponse.status === 200) {
+                    return reponse.json()
+                } else {
+                    return reponse.status
+                }
+            })
             .then(function (json) {
                 return json;
             });
     }
 
     const [detailGame, setDetailGame] = useState<any>();
+    const [error, setError] = useState<number>(0);
 
     useEffect(() => {
         setDetailGame(undefined);
         getValue()
             .then(
                 x => {
-                    setDetailGame(x);
+                    if (typeof x === 'number') {
+                        setDetailGame(null);
+                        setError(x);
+                    } else {
+                        setDetailGame(x);
+                    }
                 }
             )
-            .catch((error) => {
-                return (<Error500/>)
-            });
     }, []);
 
     const info =
@@ -102,17 +112,15 @@ const Detail = (props: {
 
     if (detailGame === undefined) {
         return (<Loading/>)
+    } else if (detailGame === null) {
+        return (<Error error={error}/>)
     }
-
-
-    console.log(detailGame);
 
     return (
         <div className="flex">
             <div className="w-1/12"/>
             <div className="w-10/12">
                 <div className="mt-8 text-2xl">
-
                     <div className="ml-4 text-white flex justify-between">
                         <div className="w-3/12 img_size">
                             <img src={detailGame.image.headerImage} className="sizeImg mx-auto" alt="test"/>
