@@ -43,6 +43,7 @@ const Detail = (props: {
                         setDetailGame(null);
                         setError(x);
                     } else {
+                        console.log(x.image.screenshots[0].path_thumbnail)
                         setDetailGame(x);
                     }
                 }
@@ -109,7 +110,6 @@ const Detail = (props: {
                 }
             ]
         }
-
     if (detailGame === undefined) {
         return (<Loading/>)
     } else if (detailGame === null) {
@@ -158,7 +158,7 @@ const Detail = (props: {
                     </div>
                     <div className="text-left flex mt-20">
                         <div className="w-3/5 text-lg">
-                            <Carousel img={info.img}/>
+                            <Carousel img={detailGame.image.screenshots}/>
                             <div className="flex space-x-5 mt-8">
                                 <SystemRequirement system_requirement={info.system_requirement}/>
                                 <Category categories={detailGame.categories.split(';')}/>
