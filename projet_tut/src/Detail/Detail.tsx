@@ -120,7 +120,7 @@ const Detail = (props: {
         <div className="flex">
             <div className="w-1/12"/>
             <div className="w-10/12">
-                <div className="mt-8 text-2xl">
+                <div className="mt-8 text-2xl my-4">
                     <div className="ml-4 text-white flex justify-between">
                         <div className="w-3/12 img_size">
                             <img src={detailGame.image.headerImage} className="sizeImg mx-auto" alt="test"/>
