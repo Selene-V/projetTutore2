@@ -6,33 +6,51 @@ import Icons from "./Icons/Icons";
 import Search from "./Search/Search";
 import Sort from "./Sort/Sort";
 import Loading from "../Loading/Loading";
+import Error from "../Error/Error";
 
 const Home = (props: {
     setIsClickForDetail: any;
     isClickForDetail: any;
 }) => {
     const [switchButton, setSwitchButton] = useState(false);
-    const [actualyPage,setActualyPage]= useState(1);
+    const [actualyPage, setActualyPage] = useState(1);
 
     async function getValue() {
-        return await fetch("http://projettutore2back/games/"+actualyPage).then(reponse => reponse.json())
+        return await fetch("http://projettutore2back/games/" + actualyPage)
+            .then(reponse => {
+                if (reponse.status === 200) {
+                    return reponse.json()
+                } else {
+                    return reponse.status
+                }
+            })
             .then(function (json) {
                 return json;
             });
     }
 
     const [infoGame, setInfoGame] = useState<any>();
+    const [error, setError] = useState<number>(0);
 
     useEffect(() => {
         setInfoGame(undefined);
         getValue()
-        .then(
-            x => {setInfoGame(x);}
+            .then(
+                x => {
+                    if (typeof x === 'number') {
+                        setInfoGame(null);
+                        setError(x);
+                    } else {
+                        setInfoGame(x);
+                    }
+                }
             )
     }, [actualyPage]);
 
     if (infoGame === undefined) {
         return (<Loading/>)
+    } else if (infoGame === null) {
+        <Error error={error}/>
     }
 
     console.log(infoGame);
