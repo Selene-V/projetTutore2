@@ -7,15 +7,16 @@ const Icons = (props: {
 }) => {
 
     return (
-        <div className="flex flex-wrap -mx-6 overflow-hidden sm:-mx-4 md:-mx-4 lg:-mx-12 xl:-mx-12">
+        <div className="flex flex-wrap mx-6 overflow-hidden sm:-mx-4 md:-mx-4 lg:-mx-12 xl:-mx-12">
             {props.tableInfo.map((value, index) => (
                 <div key={"case-" + (value.id).toString()}
-                     className="my-6 px-6 w-1/3 overflow-hidden sm:my-4 sm:px-4 sm:w-1/2 md:my-4 md:px-4 md:w-1/2 lg:my-12 lg:px-12 lg:w-1/4 xl:my-12 xl:px-12 xl:w-1/4">
+                    onClick={()=>props.setIsClickForDetail(value.id)}
+                    className="bg-white rounded-lg grid grid-cols-1  my-6 px-6 w-1/4 overflow-hidden sm:my-4 sm:px-4 sm:w-1/2 md:my-4 md:px-4 md:w-1/2 lg:my-12 lg:px-12 lg:w-1/4 xl:my-12 xl:px-12 xl:w-1/4  transform hover:scale-105 transition ease-in-out duration-700">
                     <img
                         src={value.image.headerImage}
-                        onClick={()=>props.setIsClickForDetail(value.id)}
-                        className="p-3 h-full w-full transform hover:scale-110 transition ease-in-out duration-700"
+                        className="p-1 h-full w-full"
                         alt={value.name}/>
+                    <div className="font-semibold text-gray-700">{value.name}</div>
                 </div>
 
             ))}
