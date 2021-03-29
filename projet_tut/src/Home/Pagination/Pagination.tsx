@@ -1,6 +1,6 @@
 import React from "react";
 
-const Pagination = (props: { actualyPage: number, setActualyPage: any }) => {
+const Pagination = (props: { actualyPage: number, setActualyPage: any, gamesByPage: number }) => {
     return (
         <div className="flex">
             <div
@@ -28,13 +28,13 @@ const Pagination = (props: { actualyPage: number, setActualyPage: any }) => {
                     className="relative inline-flex items-center px-4 py-2 border border-gray-300 text-lg font-medium bg-green-500 text-gray-100">
                     {props.actualyPage}
                 </div>
-                {props.actualyPage !== 200 ? <button
-                    onClick={() => props.setActualyPage(200)}
+                {props.actualyPage !== props.gamesByPage ? <button
+                    onClick={() => props.setActualyPage(props.gamesByPage)}
                     className="hidden md:inline-flex relative items-center px-4 py-2 border border-gray-300 text-lg font-medium bg-gray-500 hover:bg-gray-100 hover:text-gray-500 text-gray-100">
-                    200
+                    {props.gamesByPage}
                 </button> : ""}
 
-                {props.actualyPage !== 200 ?
+                {props.actualyPage !== props.gamesByPage ?
                     <button
                         onClick={() => props.setActualyPage((props.actualyPage) + 1)}
                         className="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 text-lg font-medium bg-gray-500 hover:bg-gray-100 hover:text-gray-500 text-gray-100">

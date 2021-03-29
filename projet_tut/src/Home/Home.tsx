@@ -68,21 +68,27 @@ const Home = (props: {
                         {
                             !switchButton ?
                                 <div className="z-30 mt-20 mb-5 place-items-auto  rounded-3xl">
-                                    <Icons tableInfo={infoGame}
+                                    <Icons tableInfo={infoGame.games}
                                            setIsClickForDetail={props.setIsClickForDetail}
                                            isClickForDetail={props.isClickForDetail}
                                     />
-                                    <Pagination actualyPage={actualyPage} setActualyPage={setActualyPage}/>
+                                    <Pagination actualyPage={actualyPage}
+                                                setActualyPage={setActualyPage}
+                                                gamesByPage={infoGame.gamesByPage}
+                                    />
                                 </div>
                                 :
                                 <div className="z-30 mt-20 mb-5 place-items-auto rounded-2xl text-black">
                                     <div className="w-full mx-auto py-10">
-                                        <Table tableInfo={infoGame}
+                                        <Table tableInfo={infoGame.games}
                                                setIsClickForDetail={props.setIsClickForDetail}
                                                isClickForDetail={props.isClickForDetail}
                                         />
                                     </div>
-                                    <Pagination actualyPage={actualyPage} setActualyPage={setActualyPage}/>
+                                    <Pagination actualyPage={actualyPage}
+                                                setActualyPage={setActualyPage}
+                                                gamesByPage={infoGame.gamesByPage}
+                                    />
                                 </div>
                         }
                     </div>
