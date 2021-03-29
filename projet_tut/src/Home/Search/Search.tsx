@@ -1,7 +1,9 @@
 import React, {useState} from "react";
 
 
-const Search = () => {
+const Search = (props : {
+    setInfoGame : any
+}) => {
     const [classCss, setClassCss] = useState("transition ease-out duration-100 transform opacity-0 scale-95");
     const [changeZIndex, setChangeZIndex] = useState("h-0 overflow-hidden");
 
@@ -13,6 +15,26 @@ const Search = () => {
             setClassCss("transition ease-out duration-100 transform opacity-0 scale-95")
             setChangeZIndex("h-0 overflow-hidden")
         }
+    }
+
+    async function searchName(name: string){
+        console.log(name)
+        return await fetch("http://projettutore2back/gameByName/" + name)
+            .then(reponse => {
+                if (reponse.status === 200) {
+                    return reponse.json()
+                } else {
+                    return reponse.status
+                }
+            })
+            .then(function (json) {
+                    console.log(json)
+                    if(json.length !== 0)
+                    {
+                        props.setInfoGame(json)
+                    }
+                    else console.log('is empty')
+            });
     }
 
     return (
@@ -49,7 +71,8 @@ const Search = () => {
                     <div className="my-auto">
                         <label>
                             <input type="text" placeholder="text...."
-                                   className="border border-gray-300 p-2 my-2 rounded-md focus:outline-none focus:ring-2 ring-blue-200"/>
+                                   className="border border-gray-300 p-2 my-2 rounded-md focus:outline-none focus:ring-2 ring-blue-200"
+                                   onChange={event => searchName(event.target.value)}/>
                         </label>
 
                     </div>

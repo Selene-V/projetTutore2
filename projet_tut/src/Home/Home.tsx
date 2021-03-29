@@ -14,6 +14,7 @@ const Home = (props: {
 }) => {
     const [switchButton, setSwitchButton] = useState(false);
     const [actualyPage, setActualyPage] = useState(1);
+    const [maxPage, setMaxPage] = useState(1);
 
     async function getValue() {
         return await fetch("http://projettutore2back/games/" + actualyPage)
@@ -25,6 +26,7 @@ const Home = (props: {
                 }
             })
             .then(function (json) {
+                console.log(json)
                 return json;
             });
     }
@@ -41,7 +43,8 @@ const Home = (props: {
                         setInfoGame(null);
                         setError(x);
                     } else {
-                        setInfoGame(x);
+                        setInfoGame(x.games);
+                        setMaxPage(x.gamesByPage)
                     }
                 }
             )
@@ -59,8 +62,8 @@ const Home = (props: {
             <div className="flex">
                 <div className="w-1/12"/>
                 <div className="w-10/12">
-                    <div className="flex justify-between mt-5">
-                        <Search/>
+                    <div className="flex mx-3 justify-between mt-5">
+                        <Search setInfoGame={setInfoGame}/>
                         <Sort/>
                         <Switch switchButton={setSwitchButton}/>
                     </div>
@@ -68,26 +71,26 @@ const Home = (props: {
                         {
                             !switchButton ?
                                 <div className="z-30 mb-5 place-items-auto  rounded-3xl">
-                                    <Icons tableInfo={infoGame.games}
+                                    <Icons tableInfo={infoGame}
                                            setIsClickForDetail={props.setIsClickForDetail}
                                            isClickForDetail={props.isClickForDetail}
                                     />
                                     <Pagination actualyPage={actualyPage}
                                                 setActualyPage={setActualyPage}
-                                                gamesByPage={infoGame.gamesByPage}
+                                                gamesByPage={maxPage}
                                     />
                                 </div>
                                 :
                                 <div className="z-30 mb-5 place-items-auto rounded-2xl text-black">
                                     <div className="w-full mx-auto py-10">
-                                        <Table tableInfo={infoGame.games}
+                                        <Table tableInfo={infoGame}
                                                setIsClickForDetail={props.setIsClickForDetail}
                                                isClickForDetail={props.isClickForDetail}
                                         />
                                     </div>
                                     <Pagination actualyPage={actualyPage}
                                                 setActualyPage={setActualyPage}
-                                                gamesByPage={infoGame.gamesByPage}
+                                                gamesByPage={maxPage}
                                     />
                                 </div>
                         }
