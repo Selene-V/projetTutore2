@@ -59,7 +59,7 @@ const Home = (props: {
             <div className="flex">
                 <div className="w-1/12"/>
                 <div className="w-10/12">
-                    <div className="flex mx-3 justify-between mt-5">
+                    <div className="flex justify-between mt-5">
                         <Search/>
                         <Sort/>
                         <Switch switchButton={setSwitchButton}/>
@@ -67,7 +67,7 @@ const Home = (props: {
                     <div>
                         {
                             !switchButton ?
-                                <div className="z-30 mt-20 mb-5 place-items-auto  rounded-3xl">
+                                <div className="z-30 mb-5 place-items-auto  rounded-3xl">
                                     <Icons tableInfo={infoGame.games}
                                            setIsClickForDetail={props.setIsClickForDetail}
                                            isClickForDetail={props.isClickForDetail}
@@ -78,7 +78,7 @@ const Home = (props: {
                                     />
                                 </div>
                                 :
-                                <div className="z-30 mt-20 mb-5 place-items-auto rounded-2xl text-black">
+                                <div className="z-30 mb-5 place-items-auto rounded-2xl text-black">
                                     <div className="w-full mx-auto py-10">
                                         <Table tableInfo={infoGame.games}
                                                setIsClickForDetail={props.setIsClickForDetail}

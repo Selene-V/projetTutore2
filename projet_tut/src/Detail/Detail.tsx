@@ -12,6 +12,7 @@ import RelatedGames from "./RelatedGames/RelatedGames";
 import React, {useEffect, useState} from "react";
 import Loading from "../Loading/Loading";
 import Error from "../Error/Error";
+import Platform from "../Platform";
 
 const Detail = (props: {
     setIsClickForDetail: any;
@@ -130,15 +131,15 @@ const Detail = (props: {
                             <div className="flex mt-5 text-5xl">
                                 <p>{detailGame.name}</p>
                             </div>
-                            <div className="flex mt-5 space-x-3 text-lg">
+                            <div className="mt-5 space-x-3 text-lg">
                                 <div>
                                     <p>{detailGame.releaseDate}</p>
                                 </div>
-                                <div>-</div>
                                 <div className="flex space-x-2">
                                     {detailGame.platforms.split(";").map((value: string, index: number) => <div
-                                        key={index}>
-                                        {value.charAt(0).toUpperCase() + value.slice(1)}</div>
+                                            key={index}>
+                                            <Platform platform={value}/>
+                                        </div>
                                     )}
                                 </div>
                             </div>

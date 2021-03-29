@@ -1,5 +1,6 @@
 import React from "react";
 import Loading from "../Loading/Loading";
+import Platform from "../Platform";
 
 const Table = (props: {
     tableInfo: any[];
@@ -8,8 +9,8 @@ const Table = (props: {
 }) => {
 
     console.log(props.tableInfo);
-    
-    if (props.tableInfo!==undefined) {
+
+    if (props.tableInfo !== undefined) {
         return (
             <div>
                 {props.tableInfo.map((value, index) =>
@@ -35,16 +36,9 @@ const Table = (props: {
                                     </div>
                                     <div
                                         className="text-2xl flex space-x-2">{value.platforms.split(";").map((result: string, secondIndex: number) =>
-                                        <div key={secondIndex}>{
-                                            result === "windows"
-                                                ?
-                                                <i className="fa fa-windows fa-2x" aria-hidden="true"/>
-                                                :
-                                                result === "mac" ?
-                                                    <i className="fa fa-apple fa-2x" aria-hidden="true"/>
-                                                    :
-                                                    <i className="fa fa-linux fa-2x" aria-hidden="true"/>
-                                        }</div>
+                                        <div key={secondIndex}>
+                                            <Platform platform={result}/>
+                                        </div>
                                     )}</div>
                                 </div>
                                 <div className="text-base w-3/5">
@@ -54,7 +48,8 @@ const Table = (props: {
                                         </p>
                                         <button
                                             onClick={() => props.setIsClickForDetail(value.id)}
-                                            className="transition duration-500 float-right hover:bg-green-200 px-5 py-2 rounded-lg border-2 hover:border-opacity-0 border-gray-400">Look</button>
+                                            className="transition duration-500 float-right hover:bg-green-200 px-5 py-2 rounded-lg border-2 hover:border-opacity-0 border-gray-400">Look
+                                        </button>
                                     </div>
                                 </div>
                             </div>
