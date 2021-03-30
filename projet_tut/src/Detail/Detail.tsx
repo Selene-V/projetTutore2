@@ -112,6 +112,9 @@ const Detail = (props: {
                 }
             ]
         }
+
+    console.log(detailGame);
+
     if (detailGame === undefined) {
         return (<Loading/>)
     } else if (detailGame === null) {
@@ -166,7 +169,8 @@ const Detail = (props: {
                         <div className="w-3/5 text-lg">
                             <Carousel img={detailGame.image.screenshots}/>
                             <div className="flex space-x-5 mt-8">
-                                <SystemRequirement system_requirement={info.system_requirement}/>
+                                <SystemRequirement
+                                    system_requirement={detailGame.requirement.minimum.replace(/<(?:.|\n)*?>/gm, '')}/>
                                 <Category categories={detailGame.categories.split(';')}/>
                                 <Kind kind={detailGame.genres.split(';')}/>
                             </div>
