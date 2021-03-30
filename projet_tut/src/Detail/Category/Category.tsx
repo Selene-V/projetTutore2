@@ -7,7 +7,7 @@ const Category = (props: { categories: string[]; }) => {
                 <p className="ml-2">Category</p>
             </div>
             <div className="m-1 p-2 text-justify text-black">
-                <p>{props.categories.map((value: string, index: number) => <div key={index}>{value}</div>)}</p>
+                {props.categories.map((value: string, index: number) => <div key={index}>{value}</div>)}
             </div>
         </div>
     );

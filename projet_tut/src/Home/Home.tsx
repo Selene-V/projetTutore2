@@ -57,7 +57,7 @@ const Home = (props: {
     }
 
     console.log(infoGame);
-    
+
     return (
         <div className="w-full">
             <div className="flex">
