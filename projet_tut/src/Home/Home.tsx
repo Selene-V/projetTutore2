@@ -44,7 +44,7 @@ const Home = (props: {
                         setError(x);
                     } else {
                         setInfoGame(x.games);
-                        setMaxPage(x.gamesByPage)
+                        setMaxPage(x.nbPages)
                     }
                 }
             )
