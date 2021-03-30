@@ -170,7 +170,7 @@ const Detail = (props: {
                             <Carousel img={detailGame.image.screenshots}/>
                             <div className="flex space-x-5 mt-8">
                                 <SystemRequirement
-                                    system_requirement={detailGame.requirement.pcRequirements.replace(/<(?:.|\n)*?>/gm, '')}/>
+                                    system_requirement={detailGame.requirement.minimum.replace(/<(?:.|\n)*?>/gm, '')}/>
                                 <Category categories={detailGame.categories.split(';')}/>
                                 <Kind kind={detailGame.genres.split(';')}/>
                             </div>
