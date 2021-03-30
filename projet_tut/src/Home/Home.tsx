@@ -26,16 +26,17 @@ const Home = (props: {
                 }
             })
             .then(function (json) {
-                console.log(json)
                 return json;
             });
     }
 
     const [infoGame, setInfoGame] = useState<any>();
     const [error, setError] = useState<number>(0);
+    const [searchInfo, setSearchInfo] = useState<any>([])
 
     useEffect(() => {
         setInfoGame(undefined);
+        if(!searchInfo['name']){
         getValue()
             .then(
                 x => {
@@ -48,15 +49,41 @@ const Home = (props: {
                     }
                 }
             )
-    }, [actualyPage]);
-
-    if (infoGame === undefined) {
-        return (<Loading/>)
-    } else if (infoGame === null) {
+        }
+        else {
+            setActualyPage(1)
+            searchName()
+            .then(
+                x => {
+                    if (typeof x === 'number') {
+                        setInfoGame(null);
+                        setError(x);
+                    } else {
+                        setInfoGame(x);
+                        setMaxPage(x.nbPages)
+                    }
+                }
+            )
+        }
+    }, [actualyPage, searchInfo]);
+    
+    if (infoGame === null) {
         <Error error={error}/>
     }
 
-    console.log(infoGame);
+    async function searchName(){
+        return await fetch("http://projettutore2back/gameByName/" + searchInfo['name'])
+            .then(reponse => {
+                if (reponse.status === 200) {
+                    return reponse.json()
+                } else {
+                    return reponse.status
+                }
+            })
+            .then(function (json) {
+                return json;
+            });
+    }
     
     return (
         <div className="w-full">
@@ -64,10 +91,11 @@ const Home = (props: {
                 <div className="w-1/12"/>
                 <div className="w-10/12">
                     <div className="flex mx-3 justify-between mt-5">
-                        <Search setInfoGame={setInfoGame}/>
+                        <Search setSearchInfo={setSearchInfo} searchInfo={searchInfo}/>
                         <Sort/>
                         <Switch switchButton={setSwitchButton}/>
                     </div>
+                    {infoGame === undefined?<Loading/> :
                     <div>
                         {
                             !switchButton ?
@@ -95,7 +123,7 @@ const Home = (props: {
                                     />
                                 </div>
                         }
-                    </div>
+                    </div>}
                 </div>
                 <div className="w-1/12"/>
             </div>

@@ -2,7 +2,8 @@ import React, {useState} from "react";
 
 
 const Search = (props : {
-    setInfoGame : any
+    setSearchInfo : any
+    searchInfo : any
 }) => {
     const [classCss, setClassCss] = useState("transition ease-out duration-100 transform opacity-0 scale-95");
     const [changeZIndex, setChangeZIndex] = useState("h-0 overflow-hidden");
@@ -16,7 +17,7 @@ const Search = (props : {
             setChangeZIndex("h-0 overflow-hidden")
         }
     }
-
+/*
     async function searchName(name: string){
         console.log(name)
         return await fetch("http://projettutore2back/gameByName/" + name)
@@ -31,12 +32,18 @@ const Search = (props : {
                     console.log(json)
                     if(json.length !== 0)
                     {
-                        props.setInfoGame(json)
+                        props.setSearchInfo(json)
                     }
                     else console.log('is empty')
             });
     }
-
+*/
+    function searchInfo(id : string, value : string ){
+        let table = props.searchInfo.slice();
+        table[id] = value; 
+        props.setSearchInfo(table);
+    }
+    
     return (
         <div className={changeZIndex + " fixed w-5/12 relative inline-block min-w-min h-full text-black"}>
             <div>
@@ -72,7 +79,7 @@ const Search = (props : {
                         <label>
                             <input type="text" placeholder="text...."
                                    className="border border-gray-300 p-2 my-2 w-full rounded-md focus:outline-none focus:ring-2 ring-blue-200"
-                                   onChange={event => searchName(event.target.value)}/>
+                                   onChange={(event) => searchInfo('name', event.target.value)}/>
                         </label>
 
                     </div>
@@ -86,7 +93,8 @@ const Search = (props : {
                     <div className="my-auto w-3/5">
                         <label>
                             <input type="date" placeholder="date...."
-                                   className="w-full border border-gray-300 p-2 w-full my-2 rounded-md focus:outline-none focus:ring-2 ring-blue-200"/>
+                                   className="w-full border border-gray-300 p-2 w-full my-2 rounded-md focus:outline-none focus:ring-2 ring-blue-200"
+                                   onChange={(event) => searchInfo('date', event.target.value)}/>
                         </label>
                     </div>
                 </div>
@@ -98,7 +106,8 @@ const Search = (props : {
                     <div className="my-auto w-3/5">
                         <label>
                             <input type="text" placeholder="text...."
-                                   className="w-full border border-gray-300 p-2 my-2 rounded-md focus:outline-none focus:ring-2 ring-blue-200"/>
+                                   className="w-full border border-gray-300 p-2 my-2 rounded-md focus:outline-none focus:ring-2 ring-blue-200"
+                                   onChange={(event) => searchInfo('developer', event.target.value)}/>
                         </label>
                     </div>
                 </div>
@@ -110,7 +119,8 @@ const Search = (props : {
                     <div className="my-auto w-3/5">
                         <label>
                             <input type="text" placeholder="text...."
-                                   className="w-full border border-gray-300 p-2 my-2 rounded-md focus:outline-none focus:ring-2 ring-blue-200"/>
+                                   className="w-full border border-gray-300 p-2 my-2 rounded-md focus:outline-none focus:ring-2 ring-blue-200"
+                                   onChange={(event) => searchInfo('publisher', event.target.value)}/>
                         </label>
                     </div>
                 </div>
@@ -122,7 +132,8 @@ const Search = (props : {
                     <div className="my-auto w-3/5">
                         <label>
                             <input type="text" placeholder="text...."
-                                   className="w-full border border-gray-300 p-2 my-2 rounded-md focus:outline-none focus:ring-2 ring-blue-200"/>
+                                   className="w-full border border-gray-300 p-2 my-2 rounded-md focus:outline-none focus:ring-2 ring-blue-200"
+                                   onChange={(event) => searchInfo('plateforme', event.target.value)}/>
                         </label>
                     </div>
                 </div>
@@ -134,7 +145,8 @@ const Search = (props : {
                     <div className="my-auto w-3/5">
                         <label>
                             <input type="number" placeholder="Age...."
-                                   className="w-full border border-gray-300 p-2 my-2 rounded-md focus:outline-none focus:ring-2 ring-blue-200"/>
+                                   className="w-full border border-gray-300 p-2 my-2 rounded-md focus:outline-none focus:ring-2 ring-blue-200"
+                                   onChange={(event) => searchInfo('age', event.target.value)}/>
                         </label>
                     </div>
                 </div>
@@ -146,7 +158,8 @@ const Search = (props : {
                     <div className="my-auto w-3/5">
                         <label>
                             <input type="text" placeholder="text...."
-                                   className="w-full border border-gray-300 p-2 my-2 rounded-md focus:outline-none focus:ring-2 ring-blue-200"/>
+                                   className="w-full border border-gray-300 p-2 my-2 rounded-md focus:outline-none focus:ring-2 ring-blue-200"
+                                   onChange={(event) => searchInfo('categories', event.target.value)}/>
                         </label>
                     </div>
                 </div>
@@ -158,7 +171,8 @@ const Search = (props : {
                     <div className="my-auto w-3/5">
                         <label>
                             <input type="text" placeholder="text...."
-                                   className="w-full border border-gray-300 p-2 my-2 rounded-md focus:outline-none focus:ring-2 ring-blue-200"/>
+                                   className="w-full border border-gray-300 p-2 my-2 rounded-md focus:outline-none focus:ring-2 ring-blue-200"
+                                   onChange={(event) => searchInfo('kind', event.target.value)}/>
                         </label>
                     </div>
                 </div>
@@ -170,7 +184,8 @@ const Search = (props : {
                     <div className="my-auto w-3/5">
                         <label>
                             <input type="text" placeholder="text...."
-                                   className="w-full border border-gray-300 p-2 my-2 rounded-md focus:outline-none focus:ring-2 ring-blue-200"/>
+                                   className="w-full border border-gray-300 p-2 my-2 rounded-md focus:outline-none focus:ring-2 ring-blue-200"
+                                   onChange={(event) => searchInfo('userTags', event.target.value)}/>
                         </label>
                     </div>
                 </div>
@@ -182,7 +197,8 @@ const Search = (props : {
                     <div className="my-auto w-3/5">
                         <label>
                             <input type="text" placeholder="10%"
-                                   className="w-full border border-gray-300 p-2 my-2 rounded-md focus:outline-none focus:ring-2 ring-blue-200"/>
+                                   className="w-full border border-gray-300 p-2 my-2 rounded-md focus:outline-none focus:ring-2 ring-blue-200"
+                                   onChange={(event) => searchInfo('positiveReview', event.target.value)}/>
                         </label>
                     </div>
                 </div>
