@@ -8,7 +8,7 @@ const Carousel = (props: { img: any; }) => {
     display: block;
 }</style>`)
     })
-
+    
     return (
         <div className="carousel relative">
             <div className="carousel-inner relative overflow-hidden">
@@ -21,7 +21,7 @@ const Carousel = (props: { img: any; }) => {
                                 <div className="carousel-item absolute opacity-0 carousel_size flex items-start">
                                     <div
                                         className="block h-full w-full bg-green-500 text-white text-5xl text-center p-16 rounded-xl">
-                                        <img src={value}
+                                        <img src={value.path_thumbnail}
                                              alt="test"
                                              className=" mx-auto sizeImg rounded-2xl"/>
                                     </div>

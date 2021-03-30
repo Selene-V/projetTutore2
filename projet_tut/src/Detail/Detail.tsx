@@ -1,5 +1,4 @@
 import Carousel from "./Carousel/Carousel";
-import ReviewBan from "../ReviewBan/ReviewBan";
 import ShortDescription from "./ShortDescription/ShortDescription";
 import Developer from "./Developer/Developer";
 import Publicher from "./Publisher/Publisher";
@@ -10,11 +9,49 @@ import Category from "./Category/Category";
 import Kind from "./Kind/Kind";
 import LongDescription from "./LongDescription/LongDescription";
 import RelatedGames from "./RelatedGames/RelatedGames";
-import React from "react";
+import React, {useEffect, useState} from "react";
+import Loading from "../Loading/Loading";
+import Error from "../Error/Error";
+import Platform from "../Platform";
 
 const Detail = (props: {
-    setIsClickForDetail: any
+    setIsClickForDetail: any;
+    isClickForDetail: any;
+    isConected: any;
 }) => {
+    async function getValue() {
+        return await fetch("http://projettutore2back/game/" + props.isClickForDetail)
+            .then(reponse => {
+                if (reponse.status === 200) {
+                    return reponse.json()
+                } else {
+                    return reponse.status
+                }
+            })
+            .then(function (json) {
+                return json;
+            });
+    }
+
+    const [detailGame, setDetailGame] = useState<any>();
+    const [error, setError] = useState<number>(0);
+
+    useEffect(() => {
+        setDetailGame(undefined);
+        getValue()
+            .then(
+                x => {
+                    if (typeof x === 'number') {
+                        setDetailGame(null);
+                        setError(x);
+                    } else {
+                        console.log(x.image.screenshots[0].path_thumbnail)
+                        setDetailGame(x);
+                    }
+                }
+            )
+    }, []);
+
     const info =
         {
             id: 1,
@@ -75,64 +112,82 @@ const Detail = (props: {
                 }
             ]
         }
-
+    if (detailGame === undefined) {
+        return (<Loading/>)
+    } else if (detailGame === null) {
+        return (<Error error={error}/>)
+    }
 
     return (
         <div className="flex">
             <div className="w-1/12"/>
             <div className="w-10/12">
-                <div className="flex mt-8 text-2xl">
-                    <div className="w-3/12 img_size">
-                        <img src={info.img[0]} className="sizeImg mx-auto" alt="test"/>
-                    </div>
-                    <div className="w-8/12 ml-4 text-white">
-                        <div className="flex mt-5 text-5xl">
-                            <p>{info.title}</p>
+                <div className="mt-8 text-2xl my-4">
+                    <div className="ml-4 text-white flex justify-between">
+                        <div className="w-3/12 img_size">
+                            <img src={detailGame.image.headerImage} className="sizeImg mx-auto" alt="test"/>
                         </div>
-                        <div className="flex mt-5 space-x-3 text-lg">
-                            <div>
-                                <p>{info.release_date}</p>
+                        <div className="w-8/12 ml-4 text-white text-left">
+                            <div className="flex mt-5 text-5xl">
+                                <p>{detailGame.name}</p>
                             </div>
-                            <div>-</div>
-                            <div className="flex space-x-2">
-                                {info.os.map((value, index) => <div key={index}>{value}</div>)}
+                            <div className="mt-5 space-x-3 text-lg">
+                                <div>
+                                    <p>{detailGame.releaseDate}</p>
+                                </div>
+                                <div className="flex space-x-2">
+                                    {detailGame.platforms.split(";").map((value: string, index: number) => <div
+                                            key={index}>
+                                            <Platform platform={value}/>
+                                        </div>
+                                    )}
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div className="w-1/12 text-center justify-center place-self-center text-white ">
-                        <i className="fa fa-plus fa-2x" aria-hidden="true"/>
-                    </div>
-                </div>
+                        <div className="w-1/12 text-center justify-center place-self-center text-white ">
+                            {props.isConected !== undefined ?
+                                <div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                         stroke="currentColor">
+                                        <path
+                                            d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                                    </svg>
 
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fillRule="evenodd"
+                                              d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+                                              clipRule="evenodd"/>
+                                    </svg>
+                                </div> : ""}
 
-
-
-                <div className="text-left flex mt-20">
-                    <div className="w-3/5 text-lg">
-                        <Carousel img={info.img}/>
-                        <div className="flex space-x-5 mt-8">
-                            <SystemRequirement system_requirement={info.system_requirement}/>
-                            <Category category={info.category}/>
-                            <Kind kind={info.kind}/>
                         </div>
-                        <LongDescription long_description={info.long_description}/>
                     </div>
-                    <div className="w-2/5 ml-4 text-lg">
-                        <ShortDescription short_description={info.short_description}/>
-                        <Developer developer={info.developer}/>
-                        <Publicher publisher={info.publisher}/>
-                        <TagClan tag_clan={info.tag_clan}/>
-                        <RelatedGames related_games={info.related_games}
-                                      setIsClickForDetail={props.setIsClickForDetail}
-                        />
+                    <div className="text-left flex mt-20">
+                        <div className="w-3/5 text-lg">
+                            <Carousel img={detailGame.image.screenshots}/>
+                            <div className="flex space-x-5 mt-8">
+                                <SystemRequirement system_requirement={info.system_requirement}/>
+                                <Category categories={detailGame.categories.split(';')}/>
+                                <Kind kind={detailGame.genres.split(';')}/>
+                            </div>
+                        </div>
+                        <div className="w-2/5 ml-4 text-lg">
+                            <ShortDescription
+                                short_description={detailGame["description"]['shortDescription']}/>
+                            <Developer developer={detailGame.developer}/>
+                            <Publicher publisher={detailGame.publisher.split(';')}/>
+                            <TagClan tag_clan={detailGame.steamspyTags.split(';')}/>
+                            {true ? <div/> :
+                                <RelatedGames relatedGames={info.related_games}
+                                              setIsClickForDetail={props.setIsClickForDetail}
+                                              isClickForDetail={props.isClickForDetail}
+                                />
+                            }
+                        </div>
                     </div>
+                    <LongDescription
+                        long_description={detailGame.description.detailedDescription.replace(/<(?:.|\n)*?>/gm, '')}/>
                 </div>
-
-
-
-
-
-                <ReviewBan reviewBan={info.review_ban}/>
             </div>
             <div className="w-1/12"/>
         </div>
