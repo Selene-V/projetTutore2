@@ -38,7 +38,7 @@ const Search = (props : {
     }
 
     return (
-        <div className={changeZIndex + " fixed w-4/12 relative inline-block min-w-min h-full text-black"}>
+        <div className={changeZIndex + " fixed w-5/12 relative inline-block min-w-min h-full text-black"}>
             <div>
                 <button type="button"
                         onClick={() => change()}
@@ -64,14 +64,14 @@ const Search = (props : {
                 className={classCss + " w-full text-sm Forigin-top-right absolute right-0 mt-1 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 divide-y divide-gray-100 focus:outline-none"}
                 role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
                 <div className="p-1 flex justify-center flex-wrap" role="none">
-                    <div className="my-auto">
+                    <div className="my-auto mx-auto w-2/5">
                         <p className="block px-4 py-2"
                            role="menuitem">Game Name</p>
                     </div>
-                    <div className="my-auto">
+                    <div className="my-auto w-3/5 mx-auto">
                         <label>
                             <input type="text" placeholder="text...."
-                                   className="border border-gray-300 p-2 my-2 rounded-md focus:outline-none focus:ring-2 ring-blue-200"
+                                   className="border border-gray-300 p-2 my-2 w-full rounded-md focus:outline-none focus:ring-2 ring-blue-200"
                                    onChange={event => searchName(event.target.value)}/>
                         </label>
 
@@ -79,110 +79,110 @@ const Search = (props : {
 
                 </div>
                 <div className="p-1 flex justify-center flex-wrap" role="none">
-                    <div className="my-auto">
+                    <div className="my-auto w-2/5 mx-auto">
                         <p className="block px-4 py-2 "
                            role="menuitem">Release date</p>
                     </div>
-                    <div className="my-auto">
+                    <div className="my-auto w-3/5">
                         <label>
                             <input type="date" placeholder="date...."
-                                   className="border border-gray-300 p-2 my-2 rounded-md focus:outline-none focus:ring-2 ring-blue-200"/>
+                                   className="w-full border border-gray-300 p-2 w-full my-2 rounded-md focus:outline-none focus:ring-2 ring-blue-200"/>
                         </label>
                     </div>
                 </div>
                 <div className="p-1 flex justify-center flex-wrap" role="none">
-                    <div className="my-auto">
+                    <div className="my-auto w-2/5">
                         <p className="block px-4 py-2"
                            role="menuitem">Developer</p>
                     </div>
-                    <div className="my-auto">
+                    <div className="my-auto w-3/5">
                         <label>
                             <input type="text" placeholder="text...."
-                                   className="border border-gray-300 p-2 my-2 rounded-md focus:outline-none focus:ring-2 ring-blue-200"/>
+                                   className="w-full border border-gray-300 p-2 my-2 rounded-md focus:outline-none focus:ring-2 ring-blue-200"/>
                         </label>
                     </div>
                 </div>
                 <div className="p-1 flex justify-center flex-wrap" role="none">
-                    <div className="my-auto">
+                    <div className="my-auto w-2/5">
                         <p className="block px-4 py-2"
                            role="menuitem">Publisher</p>
                     </div>
-                    <div className="my-auto">
+                    <div className="my-auto w-3/5">
                         <label>
                             <input type="text" placeholder="text...."
-                                   className="border border-gray-300 p-2 my-2 rounded-md focus:outline-none focus:ring-2 ring-blue-200"/>
+                                   className="w-full border border-gray-300 p-2 my-2 rounded-md focus:outline-none focus:ring-2 ring-blue-200"/>
                         </label>
                     </div>
                 </div>
                 <div className="p-1 flex justify-center flex-wrap" role="none">
-                    <div className="my-auto">
+                    <div className="my-auto w-2/5">
                         <p className="block px-4 py-2"
                            role="menuitem">Plateforme</p>
                     </div>
-                    <div className="my-auto">
+                    <div className="my-auto w-3/5">
                         <label>
                             <input type="text" placeholder="text...."
-                                   className="border border-gray-300 p-2 my-2 rounded-md focus:outline-none focus:ring-2 ring-blue-200"/>
+                                   className="w-full border border-gray-300 p-2 my-2 rounded-md focus:outline-none focus:ring-2 ring-blue-200"/>
                         </label>
                     </div>
                 </div>
                 <div className="p-1 flex justify-center flex-wrap" role="none">
-                    <div className="my-auto">
+                    <div className="my-auto w-2/5">
                         <p className="block px-4 py-2"
                            role="menuitem">Minimum age</p>
                     </div>
-                    <div className="my-auto">
+                    <div className="my-auto w-3/5">
                         <label>
                             <input type="number" placeholder="Age...."
-                                   className="border border-gray-300 p-2 my-2 rounded-md focus:outline-none focus:ring-2 ring-blue-200"/>
+                                   className="w-full border border-gray-300 p-2 my-2 rounded-md focus:outline-none focus:ring-2 ring-blue-200"/>
                         </label>
                     </div>
                 </div>
                 <div className="p-1 flex justify-center flex-wrap" role="none">
-                    <div className="my-auto">
+                    <div className="my-auto w-2/5">
                         <p className="block px-4 py-2"
                            role="menuitem">Categories</p>
                     </div>
-                    <div className="my-auto">
+                    <div className="my-auto w-3/5">
                         <label>
                             <input type="text" placeholder="text...."
-                                   className="border border-gray-300 p-2 my-2 rounded-md focus:outline-none focus:ring-2 ring-blue-200"/>
+                                   className="w-full border border-gray-300 p-2 my-2 rounded-md focus:outline-none focus:ring-2 ring-blue-200"/>
                         </label>
                     </div>
                 </div>
                 <div className="p-1 flex justify-center flex-wrap" role="none">
-                    <div className="my-auto">
+                    <div className="my-auto w-2/5">
                         <p className="block px-4 py-2"
                            role="menuitem">Kind</p>
                     </div>
-                    <div className="my-auto">
+                    <div className="my-auto w-3/5">
                         <label>
                             <input type="text" placeholder="text...."
-                                   className="border border-gray-300 p-2 my-2 rounded-md focus:outline-none focus:ring-2 ring-blue-200"/>
+                                   className="w-full border border-gray-300 p-2 my-2 rounded-md focus:outline-none focus:ring-2 ring-blue-200"/>
                         </label>
                     </div>
                 </div>
                 <div className="p-1 flex justify-center flex-wrap" role="none">
-                    <div className="my-auto">
+                    <div className="my-auto w-2/5">
                         <p className="block px-4 py-2"
                            role="menuitem">User tag</p>
                     </div>
-                    <div className="my-auto">
+                    <div className="my-auto w-3/5">
                         <label>
                             <input type="text" placeholder="text...."
-                                   className="border border-gray-300 p-2 my-2 rounded-md focus:outline-none focus:ring-2 ring-blue-200"/>
+                                   className="w-full border border-gray-300 p-2 my-2 rounded-md focus:outline-none focus:ring-2 ring-blue-200"/>
                         </label>
                     </div>
                 </div>
                 <div className="p-1 flex justify-center flex-wrap" role="none">
-                    <div className="my-auto">
+                    <div className="my-auto w-2/5">
                         <p className="block px-4 py-2"
                            role="menuitem">positive reviews</p>
                     </div>
-                    <div className="my-auto">
+                    <div className="my-auto w-3/5">
                         <label>
                             <input type="text" placeholder="10%"
-                                   className="border border-gray-300 p-2 my-2 rounded-md focus:outline-none focus:ring-2 ring-blue-200"/>
+                                   className="w-full border border-gray-300 p-2 my-2 rounded-md focus:outline-none focus:ring-2 ring-blue-200"/>
                         </label>
                     </div>
                 </div>
