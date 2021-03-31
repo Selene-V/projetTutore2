@@ -34,7 +34,8 @@ const Home = (props: {
     }
 
     async function searchName() {
-        return await fetch("http://projettutore2back/gameByName/" + searchInfo['name'])
+        console.log(actualyPage);
+        return await fetch("http://projettutore2back/gameByName/" + searchInfo['name'] + "/" + actualyPage)
             .then(reponse => {
                 if (reponse.status === 200) {
                     return reponse.json()
@@ -115,7 +116,6 @@ const Home = (props: {
                     }
                 )
         } else {
-            setActualyPage(1)
             searchName()
                 .then(
                     x => {
@@ -123,14 +123,30 @@ const Home = (props: {
                             setInfoGame(null);
                             setError(x);
                         } else {
-                            setInfoGame(x);
-                            setMaxPage(x.nbPages)
+                            setInfoGame(x.games);
+                            setMaxPage(x.nbPages);
                         }
                     }
                 )
         }
-    }, [actualyPage, searchInfo]);
+    }, [actualyPage]);
 
+    useEffect(() => {
+        setInfoGame(undefined);
+        setActualyPage(1);
+        searchName()
+            .then(
+                x => {
+                    if (typeof x === 'number') {
+                        setInfoGame(null);
+                        setError(x);
+                    } else {
+                        setInfoGame(x.games);
+                        setMaxPage(x.nbPages);
+                    }
+                }
+            )
+    }, [searchInfo])
     return (
         <div className="w-full">
             <div className="flex">
