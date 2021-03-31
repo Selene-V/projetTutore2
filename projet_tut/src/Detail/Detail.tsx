@@ -139,7 +139,7 @@ const Detail = (props: {
                                     <p>{detailGame.releaseDate}</p>
                                 </div>
                                 <div className="flex space-x-2">
-                                    {detailGame.platforms.split(";").map((value: string, index: number) => <div
+                                    {detailGame.platforms.map((value: string, index: number) => <div
                                             key={index}>
                                             <Platform platform={value}/>
                                         </div>
@@ -171,16 +171,16 @@ const Detail = (props: {
                             <div className="flex space-x-5 mt-8">
                                 <SystemRequirement
                                     system_requirement={detailGame.requirement.minimum.replace(/<(?:.|\n)*?>/gm, '')}/>
-                                <Category categories={detailGame.categories.split(';')}/>
-                                <Kind kind={detailGame.genres.split(';')}/>
+                                <Category categories={detailGame.categories}/>
+                                <Kind kind={detailGame.genres}/>
                             </div>
                         </div>
                         <div className="w-2/5 ml-4 text-lg">
                             <ShortDescription
                                 short_description={detailGame["description"]['shortDescription']}/>
                             <Developer developer={detailGame.developer}/>
-                            <Publicher publisher={detailGame.publisher.split(';')}/>
-                            <TagClan tag_clan={detailGame.steamspyTags.split(';')}/>
+                            <Publicher publisher={detailGame.publisher}/>
+                            <TagClan tag_clan={detailGame.steamspyTags}/>
                             {true ? <div/> :
                                 <RelatedGames relatedGames={info.related_games}
                                               setIsClickForDetail={props.setIsClickForDetail}
