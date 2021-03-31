@@ -7,7 +7,7 @@ const Short = () => {
         {option: "Developer", sorder: "A - Z", disorder: "Z - A"},
         {option: "Publisher", sorder: "A - Z", disorder: "Z - A"},
         {option: "Minimum Age", sorder: "Ascending", disorder: "Descending"},
-        {option: "Positive Reviews", sorder: "scending", disorder: "Descending"}
+        {option: "Positive Reviews", sorder: "Scending", disorder: "Descending"}
     ]
     const [optionSelected, setOptionSelected] = useState(listOption[0])
     const [clickButon, setClickButon] = useState(true);

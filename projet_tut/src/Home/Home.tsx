@@ -15,6 +15,9 @@ const Home = (props: {
     const [switchButton, setSwitchButton] = useState(false);
     const [actualyPage, setActualyPage] = useState(1);
     const [maxPage, setMaxPage] = useState(1);
+    const [infoGame, setInfoGame] = useState<any>();
+    const [error, setError] = useState<number>(0);
+    const [searchInfo, setSearchInfo] = useState<any>([])
 
     async function getValue() {
         return await fetch("http://projettutore2back/games/" + actualyPage)
@@ -30,48 +33,7 @@ const Home = (props: {
             });
     }
 
-    const [infoGame, setInfoGame] = useState<any>();
-    const [error, setError] = useState<number>(0);
-    const [searchInfo, setSearchInfo] = useState<any>([])
-
-    useEffect(() => {
-        setInfoGame(undefined);
-        if(!searchInfo['name']){
-        getValue()
-            .then(
-                x => {
-                    if (typeof x === 'number') {
-                        setInfoGame(null);
-                        setError(x);
-                    } else {
-                        setInfoGame(x.games);
-                        setMaxPage(x.nbPages)
-                    }
-                }
-            )
-        }
-        else {
-            setActualyPage(1)
-            searchName()
-            .then(
-                x => {
-                    if (typeof x === 'number') {
-                        setInfoGame(null);
-                        setError(x);
-                    } else {
-                        setInfoGame(x);
-                        setMaxPage(x.nbPages)
-                    }
-                }
-            )
-        }
-    }, [actualyPage, searchInfo]);
-    
-    if (infoGame === null) {
-        <Error error={error}/>
-    }
-
-    async function searchName(){
+    async function searchName() {
         return await fetch("http://projettutore2back/gameByName/" + searchInfo['name'])
             .then(reponse => {
                 if (reponse.status === 200) {
@@ -84,18 +46,26 @@ const Home = (props: {
                 return json;
             });
     }
-    
-    return (
-        <div className="w-full">
-            <div className="flex">
-                <div className="w-1/12"/>
-                <div className="w-10/12">
-                    <div className="flex mx-3 justify-between mt-5">
-                        <Search setSearchInfo={setSearchInfo} searchInfo={searchInfo}/>
-                        <Sort/>
-                        <Switch switchButton={setSwitchButton}/>
+
+    function display() {
+        switch (true) {
+            case infoGame === undefined: {
+                return (<Loading/>)
+            }
+            case infoGame === null: {
+                return (
+                    <Error error={error}/>
+                )
+            }
+            case infoGame.length === 0: {
+                return (
+                    <div className="justify-center self-center justify-self-center my-auto">
+                        Les parametre rentrer ne permette pas de trouver de jeux 😜
                     </div>
-                    {infoGame === undefined?<Loading/> :
+                )
+            }
+            default: {
+                return (
                     <div>
                         {
                             !switchButton ?
@@ -123,7 +93,59 @@ const Home = (props: {
                                     />
                                 </div>
                         }
-                    </div>}
+                    </div>)
+            }
+        }
+    }
+
+
+    useEffect(() => {
+        setInfoGame(undefined);
+        if (!searchInfo['name']) {
+            getValue()
+                .then(
+                    x => {
+                        if (typeof x === 'number') {
+                            setInfoGame(null);
+                            setError(x);
+                        } else {
+                            setInfoGame(x.games);
+                            setMaxPage(x.nbPages)
+                        }
+                    }
+                )
+        } else {
+            setActualyPage(1)
+            searchName()
+                .then(
+                    x => {
+                        if (typeof x === 'number') {
+                            setInfoGame(null);
+                            setError(x);
+                        } else {
+                            setInfoGame(x);
+                            setMaxPage(x.nbPages)
+                        }
+                    }
+                )
+        }
+    }, [actualyPage, searchInfo]);
+
+    return (
+        <div className="w-full">
+            <div className="flex">
+                <div className="w-1/12"/>
+                <div className="w-10/12">
+                    <div className="flex mx-3 justify-between mt-5">
+                        <Search setSearchInfo={setSearchInfo} searchInfo={searchInfo}/>
+                        <Sort/>
+                        <Switch switchButton={setSwitchButton}/>
+                    </div>
+                    <div>
+                        {
+                            display()
+                        }
+                    </div>
                 </div>
                 <div className="w-1/12"/>
             </div>
