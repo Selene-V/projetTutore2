@@ -7,7 +7,7 @@ const Table = (props: {
     setIsClickForDetail: any;
     isClickForDetail: any;
 }) => {
-
+    console.log(props.tableInfo[0].developer)
 
     if (props.tableInfo !== undefined) {
         return (
@@ -28,13 +28,13 @@ const Table = (props: {
                                     <div className="flex space-x-3 text-base">
                                         <div className="w-1/3">{value.releaseDate}</div>
                                         <div
-                                            className="2/3">{value.developer.replace(';', ' and ')}</div>
+                                            className="2/3">{value.developer}</div>
                                     </div>
                                     <div className="text-lg">Positive
                                         Review: {Math.round((parseInt(value.positiveRatings) / (parseInt(value.positiveRatings) + parseInt(value.negativeRatings))) * 100)}%
                                     </div>
                                     <div
-                                        className="text-2xl flex space-x-2">{value.platforms.split(";").map((result: string, secondIndex: number) =>
+                                        className="text-2xl flex space-x-2">{value.platforms.map((result: string, secondIndex: number) =>
                                         <div key={secondIndex}>
                                             <Platform platform={result}/>
                                         </div>
