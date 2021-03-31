@@ -8,7 +8,6 @@ const Table = (props: {
     isClickForDetail: any;
 }) => {
 
-    console.log(props.tableInfo);
 
     if (props.tableInfo !== undefined) {
         return (

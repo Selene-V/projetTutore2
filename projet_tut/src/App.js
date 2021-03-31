@@ -14,8 +14,6 @@ function App() {
         setIsClickForDetail(isClickForDetail);
     });
 
-    console.log(onclickConection);
-
     if (onclickConection) {
         return (
             <div className="App">

@@ -45,7 +45,6 @@ const Detail = (props: {
                         setDetailGame(null);
                         setError(x);
                     } else {
-                        console.log(x.image.screenshots[0].path_thumbnail)
                         setDetailGame(x);
                     }
                 }
@@ -112,8 +111,6 @@ const Detail = (props: {
                 }
             ]
         }
-
-    console.log(detailGame);
 
     if (detailGame === undefined) {
         return (<Loading/>)

@@ -1,7 +1,6 @@
 import React from "react";
 
 const Platform=(props: { platform: string; })=>{
-    console.log(props.platform)
     return(
         <div>
             {
