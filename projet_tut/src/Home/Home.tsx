@@ -154,7 +154,6 @@ const Home = (props: {
                 <div className="w-10/12">
                     <div className="flex mx-3 justify-between mt-5">
                         <Search setSearchInfo={setSearchInfo} searchInfo={searchInfo}/>
-                        <Sort/>
                         <Switch switchButton={setSwitchButton}/>
                     </div>
                     <div>

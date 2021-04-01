@@ -21,15 +21,15 @@ const Short = () => {
     }
 
     return (
-        <div className="w-full flex space-x-4 text-2xl justify-center ">
-            <div className="w-1/5">
-                <select className="text-black" onChange={changeValue} name="sort" id="sort-select">
+        <div className="w-full flex space-x-10 text-2xl justify-center ">
+            <div className="w-1/2">
+                <select className="text-black bg-gray-300" onChange={changeValue} name="sort" id="sort-select">
                     {listOption.map((value, index) => <option value={index} key={index}>{value.option}</option>)}
                 </select>
             </div>
             <div className="w-1/5">
                 <button onClick={() => setClickButon(!clickButon)}
-                        className="text-black rounded-md w-full bg-gray-100">{clickButon ? optionSelected.sorder : optionSelected.disorder}</button>
+                        className="text-black rounded-md w-full bg-gray-300">{clickButon ? optionSelected.sorder : optionSelected.disorder}</button>
             </div>
         </div>
     );

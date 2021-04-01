@@ -1,12 +1,15 @@
 import React, {useState} from "react";
+import Input from "./Input/Input";
+import Sort from "../Sort/Sort";
 
 
-const Search = (props : {
-    setSearchInfo : any
-    searchInfo : any
+const Search = (props: {
+    setSearchInfo: any
+    searchInfo: any
 }) => {
     const [classCss, setClassCss] = useState("transition ease-out duration-100 transform opacity-0 scale-95");
     const [changeZIndex, setChangeZIndex] = useState("h-0 overflow-hidden");
+    const [choiceDate, setChoiceDate] = useState("Fourchette");
 
     function change() {
         if (classCss === "transition ease-out duration-100 transform opacity-0 scale-95") {
@@ -17,33 +20,48 @@ const Search = (props : {
             setChangeZIndex("h-0 overflow-hidden")
         }
     }
-/*
-    async function searchName(name: string){
-        console.log(name)
-        return await fetch("http://projettutore2back/gameByName/" + name)
-            .then(reponse => {
-                if (reponse.status === 200) {
-                    return reponse.json()
-                } else {
-                    return reponse.status
-                }
-            })
-            .then(function (json) {
-                    console.log(json)
-                    if(json.length !== 0)
-                    {
-                        props.setSearchInfo(json)
-                    }
-                    else console.log('is empty')
-            });
+
+    function displayDate() {
+        switch (true) {
+            case choiceDate === "Fourchette": {
+                return (
+                    <div>
+                        <Input searchInfo={searchInfo} name="Start Date" type="date" select={null}/>
+                        <Input searchInfo={searchInfo} name="End Date" type="date" select={null}/>
+                    </div>
+                )
+            }
+            case choiceDate ==="":{}
+        }
     }
-*/
-    function searchInfo(id : string, value : string ){
+
+    /*
+        async function searchName(name: string){
+            console.log(name)
+            return await fetch("http://projettutore2back/gameByName/" + name)
+                .then(reponse => {
+                    if (reponse.status === 200) {
+                        return reponse.json()
+                    } else {
+                        return reponse.status
+                    }
+                })
+                .then(function (json) {
+                        console.log(json)
+                        if(json.length !== 0)
+                        {
+                            props.setSearchInfo(json)
+                        }
+                        else console.log('is empty')
+                });
+        }
+    */
+    function searchInfo(id: string, value: string) {
         let table = props.searchInfo.slice();
-        table[id] = value; 
+        table[id] = value;
         props.setSearchInfo(table);
     }
-    
+
     return (
         <div className={changeZIndex + " fixed w-5/12 relative inline-block min-w-min h-full text-black"}>
             <div>
@@ -70,138 +88,49 @@ const Search = (props : {
             <div
                 className={classCss + " w-full text-sm Forigin-top-right absolute right-0 mt-1 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 divide-y divide-gray-100 focus:outline-none"}
                 role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
-                <div className="p-1 flex justify-center flex-wrap" role="none">
-                    <div className="my-auto mx-auto w-2/5">
-                        <p className="block px-4 py-2"
-                           role="menuitem">Game Name</p>
-                    </div>
-                    <div className="my-auto w-3/5 mx-auto">
-                        <label>
-                            <input type="text" placeholder="text...."
-                                   className="border border-gray-300 p-2 my-2 w-full rounded-md focus:outline-none focus:ring-2 ring-blue-200"
-                                   onChange={(event) => searchInfo('name', event.target.value)}/>
-                        </label>
 
-                    </div>
+                <Input searchInfo={searchInfo} name="Game Name" type="text" select={null}/>
+                <div className="flex justify-center">
+                    <Input searchInfo={searchInfo} name="Publisher" type="text" select={null}/>
+                    <Input searchInfo={searchInfo} name="Developer" type="text" select={null}/>
+                </div>
+                <div className="flex w-full justify-center bg-red-200">
+                    <Input searchInfo={searchInfo} name="Minimum Age" type={null} select={
+                        [
+                            {content: 3, return: 3},
+                            {content: 7, return: 7},
+                            {content: 12, return: 12},
+                            {content: 16, return: 16},
+                            {content: 18, return: 18}
+                        ]}
+                    />
+                    <Input searchInfo={searchInfo} name="Positive Reviews" type={null} select={
+                        [
+                            {content: "Excellent", return: "90-100"},
+                            {content: "Verry Good", return: "75-90"},
+                            {content: "Good", return: "50-75"},
+                            {content: "Bad", return: "25-50"},
+                            {content: "Verry Bad", return: "10-25"},
+                            {content: "Mediocre", return: "0-10"},
 
+                        ]}
+                    />
                 </div>
-                <div className="p-1 flex justify-center flex-wrap" role="none">
-                    <div className="my-auto w-2/5 mx-auto">
-                        <p className="block px-4 py-2 "
-                           role="menuitem">Release date</p>
-                    </div>
-                    <div className="my-auto w-3/5">
-                        <label>
-                            <input type="date" placeholder="date...."
-                                   className="w-full border border-gray-300 p-2 w-full my-2 rounded-md focus:outline-none focus:ring-2 ring-blue-200"
-                                   onChange={(event) => searchInfo('date', event.target.value)}/>
-                        </label>
-                    </div>
+                <div className="flex justify-center">
+                    <Input searchInfo={searchInfo} name="Categories" type="text" select={null}/>
+                    <Input searchInfo={searchInfo} name="Kind" type="text" select={null}/>
+                    <Input searchInfo={searchInfo} name="User Tag" type="text" select={null}/>
                 </div>
-                <div className="p-1 flex justify-center flex-wrap" role="none">
-                    <div className="my-auto w-2/5">
-                        <p className="block px-4 py-2"
-                           role="menuitem">Developer</p>
-                    </div>
-                    <div className="my-auto w-3/5">
-                        <label>
-                            <input type="text" placeholder="text...."
-                                   className="w-full border border-gray-300 p-2 my-2 rounded-md focus:outline-none focus:ring-2 ring-blue-200"
-                                   onChange={(event) => searchInfo('developer', event.target.value)}/>
-                        </label>
-                    </div>
+                <div className="flex">
+                    <select className="text-black w-full"
+                            onChange={(event) => setChoiceDate(event.target.value)}>
+                        <option value="Fourchette">Fourchette</option>
+                        <option value="date precise">date precise</option>
+                        <option value="année">année</option>
+                    </select>
+                    {displayDate()}
                 </div>
-                <div className="p-1 flex justify-center flex-wrap" role="none">
-                    <div className="my-auto w-2/5">
-                        <p className="block px-4 py-2"
-                           role="menuitem">Publisher</p>
-                    </div>
-                    <div className="my-auto w-3/5">
-                        <label>
-                            <input type="text" placeholder="text...."
-                                   className="w-full border border-gray-300 p-2 my-2 rounded-md focus:outline-none focus:ring-2 ring-blue-200"
-                                   onChange={(event) => searchInfo('publisher', event.target.value)}/>
-                        </label>
-                    </div>
-                </div>
-                <div className="p-1 flex justify-center flex-wrap" role="none">
-                    <div className="my-auto w-2/5">
-                        <p className="block px-4 py-2"
-                           role="menuitem">Plateforme</p>
-                    </div>
-                    <div className="my-auto w-3/5">
-                        <label>
-                            <input type="text" placeholder="text...."
-                                   className="w-full border border-gray-300 p-2 my-2 rounded-md focus:outline-none focus:ring-2 ring-blue-200"
-                                   onChange={(event) => searchInfo('plateforme', event.target.value)}/>
-                        </label>
-                    </div>
-                </div>
-                <div className="p-1 flex justify-center flex-wrap" role="none">
-                    <div className="my-auto w-2/5">
-                        <p className="block px-4 py-2"
-                           role="menuitem">Minimum age</p>
-                    </div>
-                    <div className="my-auto w-3/5">
-                        <label>
-                            <input type="number" placeholder="Age...."
-                                   className="w-full border border-gray-300 p-2 my-2 rounded-md focus:outline-none focus:ring-2 ring-blue-200"
-                                   onChange={(event) => searchInfo('age', event.target.value)}/>
-                        </label>
-                    </div>
-                </div>
-                <div className="p-1 flex justify-center flex-wrap" role="none">
-                    <div className="my-auto w-2/5">
-                        <p className="block px-4 py-2"
-                           role="menuitem">Categories</p>
-                    </div>
-                    <div className="my-auto w-3/5">
-                        <label>
-                            <input type="text" placeholder="text...."
-                                   className="w-full border border-gray-300 p-2 my-2 rounded-md focus:outline-none focus:ring-2 ring-blue-200"
-                                   onChange={(event) => searchInfo('categories', event.target.value)}/>
-                        </label>
-                    </div>
-                </div>
-                <div className="p-1 flex justify-center flex-wrap" role="none">
-                    <div className="my-auto w-2/5">
-                        <p className="block px-4 py-2"
-                           role="menuitem">Kind</p>
-                    </div>
-                    <div className="my-auto w-3/5">
-                        <label>
-                            <input type="text" placeholder="text...."
-                                   className="w-full border border-gray-300 p-2 my-2 rounded-md focus:outline-none focus:ring-2 ring-blue-200"
-                                   onChange={(event) => searchInfo('kind', event.target.value)}/>
-                        </label>
-                    </div>
-                </div>
-                <div className="p-1 flex justify-center flex-wrap" role="none">
-                    <div className="my-auto w-2/5">
-                        <p className="block px-4 py-2"
-                           role="menuitem">User tag</p>
-                    </div>
-                    <div className="my-auto w-3/5">
-                        <label>
-                            <input type="text" placeholder="text...."
-                                   className="w-full border border-gray-300 p-2 my-2 rounded-md focus:outline-none focus:ring-2 ring-blue-200"
-                                   onChange={(event) => searchInfo('userTags', event.target.value)}/>
-                        </label>
-                    </div>
-                </div>
-                <div className="p-1 flex justify-center flex-wrap" role="none">
-                    <div className="my-auto w-2/5">
-                        <p className="block px-4 py-2"
-                           role="menuitem">positive reviews</p>
-                    </div>
-                    <div className="my-auto w-3/5">
-                        <label>
-                            <input type="text" placeholder="10%"
-                                   className="w-full border border-gray-300 p-2 my-2 rounded-md focus:outline-none focus:ring-2 ring-blue-200"
-                                   onChange={(event) => searchInfo('positiveReview', event.target.value)}/>
-                        </label>
-                    </div>
-                </div>
+                <Sort/>
             </div>
         </div>
 
