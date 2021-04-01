@@ -1,6 +1,6 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import Input from "./Input/Input";
-import Sort from "../Sort/Sort";
+import Sort from "./Sort/Sort";
 
 
 const Search = (props: {
@@ -30,8 +30,11 @@ const Search = (props: {
                 props.setSearchInfo(props.searchInfo);
                 return (
                     <div className="flex">
-                        <Input searchInfo={searchInfo} name="Start Date" type="date" select={null}/>
-                        <Input searchInfo={searchInfo} name="End Date" type="date" select={null}/>
+                        <Input searchInfo={props.searchInfo} name="Start Date" type="date" select={null}
+                               contentTable={false} setSearchInfo={props.setSearchInfo}/>
+                        <Input searchInfo={props.searchInfo} name="End Date" type="date" select={null}
+                               contentTable={false}
+                               setSearchInfo={props.setSearchInfo}/>
                     </div>
                 )
             }
@@ -42,7 +45,8 @@ const Search = (props: {
                 props.setSearchInfo(props.searchInfo);
                 return (
                     <div>
-                        <Input searchInfo={searchInfo} name="Precise Date" type="date" select={null}/>
+                        <Input searchInfo={props.searchInfo} name="Precise Date" type="date" select={null}
+                               contentTable={false} setSearchInfo={props.setSearchInfo}/>
                     </div>
                 )
             }
@@ -53,7 +57,9 @@ const Search = (props: {
                 props.setSearchInfo(props.searchInfo);
                 return (
                     <div>
-                        <Input searchInfo={searchInfo} name="Year" type="number" select={null}/>
+                        <Input searchInfo={props.searchInfo} name="Year" type="number" select={null}
+                               contentTable={false}
+                               setSearchInfo={props.setSearchInfo}/>
                     </div>
                 )
             }
@@ -63,33 +69,6 @@ const Search = (props: {
                 )
             }
         }
-    }
-
-    /*
-        async function searchName(name: string){
-            console.log(name)
-            return await fetch("http://projettutore2back/gameByName/" + name)
-                .then(reponse => {
-                    if (reponse.status === 200) {
-                        return reponse.json()
-                    } else {
-                        return reponse.status
-                    }
-                })
-                .then(function (json) {
-                        console.log(json)
-                        if(json.length !== 0)
-                        {
-                            props.setSearchInfo(json)
-                        }
-                        else console.log('is empty')
-                });
-        }
-    */
-    function searchInfo(id: string, value: string) {
-        let table = props.searchInfo.slice();
-        table[id] = value;
-        props.setSearchInfo(table);
     }
 
     return (
@@ -118,18 +97,22 @@ const Search = (props: {
             <div
                 className={classCss + " w-full text-sm Forigin-top-right absolute right-0 mt-1 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 divide-y divide-gray-100 focus:outline-none"}
                 role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
-                <div className="bg-gray-50">
+                <div>
                     <div className="w-3/5 mx-auto">
 
-                        <Input searchInfo={searchInfo} name="Game Name" type="text" select={null}/>
+                        <Input searchInfo={props.searchInfo} name="Game Name" type="text" select={null}
+                               contentTable={false}
+                               setSearchInfo={props.setSearchInfo}/>
                     </div>
                 </div>
                 <div className="flex justify-center">
-                    <Input searchInfo={searchInfo} name="Publisher" type="text" select={null}/>
-                    <Input searchInfo={searchInfo} name="Developer" type="text" select={null}/>
+                    <Input searchInfo={props.searchInfo} name="Publisher" type="text" select={null} contentTable={false}
+                           setSearchInfo={props.setSearchInfo}/>
+                    <Input searchInfo={props.searchInfo} name="Developer" type="text" select={null} contentTable={false}
+                           setSearchInfo={props.setSearchInfo}/>
                 </div>
-                <div className="flex w-full justify-center bg-gray-50">
-                    <Input searchInfo={searchInfo} name="Minimum Age" type={null} select={
+                <div className="flex w-full justify-center">
+                    <Input searchInfo={props.searchInfo} name="Minimum Age" type={null} select={
                         [
                             {content: 3, return: 3},
                             {content: 7, return: 7},
@@ -137,8 +120,9 @@ const Search = (props: {
                             {content: 16, return: 16},
                             {content: 18, return: 18}
                         ]}
+                           contentTable={false} setSearchInfo={props.setSearchInfo}
                     />
-                    <Input searchInfo={searchInfo} name="Positive Reviews" type={null} select={
+                    <Input searchInfo={props.searchInfo} name="Positive Reviews" type={null} select={
                         [
                             {content: "Excellent", return: "90-100"},
                             {content: "Verry Good", return: "75-90"},
@@ -146,16 +130,19 @@ const Search = (props: {
                             {content: "Bad", return: "25-50"},
                             {content: "Verry Bad", return: "10-25"},
                             {content: "Mediocre", return: "0-10"},
-
                         ]}
+                           contentTable={false} setSearchInfo={props.setSearchInfo}
                     />
                 </div>
                 <div className="flex justify-center">
-                    <Input searchInfo={searchInfo} name="Categories" type="text" select={null}/>
-                    <Input searchInfo={searchInfo} name="Kind" type="text" select={null}/>
-                    <Input searchInfo={searchInfo} name="User Tag" type="text" select={null}/>
+                    <Input searchInfo={props.searchInfo} name="Categories" type="text" select={null} contentTable={true}
+                           setSearchInfo={props.setSearchInfo}/>
+                    <Input searchInfo={props.searchInfo} name="Kind" type="text" select={null} contentTable={true}
+                           setSearchInfo={props.setSearchInfo}/>
+                    <Input searchInfo={props.searchInfo} name="User Tag" type="text" select={null} contentTable={true}
+                           setSearchInfo={props.setSearchInfo}/>
                 </div>
-                <div className="flex bg-gray-50">
+                <div className="flex">
                     <div className="w-4/12 my-auto h-full">
                         <select className="text-black w-7/12 px-2"
                                 onChange={(event) => setChoiceDate(event.target.value)}>
@@ -168,7 +155,7 @@ const Search = (props: {
                         {displayDate()}
                     </div>
                 </div>
-                <Sort/>
+                <Sort setSearchInfo={props.setSearchInfo} searchInfo={props.searchInfo}/>
             </div>
         </div>
 

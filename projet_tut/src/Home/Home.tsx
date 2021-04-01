@@ -4,7 +4,7 @@ import Table from "../Table/Table";
 import Pagination from "./Pagination/Pagination";
 import Icons from "./Icons/Icons";
 import Search from "./Search/Search";
-import Sort from "./Sort/Sort";
+import Sort from "./Search/Sort/Sort";
 import Loading from "../Loading/Loading";
 import Error from "../Error/Error";
 
@@ -19,7 +19,7 @@ const Home = (props: {
     const [maxPage, setMaxPage] = useState(1);
     const [infoGame, setInfoGame] = useState<any>();
     const [error, setError] = useState<number>(0);
-    const [searchInfo, setSearchInfo] = useState<any>([])
+    const [searchInfo, setSearchInfo] = useState<any>({})
 
     let traiterSearchNameDebounce = debounce(searchInfo, 600);
 
@@ -38,7 +38,6 @@ const Home = (props: {
     }
 
     async function searchName() {
-        console.log(searchInfo['Game Name']);
         return await fetch("http://projettutore2back/gameByName/" + traiterSearchNameDebounce['Game Name'] + "/" + actualyPage)
             .then(reponse => {
                 if (reponse.status === 200) {

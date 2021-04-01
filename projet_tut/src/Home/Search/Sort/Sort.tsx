@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-const Short = () => {
+const Short = (props: { searchInfo: any; setSearchInfo: any }) => {
     const listOption = [
         {option: "Game Name", sorder: "A - Z", disorder: "Z - A"},
         {option: "Release Date", sorder: "Recent - Old", disorder: "Old - Recent"},
@@ -11,6 +11,17 @@ const Short = () => {
     ]
     const [optionSelected, setOptionSelected] = useState(listOption[0])
     const [clickButon, setClickButon] = useState(true);
+
+    function takeInformation() {
+        let reponse = {...props.searchInfo}
+        if (clickButon) {
+            reponse = optionSelected.option + "-asc";
+        } else {
+            reponse = optionSelected.option + "-deasc";
+        }
+        reponse["Sort"] = reponse;
+        props.setSearchInfo(reponse)
+    }
 
     function changeValue() {
         const takeIndex = parseInt((document.getElementById("sort-select") as HTMLInputElement).value);
