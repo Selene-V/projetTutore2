@@ -3,7 +3,10 @@ import React from "react";
 const Connection = (props: { setOnclickConection: (arg0: boolean) => React.MouseEventHandler<HTMLImageElement> | undefined; }) => {
     return (
         <div className="flex">
-            <div className="w-5/12 min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+            <div className=" px-6 w-full
+            xl:w-5/12 min-h-screen flex items-center justify-center py-12 px-4 block
+            lg:w-5/12 block
+            ">
                 <div className="max-w-md w-full space-y-8">
                     <div>
                         <img className="mx-auto h-12 w-auto hover:bg-gray-700 transition duration-500 ease-in-out"
@@ -39,7 +42,10 @@ const Connection = (props: { setOnclickConection: (arg0: boolean) => React.Mouse
                     </form>
                 </div>
             </div>
-            <img className="w-7/12 object-cover h-screen" src="/videoGames.jpg"/>
+            <img className="hidden
+            xl:block w-7/12 object-cover h-screen 
+            lg:block w-7/12 h-screen
+            " src="/videoGames.jpg" alt="img video"/>
         </div>
     );
 }

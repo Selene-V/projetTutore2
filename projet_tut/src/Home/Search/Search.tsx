@@ -24,8 +24,9 @@ const Search = (props: {
     function displayDate() {
         switch (true) {
             case choiceDate === "Fork": {
-                props.searchInfo.remove('Precise Date');
-                props.searchInfo.remove('Year');
+
+                delete props.searchInfo['Precise Date'];
+                delete props.searchInfo['Year'];
                 props.setSearchInfo(props.searchInfo);
                 return (
                     <div className="flex">
@@ -35,9 +36,9 @@ const Search = (props: {
                 )
             }
             case choiceDate === "Precise Date": {
-                props.searchInfo.remove('Start Date');
-                props.searchInfo.remove('End Date');
-                props.searchInfo.remove('Year');
+                delete props.searchInfo['Start Date'];
+                delete props.searchInfo['End Date'];
+                delete props.searchInfo['Year'];
                 props.setSearchInfo(props.searchInfo);
                 return (
                     <div>
@@ -46,9 +47,9 @@ const Search = (props: {
                 )
             }
             case choiceDate === "Year": {
-                props.searchInfo.remove('Start Date');
-                props.searchInfo.remove('End Date');
-                props.searchInfo.remove('Precise Date');
+                delete props.searchInfo['Start Date'];
+                delete props.searchInfo['End Date'];
+                delete props.searchInfo['Precise Date'];
                 props.setSearchInfo(props.searchInfo);
                 return (
                     <div>
@@ -159,8 +160,8 @@ const Search = (props: {
                         <select className="text-black w-7/12 px-2"
                                 onChange={(event) => setChoiceDate(event.target.value)}>
                             <option value="Fork">Fork</option>
-                            <option value="precise date">precise date</option>
-                            <option value="year">year</option>
+                            <option value="Precise Date">Precise Date</option>
+                            <option value="Year">Year</option>
                         </select>
                     </div>
                     <div className="mx-auto">
