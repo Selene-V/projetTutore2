@@ -8,6 +8,8 @@ import Sort from "./Sort/Sort";
 import Loading from "../Loading/Loading";
 import Error from "../Error/Error";
 
+import debounce from '../function/useDebounce'
+
 const Home = (props: {
     setIsClickForDetail: any;
     isClickForDetail: any;
@@ -18,6 +20,8 @@ const Home = (props: {
     const [infoGame, setInfoGame] = useState<any>();
     const [error, setError] = useState<number>(0);
     const [searchInfo, setSearchInfo] = useState<any>([])
+
+    let traiterSearchNameDebounce = debounce(searchInfo, 1000);
 
     async function getValue() {
         return await fetch("http://projettutore2back/games/" + actualyPage)
@@ -35,7 +39,7 @@ const Home = (props: {
 
     async function searchName() {
         console.log(actualyPage);
-        return await fetch("http://projettutore2back/gameByName/" + searchInfo['name'] + "/" + actualyPage)
+        return await fetch("http://projettutore2back/gameByName/" + traiterSearchNameDebounce['name'] + "/" + actualyPage)
             .then(reponse => {
                 if (reponse.status === 200) {
                     return reponse.json()
@@ -102,7 +106,7 @@ const Home = (props: {
 
     useEffect(() => {
         setInfoGame(undefined);
-        if (!searchInfo['name']) {
+        if (!traiterSearchNameDebounce['name']) {
             getValue()
                 .then(
                     x => {
@@ -146,7 +150,7 @@ const Home = (props: {
                     }
                 }
             )
-    }, [searchInfo])
+    }, [traiterSearchNameDebounce])
     return (
         <div className="w-full">
             <div className="flex">
