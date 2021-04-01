@@ -21,7 +21,7 @@ const Home = (props: {
     const [error, setError] = useState<number>(0);
     const [searchInfo, setSearchInfo] = useState<any>([])
 
-    let traiterSearchNameDebounce = debounce(searchInfo, 1000);
+    let traiterSearchNameDebounce = debounce(searchInfo, 600);
 
     async function getValue() {
         return await fetch("http://projettutore2back/games/" + actualyPage)
@@ -38,8 +38,8 @@ const Home = (props: {
     }
 
     async function searchName() {
-        console.log(actualyPage);
-        return await fetch("http://projettutore2back/gameByName/" + traiterSearchNameDebounce['name'] + "/" + actualyPage)
+        console.log(searchInfo['Game Name']);
+        return await fetch("http://projettutore2back/gameByName/" + traiterSearchNameDebounce['Game Name'] + "/" + actualyPage)
             .then(reponse => {
                 if (reponse.status === 200) {
                     return reponse.json()

@@ -24,6 +24,9 @@ const Search = (props: {
     function displayDate() {
         switch (true) {
             case choiceDate === "Fork": {
+                props.searchInfo.remove('Precise Date');
+                props.searchInfo.remove('Year');
+                props.setSearchInfo(props.searchInfo);
                 return (
                     <div className="flex">
                         <Input searchInfo={searchInfo} name="Start Date" type="date" select={null}/>
@@ -31,17 +34,25 @@ const Search = (props: {
                     </div>
                 )
             }
-            case choiceDate === "precise date": {
+            case choiceDate === "Precise Date": {
+                props.searchInfo.remove('Start Date');
+                props.searchInfo.remove('End Date');
+                props.searchInfo.remove('Year');
+                props.setSearchInfo(props.searchInfo);
                 return (
                     <div>
                         <Input searchInfo={searchInfo} name="Precise Date" type="date" select={null}/>
                     </div>
                 )
             }
-            case choiceDate === "year": {
+            case choiceDate === "Year": {
+                props.searchInfo.remove('Start Date');
+                props.searchInfo.remove('End Date');
+                props.searchInfo.remove('Precise Date');
+                props.setSearchInfo(props.searchInfo);
                 return (
                     <div>
-                        <Input searchInfo={searchInfo} name="Year" type="text" select={null}/>
+                        <Input searchInfo={searchInfo} name="Year" type="number" select={null}/>
                     </div>
                 )
             }
