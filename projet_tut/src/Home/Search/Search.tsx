@@ -9,7 +9,7 @@ const Search = (props: {
 }) => {
     const [classCss, setClassCss] = useState("transition ease-out duration-100 transform opacity-0 scale-95");
     const [changeZIndex, setChangeZIndex] = useState("h-0 overflow-hidden");
-    const [choiceDate, setChoiceDate] = useState("Fourchette");
+    const [choiceDate, setChoiceDate] = useState("Fork");
 
     function change() {
         if (classCss === "transition ease-out duration-100 transform opacity-0 scale-95") {
@@ -23,15 +23,33 @@ const Search = (props: {
 
     function displayDate() {
         switch (true) {
-            case choiceDate === "Fourchette": {
+            case choiceDate === "Fork": {
                 return (
-                    <div>
+                    <div className="flex">
                         <Input searchInfo={searchInfo} name="Start Date" type="date" select={null}/>
                         <Input searchInfo={searchInfo} name="End Date" type="date" select={null}/>
                     </div>
                 )
             }
-            case choiceDate ==="":{}
+            case choiceDate === "precise date": {
+                return (
+                    <div>
+                        <Input searchInfo={searchInfo} name="Precise Date" type="date" select={null}/>
+                    </div>
+                )
+            }
+            case choiceDate === "year": {
+                return (
+                    <div>
+                        <Input searchInfo={searchInfo} name="Year" type="text" select={null}/>
+                    </div>
+                )
+            }
+            default: {
+                return (
+                    <div>Error</div>
+                )
+            }
         }
     }
 
@@ -88,13 +106,17 @@ const Search = (props: {
             <div
                 className={classCss + " w-full text-sm Forigin-top-right absolute right-0 mt-1 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 divide-y divide-gray-100 focus:outline-none"}
                 role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+                <div className="bg-gray-50">
+                    <div className="w-3/5 mx-auto">
 
-                <Input searchInfo={searchInfo} name="Game Name" type="text" select={null}/>
+                        <Input searchInfo={searchInfo} name="Game Name" type="text" select={null}/>
+                    </div>
+                </div>
                 <div className="flex justify-center">
                     <Input searchInfo={searchInfo} name="Publisher" type="text" select={null}/>
                     <Input searchInfo={searchInfo} name="Developer" type="text" select={null}/>
                 </div>
-                <div className="flex w-full justify-center bg-red-200">
+                <div className="flex w-full justify-center bg-gray-50">
                     <Input searchInfo={searchInfo} name="Minimum Age" type={null} select={
                         [
                             {content: 3, return: 3},
@@ -121,14 +143,18 @@ const Search = (props: {
                     <Input searchInfo={searchInfo} name="Kind" type="text" select={null}/>
                     <Input searchInfo={searchInfo} name="User Tag" type="text" select={null}/>
                 </div>
-                <div className="flex">
-                    <select className="text-black w-full"
-                            onChange={(event) => setChoiceDate(event.target.value)}>
-                        <option value="Fourchette">Fourchette</option>
-                        <option value="date precise">date precise</option>
-                        <option value="année">année</option>
-                    </select>
-                    {displayDate()}
+                <div className="flex bg-gray-50">
+                    <div className="w-4/12 my-auto h-full">
+                        <select className="text-black w-7/12 px-2"
+                                onChange={(event) => setChoiceDate(event.target.value)}>
+                            <option value="Fork">Fork</option>
+                            <option value="precise date">precise date</option>
+                            <option value="year">year</option>
+                        </select>
+                    </div>
+                    <div className="mx-auto">
+                        {displayDate()}
+                    </div>
                 </div>
                 <Sort/>
             </div>
