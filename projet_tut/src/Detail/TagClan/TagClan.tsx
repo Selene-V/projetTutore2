@@ -1,6 +1,6 @@
 import React from "react";
 
-const TagClan = (props: { tag_clan: React.ReactNode[]; }) => {
+const TagClan = (props: { tag_clan: string[]; }) => {
     return (
         <div className="mt-8 bg-white rounded-xl">
             <div className="bg-green-500 rounded-t-xl">
@@ -8,7 +8,7 @@ const TagClan = (props: { tag_clan: React.ReactNode[]; }) => {
             </div>
             <div className="flex flex-wrap space-x-3 p-2 text-black">
                 {
-                    props.tag_clan.map((value: React.ReactNode, index) =>
+                    props.tag_clan.map((value: string, index: number) =>
                         <div key={index}
                              className="bg-green-100 px-2 py-1 rounded-md mt-2">
                             <p>{value}</p>

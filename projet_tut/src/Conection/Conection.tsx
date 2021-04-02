@@ -1,6 +1,6 @@
 import React from "react";
 
-const Connection = (props: { setOnclickConection: (arg0: boolean) => React.MouseEventHandler<HTMLImageElement> | undefined; }) => {
+const Connection = (props: { setOnclickConection: any; }) => {
     return (
         <div className="flex">
             <div className=" px-6 w-full

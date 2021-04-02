@@ -7,7 +7,7 @@ const Kind = (props: { kind: string[]; }) => {
                 <p className="ml-2">Kind</p>
             </div>
             <div className="p-2 text-black text-center">
-                {props.kind.map((value, index) =>
+                {props.kind.map((value: string, index: number) =>
                     <div key={index}
                          className="bg-green-100 px-2 py-1 rounded-md mt-2"
                     >{value}</div>)}

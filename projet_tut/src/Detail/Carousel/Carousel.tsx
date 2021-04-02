@@ -3,7 +3,7 @@ import "./Carousel.css"
 
 const Carousel = (props: { img: any; }) => {
 
-    props.img.map((value: any, index: string) => {
+    props.img.map((value: string, index: string) => {
         document.head.insertAdjacentHTML("beforeend", `<style>#carousel-` + index + `:checked ~ .control-` + index + `{
     display: block;
 }</style>`)

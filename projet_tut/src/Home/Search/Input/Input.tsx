@@ -1,6 +1,6 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 
-const Input = (props: { setSearchInfo: any; searchInfo: any; name: any; type: any; select: any; contentTable: boolean; }) => {
+const Input = (props: { setSearchInfo: any; searchInfo: any; name: string; type: string | undefined; select: { content: any, return: any }[] | null; contentTable: boolean; }) => {
 
     const [saveContent, setSaveContent] = useState("");
 

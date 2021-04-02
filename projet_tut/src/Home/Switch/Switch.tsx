@@ -8,10 +8,8 @@ const Switch = (props: { switchButton: (arg0: boolean) => void; }) => {
         props.switchButton(bool);
         if (bool) {
             setClassCss(["bg-yellow-600", "bg-gray-500"]);
-            //forme  tableau en 3 colone
         } else {
             setClassCss(["bg-gray-500", "bg-yellow-600"]);
-            //forme vignette
         }
     }
 

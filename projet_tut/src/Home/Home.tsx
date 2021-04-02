@@ -12,7 +12,7 @@ import debounce from '../function/useDebounce'
 
 const Home = (props: {
     setIsClickForDetail: any;
-    isClickForDetail: any;
+    isClickForDetail: string;
 }) => {
     const [switchButton, setSwitchButton] = useState(false);
     const [actualyPage, setActualyPage] = useState(1);

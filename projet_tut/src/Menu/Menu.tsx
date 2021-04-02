@@ -1,6 +1,6 @@
 import React from "react";
 
-const Menu = (props: { setIsClickForDetail: any; isConected: any; setOnclickConection: any }) => {
+const Menu = (props: { setIsClickForDetail: any; isConected: boolean; setOnclickConection: any }) => {
 
     return (
         <nav className="bg-gray-800 w-full">
@@ -25,7 +25,7 @@ const Menu = (props: { setIsClickForDetail: any; isConected: any; setOnclickCone
                                                    transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:transform-none delay-100 hover:bg-gray-100 hover:text-gray-500"
                                         aria-haspopup="true"
                                         onClick={()=>props.setOnclickConection(true)}>
-                                    {props.isConected === undefined ? "Connection" : "Disconnection"}
+                                    {props.isConected === false ? "Connection" : "Disconnection"}
                                 </button>
                             </div>
                         </div>

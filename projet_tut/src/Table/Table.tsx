@@ -5,7 +5,7 @@ import Platform from "../Platform";
 const Table = (props: {
     tableInfo: any[];
     setIsClickForDetail: any;
-    isClickForDetail: any;
+    isClickForDetail: string;
 }) => {
     console.log(props.tableInfo[0].developer)
 

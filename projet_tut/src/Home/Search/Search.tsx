@@ -114,7 +114,7 @@ const Search = (props: {
                            type={"text"} select={null} contentTable={true}/>
                 </div>
                 <div className="flex w-full justify-center">
-                    <Input searchInfo={props.searchInfo} name="Minimum Age" type={null} select={
+                    <Input searchInfo={props.searchInfo} name="Minimum Age" type={undefined} select={
                         [
                             {content: 3, return: 3},
                             {content: 7, return: 7},
@@ -124,7 +124,7 @@ const Search = (props: {
                         ]}
                            contentTable={false} setSearchInfo={props.setSearchInfo}
                     />
-                    <Input searchInfo={props.searchInfo} name="Positive Reviews" type={null} select={
+                    <Input searchInfo={props.searchInfo} name="Positive Reviews" type={undefined} select={
                         [
                             {content: "Excellent", return: "90-100"},
                             {content: "Verry Good", return: "75-90"},
