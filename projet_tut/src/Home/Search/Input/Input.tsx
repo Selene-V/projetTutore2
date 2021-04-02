@@ -12,7 +12,7 @@ const Input = (props: { setSearchInfo: any; searchInfo: any; name: any; type: an
 
     function addInTable(id: string, value: string, addInTable: boolean) {
         // bug if you have add identique value 2 times
-        if(value!==""){
+        if (value !== "") {
             let table = {...props.searchInfo};
             if (addInTable) {
                 if (table[id] === undefined)
@@ -21,8 +21,8 @@ const Input = (props: { setSearchInfo: any; searchInfo: any; name: any; type: an
             } else {
                 table[id] = value;
             }
-            setSaveContent("");
             props.setSearchInfo(table);
+            setSaveContent("");
         }
     }
 
@@ -39,7 +39,7 @@ const Input = (props: { setSearchInfo: any; searchInfo: any; name: any; type: an
                             <label>
                                 <input type={props.type}
                                        className="w-full border border-gray-300 p-2 my-2 rounded-md focus:outline-none focus:ring-2 ring-blue-200"
-                                       onChange={(event) => addInTable(props.name, event.target.value, false)}/>
+                                       onChange={(event) => addInTable(props.name, event.target.value.trim(), false)}/>
 
                             </label>
                             :
@@ -55,7 +55,8 @@ const Input = (props: { setSearchInfo: any; searchInfo: any; name: any; type: an
                         <label>
                             <input type={props.type}
                                    className="w-full border border-gray-300 p-2 my-2 rounded-md focus:outline-none focus:ring-2 ring-blue-200"
-                                   onChange={(event) => setSaveContent(event.target.value)}/>
+                                   value={saveContent}
+                                   onChange={(event) => setSaveContent(event.target.value.trim())}/>
                             <button className="bg-gray-200 hover:bg-green-400 px-2 py-1 rounded-lg"
                                     onClick={() => addInTable(props.name, saveContent, true)}>Send
                             </button>

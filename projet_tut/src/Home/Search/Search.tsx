@@ -95,7 +95,7 @@ const Search = (props: {
             </div>
 
             <div
-                className={classCss + " w-full text-sm Forigin-top-right absolute right-0 mt-1 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 divide-y divide-gray-100 focus:outline-none"}
+                className={classCss + " w-full text-sm Forigin-top-right absolute right-0 mt-1 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 divide-y divide-gray-100 focus:outline-none bg-white"}
                 role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
                 <div>
                     <div className="w-3/5 mx-auto">

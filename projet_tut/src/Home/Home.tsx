@@ -27,24 +27,10 @@ const Home = (props: {
         "User Tag": [],
         "Positive Reviews": "90-100",
         "Minimum Age": 3,
-        Platform: [],
+        Platforms: [],
     })
 
-    let traiterSearchNameDebounce = debounce(searchInfo, 600);
-
-    async function getValue() {
-        return await fetch("http://projettutore2back/games/" + actualyPage)
-            .then(reponse => {
-                if (reponse.status === 200) {
-                    return reponse.json()
-                } else {
-                    return reponse.status
-                }
-            })
-            .then(function (json) {
-                return json;
-            });
-    }
+    let traiterSearchNameDebounce = debounce(searchInfo, 1200);
 
     async function searchAll() {
         return await fetch("http://projettutore2back/advancedSearch",
@@ -117,8 +103,7 @@ const Home = (props: {
 
     function transformeInStringParam() {
         let copieTable = {...traiterSearchNameDebounce}
-        let allInfo: string = "";
-        allInfo += "page=" + actualyPage;
+        let allInfo = "page=" + actualyPage;
         for (const key in copieTable) {
             switch (key) {
                 case "Platform": {

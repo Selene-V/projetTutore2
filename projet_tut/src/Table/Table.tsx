@@ -21,7 +21,6 @@ const Table = (props: {
                         <div className="text-left w-full px-5 py-3 space-y-4 w-6/12">
                             <div className="flex justify-between">
                                 <div>{value.name}</div>
-                                <div className="font-semibold text-gray-700">${value.price}</div>
                             </div>
                             <div className="flex justify-between">
                                 <div className="space-y-2 w-2/5 text-left">
