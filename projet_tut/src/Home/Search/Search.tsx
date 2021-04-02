@@ -106,10 +106,12 @@ const Search = (props: {
                     </div>
                 </div>
                 <div className="flex justify-center">
-                    <Input searchInfo={props.searchInfo} name="Publisher" type="text" select={null} contentTable={false}
+                    <Input searchInfo={props.searchInfo} name="Publisher" type="text" select={null} contentTable={true}
                            setSearchInfo={props.setSearchInfo}/>
-                    <Input searchInfo={props.searchInfo} name="Developer" type="text" select={null} contentTable={false}
+                    <Input searchInfo={props.searchInfo} name="Developer" type="text" select={null} contentTable={true}
                            setSearchInfo={props.setSearchInfo}/>
+                    <Input setSearchInfo={props.setSearchInfo} searchInfo={props.searchInfo} name={"Platform"}
+                           type={"text"} select={null} contentTable={true}/>
                 </div>
                 <div className="flex w-full justify-center">
                     <Input searchInfo={props.searchInfo} name="Minimum Age" type={null} select={

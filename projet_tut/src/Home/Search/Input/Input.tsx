@@ -26,7 +26,6 @@ const Input = (props: { setSearchInfo: any; searchInfo: any; name: any; type: an
         }
     }
 
-    console.log(props.searchInfo)
     return (
         <div className="p-1 text-left" role="none">
             <div className="my-auto">

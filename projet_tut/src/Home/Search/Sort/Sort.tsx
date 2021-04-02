@@ -1,25 +1,26 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 
 const Short = (props: { searchInfo: any; setSearchInfo: any }) => {
     const listOption = [
-        {option: "Game Name", sorder: "A - Z", disorder: "Z - A"},
-        {option: "Release Date", sorder: "Recent - Old", disorder: "Old - Recent"},
-        {option: "Developer", sorder: "A - Z", disorder: "Z - A"},
-        {option: "Publisher", sorder: "A - Z", disorder: "Z - A"},
-        {option: "Minimum Age", sorder: "Ascending", disorder: "Descending"},
-        {option: "Positive Reviews", sorder: "Scending", disorder: "Descending"}
+        {option: "Game Name", value: "name", sorder: "A - Z", disorder: "Z - A"},
+        {option: "Release Date", value: "release_date", sorder: "Recent - Old", disorder: "Old - Recent"},
+        {option: "Developer", value: "developer", sorder: "A - Z", disorder: "Z - A"},
+        {option: "Publisher", value: "publisher", sorder: "A - Z", disorder: "Z - A"},
+        {option: "Minimum Age", value: "required_age", sorder: "Ascending", disorder: "Descending"},
+        {option: "Positive Reviews", value: "positive_ratings", sorder: "Scending", disorder: "Descending"}
     ]
     const [optionSelected, setOptionSelected] = useState(listOption[0])
     const [clickButon, setClickButon] = useState(true);
 
     function takeInformation() {
         let reponse = {...props.searchInfo}
+        let value = "";
         if (clickButon) {
-            reponse = optionSelected.option + "-asc";
+            value = optionSelected.value + "-asc";
         } else {
-            reponse = optionSelected.option + "-deasc";
+            value = optionSelected.value + "-desc";
         }
-        reponse["Sort"] = reponse;
+        reponse["Sort"] = value;
         props.setSearchInfo(reponse)
     }
 
@@ -30,6 +31,10 @@ const Short = (props: { searchInfo: any; setSearchInfo: any }) => {
             setClickButon(true);
         }
     }
+
+    useEffect(() => {
+        takeInformation();
+    }, [clickButon, optionSelected])
 
     return (
         <div className="w-full flex space-x-10 text-2xl justify-center ">
