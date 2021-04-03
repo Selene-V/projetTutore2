@@ -2,7 +2,7 @@ import React from "react";
 
 const LongDescription=(props: { long_description: React.ReactNode; })=>{
     return(
-        <div className="mt-8 bg-white rounded-xl w-12/12">
+        <div className="mt-3 lg:mt-8 xl:mt-8 bg-white rounded-xl w-12/12">
             <div className="bg-green-500 rounded-t-xl">
                 <p className="ml-2">Long description</p>
             </div>

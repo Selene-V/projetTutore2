@@ -6,7 +6,7 @@ const Icons = (props: {
     isClickForDetail: any;
 }) => {
     return (
-        <div className="flex flex-wrap -mx-6 overflow-hidden sm:-mx-4 md:-mx-4 lg:-mx-12 xl:-mx-12">
+        <div className="text-sm flex flex-wrap -mx-6 overflow-hidden mt-2 lg:-mx-12 lg:text-xl xl:-mx-12 xl:text-xl">
             {props.tableInfo.map((value, index) => (
                     <div key={"case-" + (value.id).toString()}
                          onClick={() => props.setIsClickForDetail(value.id)}

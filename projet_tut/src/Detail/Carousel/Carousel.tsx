@@ -18,12 +18,12 @@ const Carousel = (props: { img: any; }) => {
                                 <input className="carousel-open" type="radio" id={"carousel-" + index} name={"carousel"}
                                        defaultChecked={index === 0}
                                        hidden={true}/>
-                                <div className="carousel-item absolute opacity-0 carousel_size flex items-start">
+                                <div className="carousel-item absolute opacity-0 lg:carousel_size xl:carousel_size flex items-start">
                                     <div
-                                        className="block h-full w-full bg-green-500 text-white text-5xl text-center p-16 rounded-xl">
+                                        className="block h-full w-full text-white text-5xl text-center rounded-xl xl:bg-green-500 lg:bg-green-500 p-16">
                                         <img src={value.path_thumbnail}
                                              alt="test"
-                                             className=" mx-auto sizeImg rounded-2xl"/>
+                                             className=" mx-auto lg:rounded-2xl xl:rounded-2xl lg:sizeImg xl:sizeImg"/>
                                     </div>
                                 </div>
 
@@ -38,7 +38,7 @@ const Carousel = (props: { img: any; }) => {
                     )
                 }
 
-                <ol className="carousel-indicators">
+                <ol className="hidden carousel-indicators lg:block xl:block ">
                     {props.img.map((value: any, index: string) => (
                         <li className="inline-block mr-3" key={index}>
                             <label htmlFor={"carousel-" + index}

@@ -2,7 +2,7 @@ import React from "react";
 
 const Publicher = (props: { publisher: string[]; }) => {
     return (
-        <div className="mt-8 bg-white rounded-xl">
+        <div className="mt-3 lg:mt-8 xl:mt-8 bg-white rounded-xl">
             <div className="bg-green-500 rounded-t-xl">
                 <p className="ml-2">Publisher</p>
             </div>
