@@ -4,11 +4,13 @@ import Detail from "./Detail/Detail";
 import Menu from "./Menu/Menu";
 import React, {useEffect, useState} from "react";
 import Conection from "./Conection/Conection";
+import Registration from "./Registration/Registration";
 
 function App() {
     const [isClickForDetail, setIsClickForDetail] = useState("");
     const [isConected, setIsConected] = useState(false);
     const [onclickConection, setOnclickConection] = useState(false);
+    const [onclickRegister, setOnclickRegister] = useState(false);
 
     useEffect(() => {
         setIsClickForDetail(isClickForDetail);
@@ -18,10 +20,20 @@ function App() {
         return (
             <div className="App">
                 <header className="App-header">
-                    <Conection setOnclickConection={setOnclickConection}/>
+                    <Conection setOnclickConection={setOnclickConection} setOnclickRegister={setOnclickRegister}/>
                 </header>
             </div>
         );
+    }
+
+    if (onclickRegister) {
+        return (
+            <div className="App">
+                <header className="App-header">
+                    <Registration setOnclickRegister={setOnclickRegister} setOnclickConection={setOnclickConection}/>
+                </header>
+            </div>
+        )
     }
 
     return (

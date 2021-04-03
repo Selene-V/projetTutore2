@@ -1,6 +1,6 @@
 import React from "react";
 
-const Connection = (props: { setOnclickConection: any; }) => {
+const Connection = (props: { setOnclickConection: any; setOnclickRegister: any }) => {
     return (
         <div className="flex">
             <div className=" px-6 w-full
@@ -10,7 +10,7 @@ const Connection = (props: { setOnclickConection: any; }) => {
                 <div className="max-w-md w-full space-y-8">
                     <div>
                         <img className="mx-auto h-12 w-auto hover:bg-gray-700 transition duration-500 ease-in-out"
-                             onClick={()=>props.setOnclickConection(false)}
+                             onClick={() => props.setOnclickConection(false)}
                              src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg" alt="Workflow"/>
                         <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-200">
                             Sign in to your account
@@ -40,6 +40,21 @@ const Connection = (props: { setOnclickConection: any; }) => {
                             </button>
                         </div>
                     </form>
+                    <div className="flex space-x-4">
+                        <button
+                            onClick={() => {
+                                props.setOnclickRegister(true);
+                                props.setOnclickConection(false);
+                            }}
+                            className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-500 hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                            Registration
+                        </button>
+                        <button
+                            onClick={() => props.setOnclickConection(false)}
+                            className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-red-400 hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                            Go Back
+                        </button>
+                    </div>
                 </div>
             </div>
             <img className="hidden
