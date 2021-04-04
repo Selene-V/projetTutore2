@@ -106,12 +106,19 @@ const Search = (props: {
                     </div>
                 </div>
                 <div className="flex justify-center">
-                    <Input table={props.searchInfo} name="Publisher" type="text" select={null} contentTable={true}
-                           setTable={props.setSearchInfo}/>
-                    <Input table={props.searchInfo} name="Developer" type="text" select={null} contentTable={true}
-                           setTable={props.setSearchInfo}/>
-                    <Input setTable={props.setSearchInfo} table={props.searchInfo} name={"Platform"}
-                           type={"text"} select={null} contentTable={true}/>
+                    <div className="w-1/3">
+                        <Input table={props.searchInfo} name="Publisher" type="text" select={null} contentTable={true}
+                               setTable={props.setSearchInfo}/>
+                    </div>
+                    <div className="w-1/3">
+                        <Input table={props.searchInfo} name="Developer" type="text" select={null} contentTable={true}
+                               setTable={props.setSearchInfo}/>
+                    </div>
+                    <div className="w-1/3">
+                        <Input setTable={props.setSearchInfo} table={props.searchInfo} name={"Platform"}
+                               type={"text"} select={null} contentTable={true}/>
+                    </div>
+
                 </div>
                 <div className="flex w-full justify-center">
                     <Input table={props.searchInfo} name="Minimum Age" type={undefined} select={
@@ -137,12 +144,18 @@ const Search = (props: {
                     />
                 </div>
                 <div className="flex justify-center">
-                    <Input table={props.searchInfo} name="Categories" type="text" select={null} contentTable={true}
-                           setTable={props.setSearchInfo}/>
-                    <Input table={props.searchInfo} name="Kind" type="text" select={null} contentTable={true}
-                           setTable={props.setSearchInfo}/>
-                    <Input table={props.searchInfo} name="User Tag" type="text" select={null} contentTable={true}
-                           setTable={props.setSearchInfo}/>
+                    <div className="w-1/3">
+                        <Input table={props.searchInfo} name="Categories" type="text" select={null} contentTable={true}
+                               setTable={props.setSearchInfo}/>
+                    </div>
+                    <div className="w-1/3">
+                        <Input table={props.searchInfo} name="Kind" type="text" select={null} contentTable={true}
+                               setTable={props.setSearchInfo}/>
+                    </div>
+                    <div className="w-1/3">
+                        <Input table={props.searchInfo} name="User Tag" type="text" select={null} contentTable={true}
+                               setTable={props.setSearchInfo}/>
+                    </div>
                 </div>
                 <div className="flex">
                     <div className="w-4/12 my-auto h-full">

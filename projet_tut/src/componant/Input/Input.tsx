@@ -52,18 +52,19 @@ const Input = (props: { setTable: any; table: any; name: string; type: string | 
                     </div>
                     :
                     <div>
-                        <label>
+                        <label className="flex">
                             <input type={props.type}
-                                   className="w-full border border-gray-300 p-2 my-2 rounded-md focus:outline-none focus:ring-2 ring-blue-200"
+                                   className="w-full border border-gray-300 p-2 my-2 rounded-l-lg focus:outline-none focus:ring-2 ring-blue-200"
                                    value={saveContent}
                                    onChange={(event) => setSaveContent(event.target.value.trim())}/>
-                            <button className="bg-gray-200 hover:bg-green-400 px-2 py-1 rounded-lg"
+                            <button className="bg-gray-200 hover:bg-green-400 px-2 rounded-r-lg h-10 my-auto"
                                     onClick={() => addInTable(props.name, saveContent, true)}>Send
                             </button>
                         </label>
+
                         {
                             props.table[props.name] !== undefined ?
-                                <div>{props.table[props.name].map((value: string, index: number) =>
+                                <div className="flex flex-wrap space-x-1">{props.table[props.name].map((value: string, index: number) =>
                                     <div className="bg-gray-100 rounded-lg duration-300 hover:bg-green-200" key={value}>
                                         <button className="transform hover:-rotate-90 duration-300"
                                                 onClick={() => deleteInTable(index)}>
