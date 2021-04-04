@@ -1,19 +1,19 @@
 import React, {useState} from "react";
 
-const Input = (props: { setSearchInfo: any; searchInfo: any; name: string; type: string | undefined; select: { content: any, return: any }[] | null; contentTable: boolean; }) => {
+const Input = (props: { setTable: any; table: any; name: string; type: string | undefined; select: { content: any, return: any }[] | null; contentTable: boolean; }) => {
 
     const [saveContent, setSaveContent] = useState("");
 
     function deleteInTable(index: number) {
-        let table = {...props.searchInfo}
+        let table = {...props.table}
         delete table[props.name][index]
-        props.setSearchInfo(table);
+        props.setTable(table);
     }
 
     function addInTable(id: string, value: string, addInTable: boolean) {
         // bug if you have add identique value 2 times
         if (value !== "") {
-            let table = {...props.searchInfo};
+            let table = {...props.table};
             if (addInTable) {
                 if (table[id] === undefined)
                     table[id] = [];
@@ -21,7 +21,7 @@ const Input = (props: { setSearchInfo: any; searchInfo: any; name: string; type:
             } else {
                 table[id] = value;
             }
-            props.setSearchInfo(table);
+            props.setTable(table);
             setSaveContent("");
         }
     }
@@ -62,8 +62,8 @@ const Input = (props: { setSearchInfo: any; searchInfo: any; name: string; type:
                             </button>
                         </label>
                         {
-                            props.searchInfo[props.name] !== undefined ?
-                                <div>{props.searchInfo[props.name].map((value: string, index: number) =>
+                            props.table[props.name] !== undefined ?
+                                <div>{props.table[props.name].map((value: string, index: number) =>
                                     <div className="bg-gray-100 rounded-lg duration-300 hover:bg-green-200" key={value}>
                                         <button className="transform hover:-rotate-90 duration-300"
                                                 onClick={() => deleteInTable(index)}>
