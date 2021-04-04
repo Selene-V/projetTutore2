@@ -3,7 +3,7 @@ import React from "react";
 const ShortDescription = (props: { short_description: string; }) => {
 
     return (
-        <div className="bg-white rounded-xl">
+        <div className="mt-3 lg:mt-0 xl:mt-0 bg-white rounded-xl">
             <div className="bg-green-500 rounded-t-xl">
                 <p className="ml-2">Short Description</p>
             </div>
