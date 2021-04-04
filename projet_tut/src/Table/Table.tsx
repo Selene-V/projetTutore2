@@ -5,10 +5,9 @@ import Platform from "../Platform";
 const Table = (props: {
     tableInfo: any[];
     setIsClickForDetail: any;
-    isClickForDetail: any;
+    isClickForDetail: string;
 }) => {
-
-    console.log(props.tableInfo);
+    console.log(props.tableInfo[0].developer)
 
     if (props.tableInfo !== undefined) {
         return (
@@ -22,20 +21,19 @@ const Table = (props: {
                         <div className="text-left w-full px-5 py-3 space-y-4 w-6/12">
                             <div className="flex justify-between">
                                 <div>{value.name}</div>
-                                <div className="font-semibold text-gray-700">${value.price}</div>
                             </div>
                             <div className="flex justify-between">
                                 <div className="space-y-2 w-2/5 text-left">
                                     <div className="flex space-x-3 text-base">
                                         <div className="w-1/3">{value.releaseDate}</div>
                                         <div
-                                            className="2/3">{value.developer.replace(';', ' and ')}</div>
+                                            className="2/3">{value.developer}</div>
                                     </div>
                                     <div className="text-lg">Positive
                                         Review: {Math.round((parseInt(value.positiveRatings) / (parseInt(value.positiveRatings) + parseInt(value.negativeRatings))) * 100)}%
                                     </div>
                                     <div
-                                        className="text-2xl flex space-x-2">{value.platforms.split(";").map((result: string, secondIndex: number) =>
+                                        className="text-2xl flex space-x-2">{value.platforms.map((result: string, secondIndex: number) =>
                                         <div key={secondIndex}>
                                             <Platform platform={result}/>
                                         </div>

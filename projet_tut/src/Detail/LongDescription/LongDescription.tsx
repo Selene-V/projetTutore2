@@ -1,6 +1,6 @@
 import React from "react";
 
-const LongDescription=(props: { long_description: React.ReactNode; })=>{
+const LongDescription=(props: { long_description: string; })=>{
     return(
         <div className="mt-8 bg-white rounded-xl w-12/12">
             <div className="bg-green-500 rounded-t-xl">

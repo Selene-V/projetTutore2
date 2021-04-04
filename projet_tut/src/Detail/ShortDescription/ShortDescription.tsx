@@ -1,6 +1,6 @@
 import React from "react";
 
-const ShortDescription = (props: { short_description: React.ReactNode; }) => {
+const ShortDescription = (props: { short_description: string; }) => {
 
     return (
         <div className="bg-white rounded-xl">

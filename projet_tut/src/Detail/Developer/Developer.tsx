@@ -1,6 +1,6 @@
 import React from "react";
 
-const Developer = (props: { developer: React.ReactNode; }) => {
+const Developer = (props: { developer: string; }) => {
 
     return (
         <div className="mt-8 bg-white rounded-xl">

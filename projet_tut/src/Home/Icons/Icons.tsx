@@ -3,11 +3,11 @@ import React from "react";
 const Icons = (props: {
     tableInfo: any[];
     setIsClickForDetail: any;
-    isClickForDetail: any;
+    isClickForDetail: string;
 }) => {
     return (
         <div className="flex flex-wrap -mx-6 overflow-hidden sm:-mx-4 md:-mx-4 lg:-mx-12 xl:-mx-12">
-            {props.tableInfo.map((value, index) => (
+            {props.tableInfo.map((value:any) => (
                     <div key={"case-" + (value.id).toString()}
                          onClick={() => props.setIsClickForDetail(value.id)}
                          className="my-2 px-6 w-2/5 overflow-hidden sm:my-4 sm:px-2 sm:w-1/2 md:my-4 md:px-2 md:w-1/2 lg:my-10 lg:px-6 lg:w-1/4 xl:my-10 xl:px-6 xl:w-1/4

@@ -4,20 +4,40 @@ import Table from "../Table/Table";
 import Pagination from "./Pagination/Pagination";
 import Icons from "./Icons/Icons";
 import Search from "./Search/Search";
-import Sort from "./Sort/Sort";
+import Sort from "./Search/Sort/Sort";
 import Loading from "../Loading/Loading";
 import Error from "../Error/Error";
 
+import debounce from '../function/useDebounce'
+
 const Home = (props: {
     setIsClickForDetail: any;
-    isClickForDetail: any;
+    isClickForDetail: string;
 }) => {
     const [switchButton, setSwitchButton] = useState(false);
     const [actualyPage, setActualyPage] = useState(1);
     const [maxPage, setMaxPage] = useState(1);
+    const [infoGame, setInfoGame] = useState<any>();
+    const [error, setError] = useState<number>(0);
+    const [searchInfo, setSearchInfo] = useState<any>({
+        Categories: [],
+        Developer: [],
+        Kind: [],
+        Publisher: [],
+        "User Tag": [],
+        "Positive Reviews": "90-100",
+        "Minimum Age": 3,
+        Platforms: [],
+    })
 
-    async function getValue() {
-        return await fetch("http://projettutore2back/games/" + actualyPage)
+    let traiterSearchNameDebounce = debounce(searchInfo, 1200);
+
+    async function searchAll() {
+        return await fetch("http://projettutore2back/advancedSearch",
+            {
+                method: 'post',
+                body: transformeInStringParam()
+            })
             .then(reponse => {
                 if (reponse.status === 200) {
                     return reponse.json()
@@ -26,47 +46,29 @@ const Home = (props: {
                 }
             })
             .then(function (json) {
-                console.log(json)
                 return json;
             });
     }
 
-    const [infoGame, setInfoGame] = useState<any>();
-    const [error, setError] = useState<number>(0);
-
-    useEffect(() => {
-        setInfoGame(undefined);
-        getValue()
-            .then(
-                x => {
-                    if (typeof x === 'number') {
-                        setInfoGame(null);
-                        setError(x);
-                    } else {
-                        setInfoGame(x.games);
-                        setMaxPage(x.nbPages)
-                    }
-                }
-            )
-    }, [actualyPage]);
-
-    if (infoGame === undefined) {
-        return (<Loading/>)
-    } else if (infoGame === null) {
-        <Error error={error}/>
-    }
-
-    console.log(infoGame);
-    return (
-        <div className="w-full">
-            <div className="flex">
-                <div className="w-1/12"/>
-                <div className="w-10/12">
-                    <div className="flex mx-3 justify-between mt-5">
-                        <Search setInfoGame={setInfoGame}/>
-                        <Sort/>
-                        <Switch switchButton={setSwitchButton}/>
+    function display() {
+        switch (true) {
+            case infoGame === undefined: {
+                return (<Loading/>)
+            }
+            case infoGame === null: {
+                return (
+                    <Error error={error}/>
+                )
+            }
+            case infoGame.length === 0: {
+                return (
+                    <div className="justify-center self-center justify-self-center my-auto">
+                        The parameters entered do not allow you to find games
                     </div>
+                )
+            }
+            default: {
+                return (
                     <div>
                         {
                             !switchButton ?
@@ -93,6 +95,150 @@ const Home = (props: {
                                                 gamesByPage={maxPage}
                                     />
                                 </div>
+                        }
+                    </div>)
+            }
+        }
+    }
+
+    function transformeInStringParam() {
+        let copieTable = {...traiterSearchNameDebounce}
+        let allInfo = "page=" + actualyPage;
+        for (const key in copieTable) {
+            switch (key) {
+                case "Platform": {
+                    if (copieTable["Platform"].length !== 0) {
+                        allInfo += "&platforms=" + copieTable["Platform"].map((value: string) => {
+                            value.replace(" ", "~")
+                        }).join("+")
+                    }
+                }
+                    break;
+                case "Developer": {
+                    if (copieTable["Developer"].length !== 0) {
+                        allInfo += "&developer=" + (copieTable["Developer"].join("+")).replace(" ", "~")
+                    }
+                }
+                    break;
+                case "Game Name": {
+                    if (copieTable["Positive Reviews"] !== "") {
+                        allInfo += "&name=" + copieTable["Game Name"]
+                    }
+                }
+
+                    break;
+                case "Sort": {
+                    if (copieTable["Positive Reviews"] !== "") {
+                        allInfo += "&sorting=" + copieTable["Sort"]
+                    }
+                }
+                    break;
+                case "Positive Reviews": {
+                    if (copieTable["Positive Reviews"] !== "") {
+                        let table = copieTable["Positive Reviews"].split('-');
+                        allInfo += "&review_rate_low=" + table[0];
+                        allInfo += "&review_rate_high=" + table[1];
+                    }
+                }
+                    break;
+                case "End Date": {
+                    allInfo += "&release_date_end=" + copieTable["End Date"]
+                }
+                    break;
+                case "Start Date": {
+                    allInfo += "&release_date_begin=" + copieTable["Start Date"]
+                }
+                    break;
+                case "User Tag": {
+                    if (copieTable["User Tag"].length !== 0) {
+                        allInfo += "&steamspy_tags+" + (copieTable["User Tag"].join("+")).replace(" ", "~")
+                    }
+                }
+                    break;
+                case "Publisher": {
+                    if (copieTable["Publisher"].length !== 0) {
+                        allInfo += "&publisher=";
+                        allInfo += (copieTable["Publisher"].join("+")).replace(" ", "~")
+                    }
+                }
+                    break;
+                case "Kind": {
+                    if (copieTable["Kind"].length !== 0) {
+                        allInfo += "&genres=" + (copieTable["Kind"].join("+")).replace(" ", "~")
+                    }
+                }
+                    break;
+                case "Minimum Age": {
+                    allInfo += "&required_age=" + copieTable["Minimum Age"];
+                }
+                    break;
+                case "Categories": {
+                    if (copieTable["Categories"].length !== 0) {
+                        allInfo += "&categories=" + (copieTable["Categories"].join("+")).replace(" ", "~")
+                    }
+                }
+                    break;
+                case "Precise Date": {
+                    allInfo += "&release_date=" + copieTable["Precise Date"]
+                }
+                    break;
+                case "Year": {
+                    allInfo += "&release_date=" + copieTable["Year"]
+                }
+                    break;
+                default:
+                    console.log(error);
+            }
+        }
+        return allInfo;
+
+    }
+
+    useEffect(() => {
+        setInfoGame(undefined);
+        searchAll()
+            .then(
+                x => {
+                    if (typeof x === 'number') {
+                        setInfoGame(null);
+                        setError(x);
+                    } else {
+                        setInfoGame(x.games);
+                        setMaxPage(x.nbPages);
+                    }
+                }
+            )
+    }, [actualyPage]);
+
+    useEffect(() => {
+        console.log(transformeInStringParam());
+        setInfoGame(undefined);
+        setActualyPage(1);
+        searchAll()
+            .then(
+                x => {
+                    if (typeof x === 'number') {
+                        setInfoGame(null);
+                        setError(x);
+                    } else {
+                        setInfoGame(x.games);
+                        setMaxPage(x.nbPages);
+                    }
+                }
+            )
+    }, [traiterSearchNameDebounce])
+    return (
+        <div className="w-full">
+            <div className="flex">
+                <div className="w-1/12"/>
+                <div className="w-10/12">
+                    <div className="flex mx-3 justify-between mt-5">
+                        <Search setSearchInfo={setSearchInfo} searchInfo={searchInfo}/>
+                        <Switch switchButton={setSwitchButton}/>
+                    </div>
+                    <div>
+                        {
+                            display()
                         }
                     </div>
                 </div>

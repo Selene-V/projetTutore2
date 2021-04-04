@@ -7,14 +7,12 @@ import Conection from "./Conection/Conection";
 
 function App() {
     const [isClickForDetail, setIsClickForDetail] = useState("");
-    const [isConected, setIsConected] = useState(undefined);
+    const [isConected, setIsConected] = useState(false);
     const [onclickConection, setOnclickConection] = useState(false);
 
     useEffect(() => {
         setIsClickForDetail(isClickForDetail);
     });
-
-    console.log(onclickConection);
 
     if (onclickConection) {
         return (
@@ -32,7 +30,8 @@ function App() {
                 <Menu setIsClickForDetail={setIsClickForDetail} isConected={isConected}
                       setOnclickConection={setOnclickConection}/>
                 {isClickForDetail ?
-                    <Detail setIsClickForDetail={setIsClickForDetail} isClickForDetail={isClickForDetail} isConected={isConected}
+                    <Detail setIsClickForDetail={setIsClickForDetail} isClickForDetail={isClickForDetail}
+                            isConected={isConected}
                     /> :
                     <Home setIsClickForDetail={setIsClickForDetail} isClickForDetail={isClickForDetail}
                     />}

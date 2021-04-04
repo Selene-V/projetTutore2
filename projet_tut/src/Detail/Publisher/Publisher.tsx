@@ -7,7 +7,7 @@ const Publicher = (props: { publisher: string[]; }) => {
                 <p className="ml-2">Publisher</p>
             </div>
             <div className="m-1 p-2 text-black">
-                <p>{props.publisher.map((value: string, index: number) => <div key={index}>{value}</div>)}</p>
+                {props.publisher.map((value: string, index: number) => <div key={index}>{value}</div>)}
             </div>
         </div>
     );

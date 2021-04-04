@@ -4,7 +4,7 @@ import Table from "../../Table/Table";
 const RelatedGames = (props: {
     relatedGames: any[];
     setIsClickForDetail: any;
-    isClickForDetail: any;
+    isClickForDetail: string;
 }) => {
     return (
         <div className="mt-4 bg-white rounded-xl">
