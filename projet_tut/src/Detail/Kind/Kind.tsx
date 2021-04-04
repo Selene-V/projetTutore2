@@ -2,7 +2,7 @@ import React from "react";
 
 const Kind = (props: { kind: string[]; }) => {
     return (
-        <div className="bg-white rounded-xl w-2/12">
+        <div className="mt-3 lg:mt-0 xl:mt-0 bg-white rounded-xl lg:w-2/12 xl:w-2/12">
             <div className="bg-green-500 rounded-t-xl">
                 <p className="ml-2">Kind</p>
             </div>

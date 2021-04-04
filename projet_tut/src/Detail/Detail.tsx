@@ -59,23 +59,25 @@ const Detail = (props: {
 
     return (
         <div className="flex">
-            <div className="w-1/12"/>
-            <div className="w-10/12">
+            <div className="lg:w-1/12 xl:w-1/12"/>
+            <div className="lg:w-10/12 xl:w-10/12">
                 <div className="mt-8 text-2xl my-4">
-                    <div className="ml-4 text-white flex justify-between">
-                        <div className="w-3/12 img_size">
+                    <div className="ml-4 text-white justify-between lg:flex xl:flex">
+                        <div className="w-full
+                        lg:w-3/12 img_size
+                        ">
                             <img src={detailGame.image.headerImage} className="sizeImg mx-auto" alt="test"/>
                         </div>
-                        <div className="w-8/12 ml-4 text-white text-left">
-                            <div className="flex mt-5 text-5xl">
-                                <p>{detailGame.name}</p>
+                        <div className="ml-4 text-white text-center lg:w-8/12 text-left xl:w-8/12 text-left">
+                            <div className="mt-5 text-5xl lg:flex xl:flex">
+                                <p className="xl:text-5xl lg:text-5xl">{detailGame.name}</p>
                             </div>
                             <div className="mt-5 space-x-3 text-lg">
                                 <div>
-                                    <p>{detailGame.releaseDate}</p>
+                                    <p className="text-sm xl:text-2xl lg:text-2xl">{detailGame.releaseDate}</p>
                                 </div>
-                                <div className="flex space-x-2">
-                                    {detailGame.platforms.map((value: string, index: number) => <div
+                                <div className="space-x-2 inline-flex content-center lg:flex xl:flex">
+                                    {detailGame.platforms.map((value: string, index: number) => <div  className="text-sm xl:text-2xl lg:text-2xl"
                                             key={index}>
                                             <Platform platform={value}/>
                                         </div>
@@ -101,17 +103,17 @@ const Detail = (props: {
 
                         </div>
                     </div>
-                    <div className="text-left flex mt-20">
-                        <div className="w-3/5 text-lg">
+                    <div className="text-left lg:flex lg:mt-20 xl:flex xl:mt-20">
+                        <div className="lg:w-3/5 xl:w-3/5 text-lg">
                             <Carousel img={detailGame.image.screenshots}/>
-                            <div className="flex space-x-5 mt-8">
+                            <div className="lg:mt-8 lg:space-x-5 xl:space-x-5 xl:mt-8 lg:flex xl:flex">
                                 <SystemRequirement
                                     system_requirement={detailGame.requirement.minimum.replace(/<(?:.|\n)*?>/gm, '')}/>
                                 <Category categories={detailGame.categories}/>
                                 <Kind kind={detailGame.genres}/>
                             </div>
                         </div>
-                        <div className="w-2/5 ml-4 text-lg">
+                        <div className="lg:w-2/5 lg:ml-4 text-lg xl:w-2/5 xl:ml-4 text-lg ">
                             <ShortDescription
                                 short_description={detailGame["description"]['shortDescription']}/>
                             <Developer developer={detailGame.developer}/>
@@ -140,7 +142,7 @@ const Detail = (props: {
                         long_description={detailGame.description.detailedDescription.replace(/<(?:.|\n)*?>/gm, '')}/>
                 </div>
             </div>
-            <div className="w-1/12"/>
+            <div className="lg:w-1/12 xl:w-1/12"/>
         </div>
     );
 }

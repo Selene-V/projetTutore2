@@ -211,7 +211,6 @@ const Home = (props: {
     }, [actualyPage]);
 
     useEffect(() => {
-        console.log(transformeInStringParam());
         setInfoGame(undefined);
         setActualyPage(1);
         searchAll()
@@ -227,6 +226,7 @@ const Home = (props: {
                 }
             )
     }, [traiterSearchNameDebounce])
+
     return (
         <div className="w-full">
             <div className="flex">
