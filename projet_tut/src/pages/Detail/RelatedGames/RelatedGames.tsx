@@ -1,5 +1,5 @@
 import React from "react";
-import Table from "../../Table/Table";
+import Table from "../../../componant/Table/Table";
 
 const RelatedGames = (props: {
     relatedGames: any[];

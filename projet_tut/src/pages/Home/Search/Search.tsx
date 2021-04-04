@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import Input from "../../Input/Input";
+import Input from "../../../componant/Input/Input";
 import Sort from "./Sort/Sort";
 
 

@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import Input from "../Input/Input";
+import Input from "../../componant/Input/Input";
 
 const Registration = (props: { setOnclickRegister: (arg0: boolean) => void; setOnclickConection: (arg0: boolean) => void; }) => {
 

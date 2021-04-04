@@ -1,6 +1,6 @@
 import React from "react";
 import Loading from "../Loading/Loading";
-import Platform from "../Platform";
+import Platform from "../../Platform";
 
 const Table = (props: {
     tableInfo: any[];

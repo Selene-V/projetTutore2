@@ -10,9 +10,9 @@ import Kind from "./Kind/Kind";
 import LongDescription from "./LongDescription/LongDescription";
 import RelatedGames from "./RelatedGames/RelatedGames";
 import React, {useEffect, useState} from "react";
-import Loading from "../Loading/Loading";
-import Error from "../Error/Error";
-import Platform from "../Platform";
+import Loading from "../../componant/Loading/Loading";
+import Error from "../../componant/Error/Error";
+import Platform from "../../Platform";
 
 const Detail = (props: {
     setIsClickForDetail: any;

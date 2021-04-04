@@ -1,10 +1,10 @@
 import './App.css';
-import Home from "./Home/Home";
-import Detail from "./Detail/Detail";
-import Menu from "./Menu/Menu";
+import Home from "./pages/Home/Home";
+import Detail from "./pages/Detail/Detail";
+import Menu from "./componant/Menu/Menu";
 import React, {useEffect, useState} from "react";
-import Conection from "./Conection/Conection";
-import Registration from "./Registration/Registration";
+import Conection from "./pages/Conection/Conection";
+import Registration from "./pages/Registration/Registration";
 
 function App() {
     const [isClickForDetail, setIsClickForDetail] = useState("");
