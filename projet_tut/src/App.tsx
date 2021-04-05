@@ -39,8 +39,7 @@ function App() {
     return (
         <div className="App">
             <header className="App-header">
-                <Menu setIsClickForDetail={setIsClickForDetail} isConected={isConected}
-                      setOnclickConection={setOnclickConection}/>
+                <Menu isConected={isConected} setOnclickConection={setOnclickConection}/>
                 {isClickForDetail ?
                     <Detail setIsClickForDetail={setIsClickForDetail} isClickForDetail={isClickForDetail}
                             isConected={isConected}
