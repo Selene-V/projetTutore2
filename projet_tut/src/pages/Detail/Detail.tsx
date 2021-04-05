@@ -6,13 +6,13 @@ import TagClan from "./TagClan/TagClan";
 import SystemRequirement from "./SystemRequirement/SystemRequirement";
 import "./Detail.css"
 import Category from "./Category/Category";
-import Kind from "./Kind/Kind";
 import LongDescription from "./LongDescription/LongDescription";
 import RelatedGames from "./RelatedGames/RelatedGames";
 import React, {useEffect, useState} from "react";
 import Loading from "../../componant/Loading/Loading";
 import Error from "../../componant/Error/Error";
 import Platform from "../../Platform";
+import Genre from "./Genre/Genre";
 
 const Detail = (props: {
     setIsClickForDetail: any;
@@ -110,7 +110,7 @@ const Detail = (props: {
                                 <SystemRequirement
                                     system_requirement={detailGame.requirement.minimum.replace(/<(?:.|\n)*?>/gm, '')}/>
                                 <Category categories={detailGame.categories}/>
-                                <Kind kind={detailGame.genres}/>
+                                <Genre genre={detailGame.genres}/>
                             </div>
                         </div>
                         <div className="lg:w-2/5 lg:ml-4 text-lg xl:w-2/5 xl:ml-4 text-lg ">

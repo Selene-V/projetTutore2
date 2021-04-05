@@ -22,9 +22,9 @@ const Home = (props: {
     const [searchInfo, setSearchInfo] = useState<any>({
         Categories: [],
         Developer: [],
-        Kind: [],
+        G: [],
         Publisher: [],
-        "User Tag": [],
+        "Steamspy Tags": [],
         "Positive Reviews": "90-100",
         "Minimum Age": 3,
         Platforms: [],
@@ -103,14 +103,13 @@ const Home = (props: {
 
     function transformeInStringParam() {
         let copieTable = {...traiterSearchNameDebounce}
-        let allInfo = "page=" + actualyPage;
+        let allInfo = "";
+        allInfo += "page=" + actualyPage;
         for (const key in copieTable) {
             switch (key) {
                 case "Platform": {
                     if (copieTable["Platform"].length !== 0) {
-                        allInfo += "&platforms=" + copieTable["Platform"].map((value: string) => {
-                            value.replace(" ", "~")
-                        }).join("+")
+                        allInfo += "&platforms=" + (copieTable["Platform"].join("+")).replace(" ", "~")
                     }
                 }
                     break;
@@ -149,9 +148,9 @@ const Home = (props: {
                     allInfo += "&release_date_begin=" + copieTable["Start Date"]
                 }
                     break;
-                case "User Tag": {
-                    if (copieTable["User Tag"].length !== 0) {
-                        allInfo += "&steamspy_tags+" + (copieTable["User Tag"].join("+")).replace(" ", "~")
+                case "Steamspy Tags": {
+                    if (copieTable["Steamspy Tags"].length !== 0) {
+                        allInfo += "&steamspy_tags=" + (copieTable["Steamspy Tags"].join("+")).replace(" ", "~")
                     }
                 }
                     break;
@@ -162,9 +161,9 @@ const Home = (props: {
                     }
                 }
                     break;
-                case "Kind": {
-                    if (copieTable["Kind"].length !== 0) {
-                        allInfo += "&genres=" + (copieTable["Kind"].join("+")).replace(" ", "~")
+                case "Genre": {
+                    if (copieTable["Genre"].length !== 0) {
+                        allInfo += "&genres=" + (copieTable["Genre"].join("+")).replace(" ", "~")
                     }
                 }
                     break;

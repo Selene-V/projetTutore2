@@ -49,8 +49,8 @@ const Connection = (props: { setOnclickConection: any; setOnclickRegister: any }
                     </div>
                 </div>
             </div>
-            <img className="hidden
-            xl:block w-7/12 object-cover h-screen 
+            <img className="hidden my-auto
+            xl:block w-7/12 object-cover h-screen
             lg:block w-7/12 h-screen
             " src="/videoGames.jpg" alt="img video"/>
         </div>
