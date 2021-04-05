@@ -45,6 +45,7 @@ const Detail = (props: {
                         setDetailGame(null);
                         setError(x);
                     } else {
+                        console.log(x);
                         setDetailGame(x);
                     }
                 }

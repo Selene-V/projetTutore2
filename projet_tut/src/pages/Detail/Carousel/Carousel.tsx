@@ -38,15 +38,15 @@ const Carousel = (props: { img: any; }) => {
                     )
                 }
 
-                <ol className="hidden carousel-indicators lg:block xl:block ">
+                <div className="hidden carousel-indicators lg:inline-flex xl:inline-flex overflow-x-auto h-20">
                     {props.img.map((value: any, index: string) => (
-                        <li className="inline-block mr-3" key={index}>
+                        <div className="inline-block mr-2" key={index}>
                             <label htmlFor={"carousel-" + index}
                                    className="carousel-bullet cursor-pointer block text-6xl text-white hover:text-blue-700">•</label>
-                        </li>
+                        </div>
                     ))
                     }
-                </ol>
+                </div>
             </div>
         </div>
     );
