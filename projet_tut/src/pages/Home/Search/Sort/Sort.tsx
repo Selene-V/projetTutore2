@@ -45,7 +45,7 @@ const Short = (props: { searchInfo: any; setSearchInfo: any }) => {
             </div>
             <div className="w-1/2 my-auto">
                 <button onClick={() => setClickButon(!clickButon)}
-                        className="text-black p-1 px-2 rounded-md bg-gray-300">{clickButon ? optionSelected.sorder : optionSelected.disorder}</button>
+                        className="text-black py-1 px-2 rounded-md bg-gray-300">{clickButon ? optionSelected.sorder : optionSelected.disorder}</button>
             </div>
         </div>
     );
