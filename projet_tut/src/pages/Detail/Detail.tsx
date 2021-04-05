@@ -73,7 +73,7 @@ const Detail = (props: {
                                 <p className="xl:text-5xl lg:text-5xl">{detailGame.name}</p>
                             </div>
                             <div className="mt-5 space-x-3 text-lg">
-                                <div>
+                                <div className="text-left">
                                     <p className="text-sm xl:text-2xl lg:text-2xl">{detailGame.releaseDate}</p>
                                 </div>
                                 <div className="space-x-2 inline-flex content-center lg:flex xl:flex">
