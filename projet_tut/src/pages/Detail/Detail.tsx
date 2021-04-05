@@ -2,7 +2,7 @@ import Carousel from "./Carousel/Carousel";
 import ShortDescription from "./ShortDescription/ShortDescription";
 import Developer from "./Developer/Developer";
 import Publicher from "./Publisher/Publisher";
-import TagClan from "./TagClan/TagClan";
+import SteamspyTags from "./SteamspyTags/SteamspyTags";
 import SystemRequirement from "./SystemRequirement/SystemRequirement";
 import "./Detail.css"
 import Category from "./Category/Category";
@@ -118,7 +118,7 @@ const Detail = (props: {
                                 short_description={detailGame["description"]['shortDescription']}/>
                             <Developer developer={detailGame.developer}/>
                             <Publicher publisher={detailGame.publisher}/>
-                            <TagClan tag_clan={detailGame.steamspyTags}/>
+                            <SteamspyTags steamspy_tags={detailGame.steamspyTags}/>
                             {true ? <div/> :
                                 <RelatedGames relatedGames={[
                                     {name: "a", release_date: "10/12/2020", score: "47"},
