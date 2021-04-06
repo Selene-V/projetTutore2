@@ -185,10 +185,8 @@ const Home = (props: {
                     allInfo += "&release_date=" + copieTable["Year"]
                 }
                     break;
-                default:
-                    console.log(error);
+                default:{}
             }
-            console.log(allInfo);
         }
         return allInfo;
 

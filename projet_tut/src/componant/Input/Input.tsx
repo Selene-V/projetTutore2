@@ -177,7 +177,6 @@ const Input = (props: { setTable: any; table: any; name: string; type: string | 
                                     <div className="bg-gray-100 rounded-lg duration-300 hover:bg-green-200" key={value}>
                                         <button className="transform hover:-rotate-90 duration-300"
                                                 onClick={() => {
-                                                    console.log(index);
                                                     deleteInTable(index)
                                                 }}>
                                             <i className="fa fa-times" aria-hidden="true"/>
