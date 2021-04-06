@@ -10,6 +10,10 @@ const Registration = (props: { setOnclickRegister: (arg0: boolean) => void; setO
     });
 
     function isGoodInformation() {
+        console.log(safeValue.Email);
+        console.log(safeValue.Password);
+        console.log(safeValue["Password Verification"]);
+        console.log("email=" + safeValue.Email + "&password=" + safeValue.Password + "&confPass=" + safeValue["Password Verification"])
         if (safeValue.Email!=="" && safeValue.Password!=="" && safeValue["Password Verification"] !=="") {
             console.log("test")
             const api = fetch("http://projettutore2back/register",
@@ -50,11 +54,11 @@ const Registration = (props: { setOnclickRegister: (arg0: boolean) => void; setO
                     <p>Registration</p>
                 </div>
                 <div className="text-lg mx-10 h-8/12">
-                    <Input setTable={setSafeValue} table={safeValue} name={"Email"} type={"text"} select={null}
+                    <Input setTable={setSafeValue} table={safeValue} name={"Email"} type={"email"} select={null}
                            contentTable={false}/>
-                    <Input setTable={setSafeValue} table={safeValue} name={"Password"} type={"text"} select={null}
+                    <Input setTable={setSafeValue} table={safeValue} name={"Password"} type={"password"} select={null}
                            contentTable={false}/>
-                    <Input setTable={setSafeValue} table={safeValue} name={"Password Verification"} type={"text"}
+                    <Input setTable={setSafeValue} table={safeValue} name={"Password Verification"} type={"password"}
                            select={null} contentTable={false}/>
                 </div>
                 <div className="flex space-x-4 my-8 mx-10 h-2/12">

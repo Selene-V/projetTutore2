@@ -9,8 +9,8 @@ const Connection = (props: { setOnclickConection: any; setOnclickRegister: any }
     });
 
     function isGoodInformation() {
-        if (takeInfo.Email && takeInfo.Password) {
-            const api = fetch("http://projettutore2back/Connection",
+        if (takeInfo.Email !== ""&& takeInfo.Password !=="") {
+            const api = fetch("http://projettutore2back/connection",
                 {
                     method: 'post',
                     body: "email=" + takeInfo.Email + "&password=" + takeInfo.Password
@@ -52,9 +52,9 @@ const Connection = (props: { setOnclickConection: any; setOnclickRegister: any }
                     </div>
                     <input type="hidden" name="remember" value="true"/>
                     <div className="rounded-md shadow-sm -space-y-px text-black text-lg">
-                        <Input setTable={setTakeInfo} table={takeInfo} name={"Email"} type={"text"} select={null}
+                        <Input setTable={setTakeInfo} table={takeInfo} name={"Email"} type={"email"} select={null}
                                contentTable={false}/>
-                        <Input setTable={setTakeInfo} table={takeInfo} name={"Password"} type={"text"} select={null}
+                        <Input setTable={setTakeInfo} table={takeInfo} name={"Password"} type={"password"} select={null}
                                contentTable={false}/>
                     </div>
 
