@@ -10,8 +10,9 @@ const Registration = (props: { setOnclickRegister: (arg0: boolean) => void; setO
     });
 
     function isGoodInformation() {
-        if (safeValue.Email && safeValue.Password) {
-            const api = fetch("http://projettutore2back/Register",
+        if (safeValue.Email!=="" && safeValue.Password!=="" && safeValue["Password Verification"] !=="") {
+            console.log("test")
+            const api = fetch("http://projettutore2back/register",
                 {
                     method: 'post',
                     body: "email=" + safeValue.Email + "&password=" + safeValue.Password + "&confPass=" + safeValue["Password Verification"]
@@ -26,11 +27,14 @@ const Registration = (props: { setOnclickRegister: (arg0: boolean) => void; setO
                 .then(function (json) {
                     return json;
                 });
+            console.log("tatata")
             api.then(
                 x => {
+                    console.log("test")
                     if (typeof x === 'number') {
                         // probleme serveur
                     } else {
+                        console.log(x);
                         props.setOnclickConection(true)
                         props.setOnclickRegister(false)
                     }
@@ -55,12 +59,8 @@ const Registration = (props: { setOnclickRegister: (arg0: boolean) => void; setO
                 </div>
                 <div className="flex space-x-4 my-8 mx-10 h-2/12">
                     <button
-                        onClick={() => {
-                            props.setOnclickRegister(false);
-                            props.setOnclickConection(true);
-                        }}
+                        onClick={() => isGoodInformation()}
                         className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-500 hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                        onClick={isGoodInformation()}
                         Validate
                     </button>
                     <button
