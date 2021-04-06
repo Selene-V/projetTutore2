@@ -143,7 +143,9 @@ const Detail = (props: {
                     <LongDescription
                         long_description={detailGame.description.detailedDescription.replace(/<(?:.|\n)*?>/gm, '')}/>
                 </div>
-                <button className="bg-white border-1 mb-3 rounded-xl text-black py-1 px-3" onClick={() => props.setIsClickForDetail(false)}>Back</button>
+                <div className="mx-auto justify-items-center my-4">
+                    <button className="w-1/4 justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-red-400 hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" onClick={() => props.setIsClickForDetail(false)}>Back</button>
+                </div>
 
             </div>
             <div className="lg:w-1/12 xl:w-1/12"/>
