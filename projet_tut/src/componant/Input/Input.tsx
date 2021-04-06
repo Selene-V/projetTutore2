@@ -15,16 +15,18 @@ const Input = (props: { setTable: any; table: any; name: string; type: string | 
     }
 
     function addInTable(id: string, value: string, addInTable: boolean) {
-        // bug if you have add identique value 2 times
         if (value !== "") {
             let table = {...props.table};
             if (addInTable) {
-                if (table[id] === undefined)
+                if (table[id] === undefined) {
                     table[id] = [];
+                }
 
                 let condition = false;
                 table[id].map((res: string) => {
-                    res === value ? condition = true : condition = false;
+                    if (res === value) {
+                        condition = true
+                    }
                 })
                 if (!condition) {
                     table[id].push(value);
