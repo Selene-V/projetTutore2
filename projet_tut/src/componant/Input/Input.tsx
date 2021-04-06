@@ -15,16 +15,18 @@ const Input = (props: { setTable: any; table: any; name: string; type: string | 
     }
 
     function addInTable(id: string, value: string, addInTable: boolean) {
-        // bug if you have add identique value 2 times
         if (value !== "") {
             let table = {...props.table};
             if (addInTable) {
-                if (table[id] === undefined)
+                if (table[id] === undefined) {
                     table[id] = [];
+                }
 
                 let condition = false;
                 table[id].map((res: string) => {
-                    res === value ? condition = true : condition = false;
+                    if (res === value) {
+                        condition = true
+                    }
                 })
                 if (!condition) {
                     table[id].push(value);
@@ -175,7 +177,6 @@ const Input = (props: { setTable: any; table: any; name: string; type: string | 
                                     <div className="bg-gray-100 rounded-lg duration-300 hover:bg-green-200" key={value}>
                                         <button className="transform hover:-rotate-90 duration-300"
                                                 onClick={() => {
-                                                    console.log(index);
                                                     deleteInTable(index)
                                                 }}>
                                             <i className="fa fa-times" aria-hidden="true"/>
