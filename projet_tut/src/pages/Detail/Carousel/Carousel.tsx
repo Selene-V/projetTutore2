@@ -9,7 +9,7 @@ const Carousel = (props: { img: any; }) => {
 }</style>`)
     })
     const [curentPoint, setCurentPoint] = useState(0);
-
+console.log(props.img.length);
     return (
         <div className="carousel relative">
             <div className="carousel-inner relative overflow-hidden">
@@ -44,7 +44,11 @@ const Carousel = (props: { img: any; }) => {
                     )
                 }
 
-                <div className="hidden carousel-indicators lg:flex xl:flex overflow-x-auto h-16 justify-between">
+                <div className={props.img.length < 3 ?
+                    "hidden carousel-indicators lg:flex xl:flex h-16 justify-between"
+                    :
+                    "hidden carousel-indicators lg:flex xl:flex h-16 overflow-y-auto justify-between"
+                }>
                     {props.img.map((value: any, index: number) => (
                         <div className="inline-block mr-2" key={index}>
                             {index !== curentPoint ?

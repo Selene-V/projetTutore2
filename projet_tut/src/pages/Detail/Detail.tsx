@@ -2,7 +2,7 @@ import Carousel from "./Carousel/Carousel";
 import ShortDescription from "./ShortDescription/ShortDescription";
 import Developer from "./Developer/Developer";
 import Publicher from "./Publisher/Publisher";
-import SteamspyTags from "./SteamspyTags/SteamspyTags";
+import TagCloud from "./TagCloud/TagCloud";
 import SystemRequirement from "./SystemRequirement/SystemRequirement";
 import "./Detail.css"
 import Category from "./Category/Category";
@@ -74,7 +74,7 @@ const Detail = (props: {
                                 <p className="xl:text-5xl lg:text-5xl">{detailGame.name}</p>
                             </div>
                             <div className="mt-5 space-x-3 text-lg">
-                                <div className="text-left">
+                                <div className="text-left sm:text-center">
                                     <p className="text-sm xl:text-2xl lg:text-2xl">{detailGame.releaseDate}</p>
                                 </div>
                                 <div className="space-x-2 inline-flex content-center lg:flex xl:flex">
@@ -109,9 +109,11 @@ const Detail = (props: {
                             <Carousel img={detailGame.image.screenshots}/>
                             <div className="lg:mt-8 lg:space-x-5 xl:space-x-5 xl:mt-8 lg:flex xl:flex">
 
-                                <SteamspyTags steamspy_tags={detailGame.steamspyTags}/>
-                                <Category categories={detailGame.categories}/>
-                                <Genre genre={detailGame.genres}/>
+                                <TagCloud tagCloud={detailGame.tagCloud}/>
+                                <div className="w-1/2 h-max xl:space-y-2 lg:space-y-2 sm:space-x-2 sm:flex sm:w-full">
+                                    <Category categories={detailGame.categories}/>
+                                    <Genre genre={detailGame.genres}/>
+                                </div>
                             </div>
                         </div>
                         <div className="lg:w-2/5 lg:ml-4 text-lg xl:w-2/5 xl:ml-4 text-lg ">

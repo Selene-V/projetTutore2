@@ -2,7 +2,7 @@ import React from "react";
 
 const Genre = (props: { genre: string[]; }) => {
     return (
-        <div className="mt-3 lg:mt-0 xl:mt-0 bg-white rounded-xl lg:w-1/3 xl:w-1/3">
+        <div className="mt-3 lg:mt-0 xl:mt-0 bg-white rounded-xl lg:h-1/2 xl:h-1/2">
             <div className="bg-green-500 rounded-t-xl">
                 <p className="ml-2">Genres</p>
             </div>

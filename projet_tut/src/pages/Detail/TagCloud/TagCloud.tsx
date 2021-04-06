@@ -1,14 +1,14 @@
 import React from "react";
 
-const SteamspyTags = (props: { steamspy_tags: string[]; }) => {
+const TagCloud = (props: { tagCloud: string[]; }) => {
     return (
-        <div className="bg-white rounded-xl lg:w-1/3 xl:w-1/3">
+        <div className="bg-white rounded-xl lg:w-1/2 xl:w-1/2">
             <div className="bg-green-500 rounded-t-xl">
-                <p className="ml-2">Steamspy Tags</p>
+                <p className="ml-2">Tag Cloud</p>
             </div>
             <div className="flex flex-wrap space-x-3 p-2 text-black">
                 {
-                    props.steamspy_tags.map((value: string, index: number) =>
+                    props.tagCloud.map((value: string, index: number) =>
                         <div key={index}
                              className="bg-green-100 px-2 py-1 rounded-md mt-2">
                             <p>{value}</p>
@@ -17,4 +17,4 @@ const SteamspyTags = (props: { steamspy_tags: string[]; }) => {
             </div>
         </div>);
 }
-export default SteamspyTags;
+export default TagCloud;
