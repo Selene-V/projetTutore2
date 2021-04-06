@@ -33,13 +33,13 @@ const Table = (props: {
                                         Review: {Math.round((parseInt(value.positiveRatings) / (parseInt(value.positiveRatings) + parseInt(value.negativeRatings))) * 100)}%
                                     </div>
                                     <div
-                                        className="justify-center lg:jusitify-start xl:justify-start text-2xl flex space-x-2">{value.platforms.map((result: string, secondIndex: number) =>
+                                        className="justify-center lg:jusitify-start xl:justify-start text-2xl flex space-x-2 ">{value.platforms.map((result: string, secondIndex: number) =>
                                         <div key={secondIndex}>
                                             <Platform platform={result}/>
                                         </div>
                                     )}</div>
                                 </div>
-                                <div className="text-sm lg:text-base xl:text-base lg:w-3/5 xl:w-3/5">
+                                <div className="mt-1 text-sm lg:text-base xl:text-base lg:w-3/5 xl:w-3/5">
                                     <div className="text-justify">
                                         <p>
                                             {value.description.shortDescription}

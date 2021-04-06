@@ -158,10 +158,10 @@ const Input = (props: { setTable: any; table: any; name: string; type: string | 
                     <div>
                         <label className="flex">
                             <input type={props.type}
-                                   className="w-full border border-gray-300 p-2 my-2 rounded-l-lg focus:outline-none focus:ring-2 ring-blue-200"
+                                   className="text-xs xl:text-base lg:text-base w-full border border-gray-300 p-2 my-2 rounded-l-lg focus:outline-none focus:ring-2 ring-blue-200"
                                    value={saveContent}
                                    onChange={(event) => setSaveContent(event.target.value)}/>
-                            <button className="bg-gray-300 hover:bg-green-400 px-2 rounded-r-lg h-10 my-auto"
+                            <button className="text-xs xl:text-base lg:text-base bg-gray-300 hover:bg-green-400 px-2 rounded-r-lg h-10 my-auto"
                                     onClick={() => {
                                         addInTable(props.name, saveContent.trim(), true);
                                     }}>Send
