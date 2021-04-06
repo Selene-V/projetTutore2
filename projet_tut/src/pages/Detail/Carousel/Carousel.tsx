@@ -50,11 +50,11 @@ const Carousel = (props: { img: any; }) => {
                             {index !== curentPoint ?
                                 <label htmlFor={"carousel-" + index}
                                        onClick={() => setCurentPoint(index)}
-                                       className="carousel-bullet cursor-pointer block text-6xl text-white hover:text-blue-700">•</label>
+                                       className="carousel-bullet cursor-pointer block text-6xl text-white hover:text-gray-500">•</label>
                                 :
                                 <label htmlFor={"carousel-" + index}
                                        onClick={() => setCurentPoint(index)}
-                                       className="carousel-bullet cursor-pointer block text-6xl text-blue-400 hover:text-blue-700">•</label>}
+                                       className="carousel-bullet cursor-pointer block text-6xl text-gray-800">•</label>}
                         </div>
                     ))
                     }
