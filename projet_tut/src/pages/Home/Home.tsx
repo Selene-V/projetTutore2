@@ -188,6 +188,7 @@ const Home = (props: {
                 default:
                     console.log(error);
             }
+            console.log(allInfo);
         }
         return allInfo;
 
