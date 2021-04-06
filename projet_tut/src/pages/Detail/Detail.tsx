@@ -33,8 +33,29 @@ const Detail = (props: {
             });
     }
 
+    async function getRelatedGame() {
+        console.log(detailGame)
+        if (detailGame) {
+            return await fetch("http://projettutore2back/relatedGames", {
+                method: "post",
+                body: "appid=" + detailGame.appid
+            })
+                .then(reponse => {
+                    if (reponse.status === 200) {
+                        return reponse.json()
+                    } else {
+                        return reponse.status
+                    }
+                })
+                .then(function (json) {
+                    return json;
+                });
+        }
+    }
+
     const [detailGame, setDetailGame] = useState<any>();
     const [error, setError] = useState<number>(0);
+    const [relatedGames, setRelatedGames] = useState<any>();
 
     useEffect(() => {
         setDetailGame(undefined);
@@ -51,6 +72,22 @@ const Detail = (props: {
                 }
             )
     }, []);
+
+    useEffect(() => {
+        getRelatedGame()
+            .then(
+                x => {
+                    console.log(x)
+                    if (typeof x === 'number') {
+                        setRelatedGames(null);
+                        setError(x);
+                    } else {
+                        console.log(x);
+                        setRelatedGames(x);
+                    }
+                }
+            )
+    }, [detailGame])
 
     if (detailGame === undefined) {
         return (<Loading/>)
@@ -78,7 +115,8 @@ const Detail = (props: {
                                     <p className="text-sm xl:text-2xl lg:text-2xl">{detailGame.releaseDate}</p>
                                 </div>
                                 <div className="space-x-2 inline-flex content-center lg:flex xl:flex">
-                                    {detailGame.platforms.map((value: string, index: number) => <div  className="text-sm xl:text-2xl lg:text-2xl"
+                                    {detailGame.platforms.map((value: string, index: number) => <div
+                                            className="text-sm xl:text-2xl lg:text-2xl"
                                             key={index}>
                                             <Platform platform={value}/>
                                         </div>
@@ -87,7 +125,7 @@ const Detail = (props: {
                             </div>
                         </div>
                         <div className="w-1/12 text-center justify-center place-self-center text-white ">
-                            {props.isConected?
+                            {props.isConected ?
                                 <div>
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                          stroke="currentColor">
@@ -110,7 +148,7 @@ const Detail = (props: {
                             <div className="lg:mt-8 lg:space-x-5 xl:space-x-5 xl:mt-8 lg:flex xl:flex">
 
                                 <TagCloud tagCloud={detailGame.tagCloud}/>
-                                <div className="w-1/2 h-max xl:space-y-2 lg:space-y-2 sm:space-x-2 sm:flex sm:w-full">
+                                <div className="w-1/2 h-max sm:space-x-2 sm:flex sm:w-full">
                                     <Category categories={detailGame.categories}/>
                                     <Genre genre={detailGame.genres}/>
                                 </div>
@@ -123,30 +161,25 @@ const Detail = (props: {
                             <Publicher publisher={detailGame.publisher}/>
                             <SystemRequirement
                                 system_requirement={detailGame.requirement.minimum.replace(/<(?:.|\n)*?>/gm, '')}/>
-                            {true ? <div/> :
-                                <RelatedGames relatedGames={[
-                                    {name: "a", release_date: "10/12/2020", score: "47"},
-                                    {name: "b", release_date: "10/11/2020", score: "52"},
-                                    {name: "c", release_date: "11/10/2020", score: "44"},
-                                    {name: "d", release_date: "10/09/2020", score: "12"},
-                                    {name: "e", release_date: "24/08/2020", score: "70"},
-                                    {name: "f", release_date: "10/07/2020", score: "88"},
-                                    {name: "g", release_date: "10/05/2020", score: "70"},
-                                    {name: "h", release_date: "25/02/2020", score: "54"},
-                                    {name: "i", release_date: "01/10/2020", score: "96"},
-                                    {name: "j", release_date: "10/11/2020", score: "38"},
-                                ]}
-                                              setIsClickForDetail={props.setIsClickForDetail}
-                                              isClickForDetail={props.isClickForDetail}
-                                />
-                            }
+
                         </div>
                     </div>
+                    {relatedGames !== undefined ?
+                        <RelatedGames relatedGames={relatedGames.games}
+                                      setIsClickForDetail={props.setIsClickForDetail}
+                                      isClickForDetail={props.isClickForDetail}
+                                      choiceDisign={false}
+                        />
+                        :
+                        <Loading/>}
                     <LongDescription
                         long_description={detailGame.description.detailedDescription.replace(/<(?:.|\n)*?>/gm, '')}/>
                 </div>
                 <div className="mx-auto justify-items-center my-4">
-                    <button className="w-1/4 justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-red-400 hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" onClick={() => props.setIsClickForDetail(false)}>Back</button>
+                    <button
+                        className="w-1/4 justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-red-400 hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                        onClick={() => props.setIsClickForDetail(false)}>Back
+                    </button>
                 </div>
 
             </div>
