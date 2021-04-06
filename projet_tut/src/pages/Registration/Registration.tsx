@@ -3,7 +3,41 @@ import Input from "../../componant/Input/Input";
 
 const Registration = (props: { setOnclickRegister: (arg0: boolean) => void; setOnclickConection: (arg0: boolean) => void; }) => {
 
-    const [safeValue, setSafeValue] = useState([]);
+    const [safeValue, setSafeValue] = useState({
+        Email: "",
+        Password: "",
+        "Password Verification": ""
+    });
+
+    function isGoodInformation() {
+        if (safeValue.Email && safeValue.Password) {
+            const api = fetch("http://projettutore2back/Register",
+                {
+                    method: 'post',
+                    body: "email=" + safeValue.Email + "&password=" + safeValue.Password + "&confPass=" + safeValue["Password Verification"]
+                })
+                .then(reponse => {
+                    if (reponse.status === 200) {
+                        return reponse.json()
+                    } else {
+                        return reponse.status
+                    }
+                })
+                .then(function (json) {
+                    return json;
+                });
+            api.then(
+                x => {
+                    if (typeof x === 'number') {
+                        // probleme serveur
+                    } else {
+                        props.setOnclickConection(true)
+                        props.setOnclickRegister(false)
+                    }
+                }
+            )
+        }
+    }
 
     return (
         <div className="relative bg-yellow-200">
@@ -12,7 +46,7 @@ const Registration = (props: { setOnclickRegister: (arg0: boolean) => void; setO
                     <p>Registration</p>
                 </div>
                 <div className="text-lg mx-10 h-8/12">
-                    <Input setTable={setSafeValue} table={safeValue} name={"Username"} type={"text"} select={null}
+                    <Input setTable={setSafeValue} table={safeValue} name={"Email"} type={"text"} select={null}
                            contentTable={false}/>
                     <Input setTable={setSafeValue} table={safeValue} name={"Password"} type={"text"} select={null}
                            contentTable={false}/>
@@ -26,6 +60,7 @@ const Registration = (props: { setOnclickRegister: (arg0: boolean) => void; setO
                             props.setOnclickConection(true);
                         }}
                         className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-500 hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                        onClick={isGoodInformation()}
                         Validate
                     </button>
                     <button

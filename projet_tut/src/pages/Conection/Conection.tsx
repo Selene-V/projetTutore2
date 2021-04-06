@@ -4,8 +4,8 @@ import Input from "../../componant/Input/Input";
 const Connection = (props: { setOnclickConection: any; setOnclickRegister: any }) => {
 
     const [takeInfo, setTakeInfo] = useState({
-        Email: [],
-        Password: [],
+        Email: "",
+        Password: "",
     });
 
     function isGoodInformation() {
