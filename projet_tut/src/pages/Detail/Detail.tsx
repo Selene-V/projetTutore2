@@ -87,7 +87,7 @@ const Detail = (props: {
                             </div>
                         </div>
                         <div className="w-1/12 text-center justify-center place-self-center text-white ">
-                            {props.isConected !== undefined ?
+                            {props.isConected?
                                 <div>
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                          stroke="currentColor">
