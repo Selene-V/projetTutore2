@@ -2,17 +2,17 @@ import Carousel from "./Carousel/Carousel";
 import ShortDescription from "./ShortDescription/ShortDescription";
 import Developer from "./Developer/Developer";
 import Publicher from "./Publisher/Publisher";
-import TagClan from "./TagClan/TagClan";
+import SteamspyTags from "./SteamspyTags/SteamspyTags";
 import SystemRequirement from "./SystemRequirement/SystemRequirement";
 import "./Detail.css"
 import Category from "./Category/Category";
-import Kind from "./Kind/Kind";
 import LongDescription from "./LongDescription/LongDescription";
 import RelatedGames from "./RelatedGames/RelatedGames";
 import React, {useEffect, useState} from "react";
 import Loading from "../../componant/Loading/Loading";
 import Error from "../../componant/Error/Error";
 import Platform from "../../Platform";
+import Genre from "./Genre/Genre";
 
 const Detail = (props: {
     setIsClickForDetail: any;
@@ -45,6 +45,7 @@ const Detail = (props: {
                         setDetailGame(null);
                         setError(x);
                     } else {
+                        console.log(x);
                         setDetailGame(x);
                     }
                 }
@@ -73,7 +74,7 @@ const Detail = (props: {
                                 <p className="xl:text-5xl lg:text-5xl">{detailGame.name}</p>
                             </div>
                             <div className="mt-5 space-x-3 text-lg">
-                                <div>
+                                <div className="text-left">
                                     <p className="text-sm xl:text-2xl lg:text-2xl">{detailGame.releaseDate}</p>
                                 </div>
                                 <div className="space-x-2 inline-flex content-center lg:flex xl:flex">
@@ -86,7 +87,7 @@ const Detail = (props: {
                             </div>
                         </div>
                         <div className="w-1/12 text-center justify-center place-self-center text-white ">
-                            {props.isConected !== undefined ?
+                            {props.isConected?
                                 <div>
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                          stroke="currentColor">
@@ -107,10 +108,10 @@ const Detail = (props: {
                         <div className="lg:w-3/5 xl:w-3/5 text-lg">
                             <Carousel img={detailGame.image.screenshots}/>
                             <div className="lg:mt-8 lg:space-x-5 xl:space-x-5 xl:mt-8 lg:flex xl:flex">
-                                <SystemRequirement
-                                    system_requirement={detailGame.requirement.minimum.replace(/<(?:.|\n)*?>/gm, '')}/>
+
+                                <SteamspyTags steamspy_tags={detailGame.steamspyTags}/>
                                 <Category categories={detailGame.categories}/>
-                                <Kind kind={detailGame.genres}/>
+                                <Genre genre={detailGame.genres}/>
                             </div>
                         </div>
                         <div className="lg:w-2/5 lg:ml-4 text-lg xl:w-2/5 xl:ml-4 text-lg ">
@@ -118,7 +119,8 @@ const Detail = (props: {
                                 short_description={detailGame["description"]['shortDescription']}/>
                             <Developer developer={detailGame.developer}/>
                             <Publicher publisher={detailGame.publisher}/>
-                            <TagClan tag_clan={detailGame.steamspyTags}/>
+                            <SystemRequirement
+                                system_requirement={detailGame.requirement.minimum.replace(/<(?:.|\n)*?>/gm, '')}/>
                             {true ? <div/> :
                                 <RelatedGames relatedGames={[
                                     {name: "a", release_date: "10/12/2020", score: "47"},
@@ -141,6 +143,10 @@ const Detail = (props: {
                     <LongDescription
                         long_description={detailGame.description.detailedDescription.replace(/<(?:.|\n)*?>/gm, '')}/>
                 </div>
+                <div className="mx-auto justify-items-center my-4">
+                    <button className="w-1/4 justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-red-400 hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" onClick={() => props.setIsClickForDetail(false)}>Back</button>
+                </div>
+
             </div>
             <div className="lg:w-1/12 xl:w-1/12"/>
         </div>

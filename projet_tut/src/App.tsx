@@ -19,7 +19,7 @@ function App() {
     if (onclickConection) {
         return (
             <div className="App">
-                <header className="App-header">
+                <header className="App-header font-medium ">
                     <Conection setOnclickConection={setOnclickConection} setOnclickRegister={setOnclickRegister}/>
                 </header>
             </div>
@@ -29,7 +29,7 @@ function App() {
     if (onclickRegister) {
         return (
             <div className="App">
-                <header className="App-header">
+                <header className="App-header font-medium ">
                     <Registration setOnclickRegister={setOnclickRegister} setOnclickConection={setOnclickConection}/>
                 </header>
             </div>
@@ -38,9 +38,8 @@ function App() {
 
     return (
         <div className="App">
-            <header className="App-header">
-                <Menu setIsClickForDetail={setIsClickForDetail} isConected={isConected}
-                      setOnclickConection={setOnclickConection}/>
+            <header className="App-header font-medium ">
+                <Menu isConected={isConected} setOnclickConection={setOnclickConection}/>
                 {isClickForDetail ?
                     <Detail setIsClickForDetail={setIsClickForDetail} isClickForDetail={isClickForDetail}
                             isConected={isConected}
