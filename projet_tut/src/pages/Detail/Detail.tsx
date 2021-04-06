@@ -108,8 +108,8 @@ const Detail = (props: {
                         <div className="lg:w-3/5 xl:w-3/5 text-lg">
                             <Carousel img={detailGame.image.screenshots}/>
                             <div className="lg:mt-8 lg:space-x-5 xl:space-x-5 xl:mt-8 lg:flex xl:flex">
-                                <SystemRequirement
-                                    system_requirement={detailGame.requirement.minimum.replace(/<(?:.|\n)*?>/gm, '')}/>
+
+                                <SteamspyTags steamspy_tags={detailGame.steamspyTags}/>
                                 <Category categories={detailGame.categories}/>
                                 <Genre genre={detailGame.genres}/>
                             </div>
@@ -119,7 +119,8 @@ const Detail = (props: {
                                 short_description={detailGame["description"]['shortDescription']}/>
                             <Developer developer={detailGame.developer}/>
                             <Publicher publisher={detailGame.publisher}/>
-                            <SteamspyTags steamspy_tags={detailGame.steamspyTags}/>
+                            <SystemRequirement
+                                system_requirement={detailGame.requirement.minimum.replace(/<(?:.|\n)*?>/gm, '')}/>
                             {true ? <div/> :
                                 <RelatedGames relatedGames={[
                                     {name: "a", release_date: "10/12/2020", score: "47"},

@@ -2,7 +2,7 @@ import React from "react";
 
 const SteamspyTags = (props: { steamspy_tags: string[]; }) => {
     return (
-        <div className="mt-3 lg:mt-8 xl:mt-8 bg-white rounded-xl">
+        <div className="bg-white rounded-xl lg:w-1/3 xl:w-1/3">
             <div className="bg-green-500 rounded-t-xl">
                 <p className="ml-2">Steamspy Tags</p>
             </div>
