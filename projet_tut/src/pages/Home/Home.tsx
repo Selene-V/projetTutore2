@@ -148,7 +148,7 @@ const Home = (props: {
                     allInfo += "&release_date_begin=" + copieTable["Start Date"]
                 }
                     break;
-                case "Steamspy Tags": {
+                case "Steamspy Tag": {
                     if (copieTable["Steamspy Tags"].length !== 0) {
                         allInfo += "&steamspy_tags=" + (copieTable["Steamspy Tags"].join("+")).replace(" ", "~")
                     }
@@ -171,9 +171,9 @@ const Home = (props: {
                     allInfo += "&required_age=" + copieTable["Minimum Age"];
                 }
                     break;
-                case "Categories": {
-                    if (copieTable["Categories"].length !== 0) {
-                        allInfo += "&categories=" + (copieTable["Categories"].join("+")).replace(" ", "~")
+                case "Category": {
+                    if (copieTable["Category"].length !== 0) {
+                        allInfo += "&categories=" + (copieTable["Category"].join("+")).replace(" ", "~")
                     }
                 }
                     break;

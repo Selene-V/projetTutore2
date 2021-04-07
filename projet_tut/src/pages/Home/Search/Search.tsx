@@ -145,7 +145,7 @@ const Search = (props: {
                 </div>
                 <div className="flex justify-center items-end">
                     <div className="w-1/3">
-                        <Input table={props.searchInfo} name="Categories" type="text" select={null} contentTable={true}
+                        <Input table={props.searchInfo} name="Category" type="text" select={null} contentTable={true}
                                setTable={props.setSearchInfo}/>
                     </div>
                     <div className="w-1/3">
@@ -153,7 +153,7 @@ const Search = (props: {
                                setTable={props.setSearchInfo}/>
                     </div>
                     <div className="w-1/3">
-                        <Input table={props.searchInfo} name="Steamspy Tags" type="text" select={null} contentTable={true}
+                        <Input table={props.searchInfo} name="Steamspy Tag" type="text" select={null} contentTable={true}
                                setTable={props.setSearchInfo}/>
                     </div>
                 </div>
