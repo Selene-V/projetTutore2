@@ -9,7 +9,7 @@ const Registration = (props: { setOnclickRegister: (arg0: boolean) => void; setO
         <div className="relative bg-yellow-200">
             <div className="z-40 fixed inset-1/4 text-black bg-white rounded-2xl h-2/12">
                 <div>
-                    <p>Registration</p>
+                    <p>Sign up</p>
                 </div>
                 <div className="text-lg mx-10 h-8/12">
                     <Input setTable={setSafeValue} table={safeValue} name={"Username"} type={"text"} select={null}

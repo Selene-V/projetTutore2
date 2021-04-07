@@ -13,7 +13,7 @@ const Connection = (props: { setOnclickConection: any; setOnclickRegister: any }
                 <div className="max-w-md w-full space-y-8">
                     <div>
                         <h2 className="mt-6 text-center text-3xl font-extrabold text-black">
-                            Connect Yourself
+                            Sign in
                         </h2>
 
                     </div>
@@ -36,7 +36,7 @@ const Connection = (props: { setOnclickConection: any; setOnclickRegister: any }
                                 props.setOnclickConection(false);
                             }}
                             className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-500 hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                            Registration
+                            Sign up
                         </button>
                         <button
                             onClick={() => props.setOnclickConection(false)}
