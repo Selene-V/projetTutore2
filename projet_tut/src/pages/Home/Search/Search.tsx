@@ -9,7 +9,7 @@ const Search = (props: {
 }) => {
     const [classCss, setClassCss] = useState("transition ease-out duration-100 transform opacity-0 scale-95");
     const [changeZIndex, setChangeZIndex] = useState("h-0 overflow-hidden");
-    const [choiceDate, setChoiceDate] = useState("Fork");
+    const [choiceDate, setChoiceDate] = useState("Between");
 
     function change() {
         if (classCss === "transition ease-out duration-100 transform opacity-0 scale-95") {
@@ -23,7 +23,7 @@ const Search = (props: {
 
     function displayDate() {
         switch (true) {
-            case choiceDate === "Fork": {
+            case choiceDate === "Between": {
 
                 delete props.searchInfo['Precise Date'];
                 delete props.searchInfo['Year'];
@@ -161,7 +161,7 @@ const Search = (props: {
                     <div className="w-4/12 my-auto h-full">
                         <select className="text-black w-7/12 px-2"
                                 onChange={(event) => setChoiceDate(event.target.value)}>
-                            <option value="Fork">Fork</option>
+                            <option value="Between">Between</option>
                             <option value="Precise Date">Precise Date</option>
                             <option value="Year">Year</option>
                         </select>
