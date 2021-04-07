@@ -39,25 +39,25 @@ const Input = (props: { setTable: any; table: any; name: string; type: string | 
     async function fuzzyAndAutocomplite() {
         let choice = "";
         switch (true) {
-            case props.name === "Game Name": {
+            case props.name === "Game Name": 
                 choice = "name"
-            }
+            
                 break;
-            case props.name === "Publisher": {
+            case props.name === "Publisher": 
                 choice = "publisher"
-            }
+            
                 break;
-            case props.name === "Developer": {
+            case props.name === "Developer": 
                 choice = "developer"
-            }
+            
                 break;
-            case props.name === "Steamspy Tags": {
+            case props.name === "Steamspy Tags": 
                 choice = "steamspy_tags"
-            }
+            
                 break;
-            default: {
+            default: 
                 return "Not Conforme"
-            }
+            
         }
         return await fetch("http://projettutore2back/fuzzySearch",
             {
@@ -136,10 +136,10 @@ const Input = (props: { setTable: any; table: any; name: string; type: string | 
                                            className="w-full border border-gray-300 p-2 my-2 rounded-md focus:outline-none focus:ring-2 ring-blue-200"
                                            value={saveContent}
                                            onChange={(event) => {
-                                               {
+                                               
                                                    setSaveContent(event.target.value)
                                                    addInTable(props.name, event.target.value.trim(), false)
-                                               }
+                                               
                                            }}/>
 
                                 </label>
