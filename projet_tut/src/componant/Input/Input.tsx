@@ -37,48 +37,50 @@ const Input = (props: { setTable: any; table: any; name: string; type: string | 
         }
     }
 
-    async function fuzzyAndAutocomplite() {
-        let choice = "";
-        switch (true) {
-            case props.name === "Game Name": 
-                choice = "name"
-            
-                break;
-            case props.name === "Publisher": 
-                choice = "publisher"
-            
-                break;
-            case props.name === "Developer": 
-                choice = "developer"
-            
-                break;
-            case props.name === "Steamspy Tags": 
-                choice = "steamspy_tags"
-            
-                break;
-            default: 
-                return "Not Conforme"
-            
-        }
-        return await fetch("http://projettutore2back/fuzzySearch",
-            {
-                method: 'post',
-                body: choice + "=" + saveContent
-            })
-            .then(reponse => {
-                if (reponse.status === 200) {
-                    return reponse.json()
-                } else {
-                    return reponse.status
-                }
-            })
-            .then(function (json) {
-                return json;
-            });
 
-    }
 
     useEffect(() => {
+        async function fuzzyAndAutocomplite() {
+            let choice = "";
+            switch (true) {
+                case props.name === "Game Name": 
+                    choice = "name"
+                
+                    break;
+                case props.name === "Publisher": 
+                    choice = "publisher"
+                
+                    break;
+                case props.name === "Developer": 
+                    choice = "developer"
+                
+                    break;
+                case props.name === "Steamspy Tags": 
+                    choice = "steamspy_tags"
+                
+                    break;
+                default: 
+                    return "Not Conforme"
+                
+            }
+            return await fetch("http://projettutore2back/fuzzySearch",
+                {
+                    method: 'post',
+                    body: choice + "=" + saveContent
+                })
+                .then(reponse => {
+                    if (reponse.status === 200) {
+                        return reponse.json()
+                    } else {
+                        return reponse.status
+                    }
+                })
+                .then(function (json) {
+                    return json;
+                });
+    
+        }
+
         if (saveContent.length > 2) {
             fuzzyAndAutocomplite().then(
                 (x: any) => {
@@ -105,7 +107,7 @@ const Input = (props: { setTable: any; table: any; name: string; type: string | 
                 te.innerHTML = "";
         }
 
-    }, [saveContent])
+    }, [props.name, saveContent, stringSearch])
 
     return (
         <div className="p-1 text-left" role="none">

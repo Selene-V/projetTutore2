@@ -14,7 +14,7 @@ function App() {
 
     useEffect(() => {
         setIsClickForDetail(isClickForDetail);
-    });
+    }, [isClickForDetail]);
 
     if (onclickConection) {
         return (
