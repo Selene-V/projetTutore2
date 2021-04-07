@@ -20,10 +20,11 @@ const Input = (props: { setTable: any; table: any; name: string; type: string | 
                 }
 
                 let condition = false;
-                table[id].map((res: string) => {
+                table[id].forEach((res: string) => {
                     if (res === value) {
                         condition = true
                     }
+                    
                 })
                 if (!condition) {
                     table[id].push(value);

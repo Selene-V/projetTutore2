@@ -1,10 +1,9 @@
-import React, {useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import Switch from "./Switch/Switch";
 import Table from "../../componant/Table/Table";
 import Pagination from "./Pagination/Pagination";
 import Icons from "./Icons/Icons";
 import Search from "./Search/Search";
-import Sort from "./Search/Sort/Sort";
 import Loading from "../../componant/Loading/Loading";
 import Error from "../../componant/Error/Error";
 

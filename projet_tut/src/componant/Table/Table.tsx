@@ -20,7 +20,7 @@ const Table = (props: {
                         <div key={index} className="bg-white rounded-lg xl:flex lg:flex lg:space-x-2 xl:space-x-2 w-11/12 mx-auto my-2 h-max">
                             <div className="lg:relative lg:flex-none xl:w-4/12 lg:w-4/12">
                                 <img className="xl:absolute lg:absolute w-full h-full inset-0 xl:object-cover lg:object-cover"
-                                     src={value.image.headerImage}/>
+                                     src={value.image.headerImage} alt={value.name}/>
                             </div>
                             <div className="text-left w-full px-5 py-3 space-y-4">
                                 <div className="justify-center text-center lg:flex lg:justify-between xl:flex xl:justify-between">
