@@ -29,7 +29,7 @@ const Search = (props: {
                 delete props.searchInfo['Year'];
                 props.setSearchInfo(props.searchInfo);
                 return (
-                    <div className="flex">
+                    <div className="lg:flex xl:flex">
                         <Input table={props.searchInfo} name="Start Date" type="date" select={null}
                                contentTable={false} setTable={props.setSearchInfo}/>
                         <Input table={props.searchInfo} name="End Date" type="date" select={null}
@@ -95,7 +95,7 @@ const Search = (props: {
             </div>
 
             <div
-                className={classCss + " w-full text-sm Forigin-top-right absolute right-0 mt-1 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 divide-y divide-gray-100 focus:outline-none bg-white"}
+                className={classCss + " px-1 py-2 w-80 lg:w-full text-xs lg:text-base xl:text-base lg:Forigin-top-right absolute  mt-1 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 divide-y divide-gray-100 focus:outline-none bg-white"}
                 role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
                 <div>
                     <div className="w-3/5 mx-auto">
@@ -105,7 +105,7 @@ const Search = (props: {
                                setTable={props.setSearchInfo}/>
                     </div>
                 </div>
-                <div className="flex justify-center">
+                <div className="flex justify-center items-end">
                     <div className="w-1/3">
                         <Input table={props.searchInfo} name="Publisher" type="text" select={null} contentTable={true}
                                setTable={props.setSearchInfo}/>
@@ -120,7 +120,7 @@ const Search = (props: {
                     </div>
 
                 </div>
-                <div className="flex w-full justify-center">
+                <div className="flex w-full justify-center items-end">
                     <Input table={props.searchInfo} name="Minimum Age" type={undefined} select={
                         [
                             {content: 3, return: 3},
@@ -143,7 +143,7 @@ const Search = (props: {
                            contentTable={false} setTable={props.setSearchInfo}
                     />
                 </div>
-                <div className="flex justify-center">
+                <div className="flex justify-center items-end">
                     <div className="w-1/3">
                         <Input table={props.searchInfo} name="Categories" type="text" select={null} contentTable={true}
                                setTable={props.setSearchInfo}/>
@@ -166,7 +166,7 @@ const Search = (props: {
                             <option value="Year">Year</option>
                         </select>
                     </div>
-                    <div className="mx-auto">
+                    <div className="flex justify-center items-end">
                         {displayDate()}
                     </div>
                 </div>

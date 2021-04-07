@@ -38,7 +38,7 @@ const Short = (props: { searchInfo: any; setSearchInfo: any }) => {
 
     return (
         <div className="w-full flex space-x-10 text-lg justify-center my-auto">
-            <div className="w-1/2 my-auto">
+            <div className="w-1/2 mx-3 my-auto">
                 <select className="text-black bg-gray-300" onChange={changeValue} name="sort" id="sort-select">
                     {listOption.map((value, index) => <option value={index} key={index}>{value.option}</option>)}
                 </select>

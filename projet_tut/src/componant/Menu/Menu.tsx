@@ -14,7 +14,7 @@ const Menu = (props: {isConected: boolean; setOnclickConection: any }) => {
                                                    transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:transform-none delay-100 hover:bg-gray-100 hover:text-gray-500"
                                         aria-haspopup="true"
                                         onClick={()=>props.setOnclickConection(true)}>
-                                    {props.isConected === false ? "Connection" : "Disconnection"}
+                                    {props.isConected === false ? "Sign in" : "Sign out"}
                                 </button>
                             </div>
                         </div>
