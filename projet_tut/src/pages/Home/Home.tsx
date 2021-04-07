@@ -106,86 +106,86 @@ const Home = (props: {
         allInfo += "page=" + actualyPage;
         for (const key in copieTable) {
             switch (key) {
-                case "Platform": 
+                case "Platform":
                     if (copieTable["Platform"].length !== 0) {
                         allInfo += "&platforms=" + (copieTable["Platform"].join("+")).replace(" ", "~")
                     }
-                
+
                     break;
-                case "Developer": 
+                case "Developer":
                     if (copieTable["Developer"].length !== 0) {
                         allInfo += "&developer=" + (copieTable["Developer"].join("+")).replace(" ", "~")
                     }
-                
+
                     break;
-                case "Game Name": 
+                case "Game Name":
                     if (copieTable["Positive Reviews"] !== "") {
                         allInfo += "&name=" + copieTable["Game Name"]
                     }
-                
+
 
                     break;
-                case "Sort": 
+                case "Sort":
                     if (copieTable["Positive Reviews"] !== "") {
                         allInfo += "&sorting=" + copieTable["Sort"]
                     }
-                
+
                     break;
-                case "Positive Reviews": 
+                case "Positive Reviews":
                     if (copieTable["Positive Reviews"] !== "") {
                         let table = copieTable["Positive Reviews"].split('-');
                         allInfo += "&review_rate_low=" + table[0];
                         allInfo += "&review_rate_high=" + table[1];
                     }
-                
+
                     break;
-                case "End Date": 
+                case "End Date":
                     allInfo += "&release_date_end=" + copieTable["End Date"]
-                
+
                     break;
-                case "Start Date": 
+                case "Start Date":
                     allInfo += "&release_date_begin=" + copieTable["Start Date"]
-                
+
                     break;
-                case "Steamspy Tag": 
+                case "Steamspy Tag":
                     if (copieTable["Steamspy Tags"].length !== 0) {
                         allInfo += "&steamspy_tags=" + (copieTable["Steamspy Tags"].join("+")).replace(" ", "~")
                     }
-                
+
                     break;
-                case "Publisher": 
+                case "Publisher":
                     if (copieTable["Publisher"].length !== 0) {
                         allInfo += "&publisher=";
                         allInfo += (copieTable["Publisher"].join("+")).replace(" ", "~")
                     }
-                
+
                     break;
-                case "Genre": 
+                case "Genre":
                     if (copieTable["Genre"].length !== 0) {
                         allInfo += "&genres=" + (copieTable["Genre"].join("+")).replace(" ", "~")
                     }
-                
+
                     break;
-                case "Minimum Age": 
+                case "Minimum Age":
                     allInfo += "&required_age=" + copieTable["Minimum Age"];
-                
+
                     break;
-                case "Category": 
+                case "Category":
                     if (copieTable["Category"].length !== 0) {
                         allInfo += "&categories=" + (copieTable["Category"].join("+")).replace(" ", "~")
                     }
-                
+
                     break;
-                case "Precise Date": 
+                case "Precise Date":
                     allInfo += "&release_date=" + copieTable["Precise Date"]
-                
+
                     break;
-                case "Year": 
+                case "Year":
                     allInfo += "&release_date=" + copieTable["Year"]
-                
+
                     break;
-                default: 
-                
+                default:
+
             }
         }
         return allInfo;
