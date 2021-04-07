@@ -45,12 +45,12 @@ console.log(props.img.length);
                 }
 
                 <div className={props.img.length < 3 ?
-                    "hidden carousel-indicators lg:flex xl:flex h-16 justify-between"
+                    "hidden carousel-indicators lg:block xl:block h-20 justify-between"
                     :
-                    "hidden carousel-indicators lg:flex xl:flex h-16 overflow-y-auto justify-between"
+                    "hidden carousel-indicators lg:block xl:block h-20 overflow-y-auto justify-between"
                 }>
                     {props.img.map((value: any, index: number) => (
-                        <div className="inline-block mr-2" key={index}>
+                        <div className="inline-block mx-1 mt-2" key={index}>
                             {index !== curentPoint ?
                                 <label htmlFor={"carousel-" + index}
                                        onClick={() => setCurentPoint(index)}

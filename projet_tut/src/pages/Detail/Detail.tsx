@@ -143,9 +143,8 @@ const Detail = (props: {
                         <div className="lg:w-3/5 xl:w-3/5 text-lg">
                             <Carousel img={detailGame.image.screenshots}/>
                             <div className="lg:mt-8 lg:space-x-5 xl:space-x-5 xl:mt-8 lg:flex xl:flex">
-
                                 <TagCloud tagCloud={detailGame.tagCloud}/>
-                                <div className="w-1/2 h-max sm:space-x-2 sm:flex sm:w-full">
+                                <div className="w-1/2 h-max flex lg:block xl:block">
                                     <Category categories={detailGame.categories}/>
                                     <Genre genre={detailGame.genres}/>
                                 </div>
