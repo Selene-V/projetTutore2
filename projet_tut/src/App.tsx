@@ -8,7 +8,7 @@ import Registration from "./pages/Registration/Registration";
 
 function App() {
     const [isClickForDetail, setIsClickForDetail] = useState("");
-    const [isConected, setIsConected] = useState(false);
+    const [isConected, setIsConected] = useState();
     const [onclickConection, setOnclickConection] = useState(false);
     const [onclickRegister, setOnclickRegister] = useState(false);
 
@@ -39,7 +39,7 @@ function App() {
     return (
         <div className="App">
             <header className="App-header font-medium ">
-                <Menu isConected={isConected} setOnclickConection={setOnclickConection}/>
+                <Menu isConected={isConected} setOnclickConection={setOnclickConection} setIsConected={setIsConected}/>
                 {isClickForDetail ?
                     <Detail setIsClickForDetail={setIsClickForDetail} isClickForDetail={isClickForDetail}
                             isConected={isConected}
