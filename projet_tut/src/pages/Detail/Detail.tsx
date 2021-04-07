@@ -34,7 +34,6 @@ const Detail = (props: {
     }
 
     async function getRelatedGame() {
-        console.log(detailGame)
         if (detailGame) {
             return await fetch("http://projettutore2back/relatedGames", {
                 method: "post",
@@ -66,7 +65,6 @@ const Detail = (props: {
                         setDetailGame(null);
                         setError(x);
                     } else {
-                        console.log(x);
                         setDetailGame(x);
                     }
                 }
@@ -77,12 +75,10 @@ const Detail = (props: {
         getRelatedGame()
             .then(
                 x => {
-                    console.log(x)
                     if (typeof x === 'number') {
                         setRelatedGames(null);
                         setError(x);
                     } else {
-                        console.log(x);
                         setRelatedGames(x);
                     }
                 }
