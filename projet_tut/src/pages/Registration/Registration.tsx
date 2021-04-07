@@ -63,7 +63,7 @@ const Registration = (props: { setOnclickRegister: (arg0: boolean) => void; setO
                     <Input setTable={setSafeValue} table={safeValue} name={"Password Verification"} type={"password"}
                            select={null} contentTable={false}/>
                 </div>
-                <span className="text-base">{error}</span>
+                <p className="text-base text-red-500">{error}</p>
                 <div className="flex space-x-4 my-8 mx-10 h-2/12">
                     <button
                         onClick={() => isGoodInformation()}
