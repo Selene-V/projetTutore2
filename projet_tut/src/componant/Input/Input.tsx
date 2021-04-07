@@ -7,10 +7,7 @@ const Input = (props: { setTable: any; table: any; name: string; type: string | 
 
     function deleteInTable(index: number) {
         let table = {...props.table}
-        console.log(table[props.name])
-        console.log(index)
         table[props.name].splice(index, 1)
-        console.log(table[props.name])
         props.setTable(table);
     }
 
@@ -121,16 +118,16 @@ const Input = (props: { setTable: any; table: any; name: string; type: string | 
                         {props.select === null ?
                             <div
                                 onBlur={() => {
-                                    let te = document.getElementById(props.name)
-                                    if (te !== null) {
-                                        te.hidden = true
+                                    let div = document.getElementById(props.name)
+                                    if (div !== null) {
+                                        div.hidden = true
                                     }
                                 }
                                 }
                                 onFocus={() => {
-                                    let te = document.getElementById(props.name)
-                                    if (te !== null) {
-                                        te.hidden = false
+                                    let div = document.getElementById(props.name)
+                                    if (div !== null) {
+                                        div.hidden = false
                                     }
                                 }
                                 }>
@@ -141,7 +138,7 @@ const Input = (props: { setTable: any; table: any; name: string; type: string | 
                                            onChange={(event) => {
                                                {
                                                    setSaveContent(event.target.value)
-                                                   addInTable(props.name, saveContent.trim(), false)
+                                                   addInTable(props.name, event.target.value.trim(), false)
                                                }
                                            }}/>
 
@@ -160,10 +157,10 @@ const Input = (props: { setTable: any; table: any; name: string; type: string | 
                     <div>
                         <label className="flex">
                             <input type={props.type}
-                                   className="w-full border border-gray-300 p-2 my-2 rounded-l-lg focus:outline-none focus:ring-2 ring-blue-200"
+                                   className="text-xs xl:text-base lg:text-base w-full border border-gray-300 p-2 my-2 rounded-l-lg focus:outline-none focus:ring-2 ring-blue-200"
                                    value={saveContent}
                                    onChange={(event) => setSaveContent(event.target.value)}/>
-                            <button className="bg-gray-300 hover:bg-green-400 px-2 rounded-r-lg h-10 my-auto"
+                            <button className="text-xs xl:text-base lg:text-base bg-gray-300 hover:bg-green-400 px-2 rounded-r-lg h-10 my-auto"
                                     onClick={() => {
                                         addInTable(props.name, saveContent.trim(), true);
                                     }}>Send
