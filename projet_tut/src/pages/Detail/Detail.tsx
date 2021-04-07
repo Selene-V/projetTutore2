@@ -19,26 +19,14 @@ const Detail = (props: {
     isClickForDetail: any;
     isConected: any;
 }) => {
-    async function getValue() {
-        return await fetch("http://projettutore2back/game/" + props.isClickForDetail)
-            .then(reponse => {
-                if (reponse.status === 200) {
-                    return reponse.json()
-                } else {
-                    return reponse.status
-                }
-            })
-            .then(function (json) {
-                return json;
-            });
-    }
 
-    async function getRelatedGame() {
-        if (detailGame) {
-            return await fetch("http://projettutore2back/relatedGames", {
-                method: "post",
-                body: "appid=" + detailGame.appid
-            })
+    const [detailGame, setDetailGame] = useState<any>();
+    const [error, setError] = useState<number>(0);
+    const [relatedGames, setRelatedGames] = useState<any>();
+
+    useEffect(() => {
+        async function getValue() {
+            return await fetch("http://projettutore2back/game/" + props.isClickForDetail)
                 .then(reponse => {
                     if (reponse.status === 200) {
                         return reponse.json()
@@ -50,13 +38,7 @@ const Detail = (props: {
                     return json;
                 });
         }
-    }
 
-    const [detailGame, setDetailGame] = useState<any>();
-    const [error, setError] = useState<number>(0);
-    const [relatedGames, setRelatedGames] = useState<any>();
-
-    useEffect(() => {
         setDetailGame(undefined);
         getValue()
             .then(
@@ -69,9 +51,28 @@ const Detail = (props: {
                     }
                 }
             )
-    }, []);
+    }, [props.isClickForDetail]);
 
     useEffect(() => {
+        async function getRelatedGame() {
+            if (detailGame) {
+                return await fetch("http://projettutore2back/relatedGames", {
+                    method: "post",
+                    body: "appid=" + detailGame.appid
+                })
+                    .then(reponse => {
+                        if (reponse.status === 200) {
+                            return reponse.json()
+                        } else {
+                            return reponse.status
+                        }
+                    })
+                    .then(function (json) {
+                        return json;
+                    });
+            }
+        }
+
         getRelatedGame()
             .then(
                 x => {
