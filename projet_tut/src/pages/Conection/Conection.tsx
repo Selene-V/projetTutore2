@@ -8,6 +8,8 @@ const Connection = (props: { setOnclickConection: any; setOnclickRegister: any; 
         Password: "",
     });
 
+    const [error, setError] = useState("");
+
     function isGoodInformation() {
         if (takeInfo.Email !== "" && takeInfo.Password !== "") {
             console.log("email=" + takeInfo.Email + "&password=" + takeInfo.Password)
@@ -28,8 +30,9 @@ const Connection = (props: { setOnclickConection: any; setOnclickRegister: any; 
                 });
             api.then(
                 x => {
-                    if (typeof x === 'number') {
-                        // probleme serveur
+                    console.log(x)
+                    if (x!==1) {
+                        setError(x);
                     } else {
                         props.setOnclickConection(false)
                     }
@@ -58,7 +61,7 @@ const Connection = (props: { setOnclickConection: any; setOnclickRegister: any; 
                         <Input setTable={setTakeInfo} table={takeInfo} name={"Password"} type={"password"} select={null}
                                contentTable={false}/>
                     </div>
-
+                    <span className="text-base">{error}</span>
                     <div>
                         <button
                             className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-500 hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
