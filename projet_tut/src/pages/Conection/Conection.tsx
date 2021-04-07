@@ -3,7 +3,40 @@ import Input from "../../componant/Input/Input";
 
 const Connection = (props: { setOnclickConection: any; setOnclickRegister: any }) => {
 
-    const [takeInfo,setTakeInfo]=useState([]);
+    const [takeInfo, setTakeInfo] = useState({
+        Email: "",
+        Password: "",
+    });
+
+    function isGoodInformation() {
+        if (takeInfo.Email !== ""&& takeInfo.Password !=="") {
+            const api = fetch("http://projettutore2back/connection",
+                {
+                    method: 'post',
+                    body: "email=" + takeInfo.Email + "&password=" + takeInfo.Password
+                })
+                .then(reponse => {
+                    if (reponse.status === 200) {
+                        return reponse.json()
+                    } else {
+                        return reponse.status
+                    }
+                })
+                .then(function (json) {
+                    return json;
+                });
+            api.then(
+                x => {
+                    if (typeof x === 'number') {
+                        // probleme serveur
+                    } else {
+                        props.setOnclickConection(false)
+                    }
+                }
+            )
+        }
+    }
+
     return (
         <div className="flex bg-white">
             <div className=" px-6 w-full
@@ -17,18 +50,21 @@ const Connection = (props: { setOnclickConection: any; setOnclickRegister: any }
                         </h2>
 
                     </div>
-                        <input type="hidden" name="remember" value="true"/>
-                        <div className="rounded-md shadow-sm -space-y-px text-black text-lg">
-                            <Input setTable={setTakeInfo} table={takeInfo} name={"Username"} type={"text"} select={null} contentTable={false}/>
-                            <Input setTable={setTakeInfo} table={takeInfo} name={"Password"} type={"text"} select={null} contentTable={false}/>
-                        </div>
+                    <input type="hidden" name="remember" value="true"/>
+                    <div className="rounded-md shadow-sm -space-y-px text-black text-lg">
+                        <Input setTable={setTakeInfo} table={takeInfo} name={"Email"} type={"email"} select={null}
+                               contentTable={false}/>
+                        <Input setTable={setTakeInfo} table={takeInfo} name={"Password"} type={"password"} select={null}
+                               contentTable={false}/>
+                    </div>
 
-                        <div>
-                            <button type="submit"
-                                    className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-500 hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                Sign in
-                            </button>
-                        </div>
+                    <div>
+                        <button
+                            className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-500 hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                            onClick={() => isGoodInformation()}>
+                            Sign in
+                        </button>
+                    </div>
                     <div className="flex space-x-4">
                         <button
                             onClick={() => {

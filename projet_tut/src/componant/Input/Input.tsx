@@ -7,10 +7,7 @@ const Input = (props: { setTable: any; table: any; name: string; type: string | 
 
     function deleteInTable(index: number) {
         let table = {...props.table}
-        console.log(table[props.name])
-        console.log(index)
         table[props.name].splice(index, 1)
-        console.log(table[props.name])
         props.setTable(table);
     }
 
@@ -121,16 +118,16 @@ const Input = (props: { setTable: any; table: any; name: string; type: string | 
                         {props.select === null ?
                             <div
                                 onBlur={() => {
-                                    let te = document.getElementById(props.name)
-                                    if (te !== null) {
-                                        te.hidden = true
+                                    let div = document.getElementById(props.name)
+                                    if (div !== null) {
+                                        div.hidden = true
                                     }
                                 }
                                 }
                                 onFocus={() => {
-                                    let te = document.getElementById(props.name)
-                                    if (te !== null) {
-                                        te.hidden = false
+                                    let div = document.getElementById(props.name)
+                                    if (div !== null) {
+                                        div.hidden = false
                                     }
                                 }
                                 }>
@@ -141,7 +138,7 @@ const Input = (props: { setTable: any; table: any; name: string; type: string | 
                                            onChange={(event) => {
                                                {
                                                    setSaveContent(event.target.value)
-                                                   addInTable(props.name, saveContent.trim(), false)
+                                                   addInTable(props.name, event.target.value.trim(), false)
                                                }
                                            }}/>
 
@@ -177,7 +174,6 @@ const Input = (props: { setTable: any; table: any; name: string; type: string | 
                                     <div className="bg-gray-100 rounded-lg duration-300 hover:bg-green-200" key={value}>
                                         <button className="transform hover:-rotate-90 duration-300"
                                                 onClick={() => {
-                                                    console.log(index);
                                                     deleteInTable(index)
                                                 }}>
                                             <i className="fa fa-times" aria-hidden="true"/>

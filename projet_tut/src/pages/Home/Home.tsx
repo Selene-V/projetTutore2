@@ -88,7 +88,7 @@ const Home = (props: {
                                         <Table tableInfo={infoGame}
                                                setIsClickForDetail={props.setIsClickForDetail}
                                                isClickForDetail={props.isClickForDetail}
-                                        />
+                                               choiceDisign={true}/>
                                     </div>
                                     <Pagination actualyPage={actualyPage}
                                                 setActualyPage={setActualyPage}
@@ -185,10 +185,9 @@ const Home = (props: {
                     allInfo += "&release_date=" + copieTable["Year"]
                 }
                     break;
-                default:
-                    console.log(error);
+                default: {
+                }
             }
-            console.log(allInfo);
         }
         return allInfo;
 
