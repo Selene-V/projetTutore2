@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import Input from "../../componant/Input/Input";
 
-const Connection = (props: { setOnclickConection: any; setOnclickRegister: any }) => {
+const Connection = (props: { setOnclickConection: any; setOnclickRegister: any; setIsConected: any }) => {
 
     const [takeInfo, setTakeInfo] = useState({
         Email: "",
@@ -9,7 +9,7 @@ const Connection = (props: { setOnclickConection: any; setOnclickRegister: any }
     });
 
     function isGoodInformation() {
-        if (takeInfo.Email !== ""&& takeInfo.Password !=="") {
+        if (takeInfo.Email !== "" && takeInfo.Password !== "") {
             const api = fetch("http://projettutore2back/connection",
                 {
                     method: 'post',

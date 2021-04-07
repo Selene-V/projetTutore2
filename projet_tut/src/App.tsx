@@ -20,7 +20,8 @@ function App() {
         return (
             <div className="App">
                 <header className="App-header font-medium ">
-                    <Conection setOnclickConection={setOnclickConection} setOnclickRegister={setOnclickRegister}/>
+                    <Conection setOnclickConection={setOnclickConection} setOnclickRegister={setOnclickRegister}
+                               setIsConected={setIsConected}/>
                 </header>
             </div>
         );
