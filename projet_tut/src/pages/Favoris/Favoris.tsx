@@ -5,7 +5,7 @@ import Error from "../../componant/Error/Error";
 import Pagination from "../Home/Pagination/Pagination";
 
 
-const Favoris = (props: {setIsClickForDetail: any; isClickForDetail: string; }) => {
+const Favoris = (props: {setOnclickFavoris: any ; setIsClickForDetail: any; isClickForDetail: string; }) => {
     const [table, setTable] = useState<any>();
     const [maxPage, setMaxPage] = useState(1);
     const [actualyPage, setActualyPage] = useState(1);
@@ -18,7 +18,6 @@ const Favoris = (props: {setIsClickForDetail: any; isClickForDetail: string; }) 
             else {
                 let myHeaders = new Headers()
                 myHeaders.append('Authorization', local);
-                console.log(myHeaders)
                 return await fetch("http://projettutore2back/displayLibrary",
                 {
                     method: 'post',
@@ -79,6 +78,12 @@ const Favoris = (props: {setIsClickForDetail: any; isClickForDetail: string; }) 
                                                 setActualyPage={setActualyPage}
                                                 gamesByPage={maxPage}
                                     />
+                        <div className="mx-auto center my-4">
+                            <button
+                                className="w-1/4 justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-red-400 hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                onClick={() => props.setOnclickFavoris(false)}>Back
+                            </button>
+                        </div>
                     </div>
                 )
             }

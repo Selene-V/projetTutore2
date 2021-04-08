@@ -43,7 +43,7 @@ function App() {
             <div>
                 <header className="App-header font-medium ">
                     <Menu isConected={isConected} setOnclickConection={setOnclickConection} setIsConected={setIsConected} setOnclickFavoris={setOnclickFavoris}/>
-                    <Favoris setIsClickForDetail={setIsClickForDetail} isClickForDetail={isClickForDetail}/>
+                    <Favoris setOnclickFavoris={setOnclickFavoris} setIsClickForDetail={setIsClickForDetail} isClickForDetail={isClickForDetail}/>
                 </header>
             </div>
         )

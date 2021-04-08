@@ -23,6 +23,59 @@ const Detail = (props: {
     const [detailGame, setDetailGame] = useState<any>();
     const [error, setError] = useState<number>(0);
     const [relatedGames, setRelatedGames] = useState<any>();
+    const [fav, setFav] = useState(false)
+ 
+    const addFav = () => {
+        let local = localStorage.getItem('jwt')
+        if(local !== null){
+            let myHeaders = new Headers()
+            myHeaders.append('Authorization', local);
+            fetch("http://projettutore2back/addGameToLibrary",
+            {
+                method: 'post',
+                headers : myHeaders,
+                body : "game="+detailGame.appid
+            })
+            .then(reponse => {
+                if (reponse.status === 200) {
+                    return reponse.json()
+                } else {
+                    return reponse.status
+                }
+            })
+            .then(function (json) {
+                if(json === 1){
+                    setFav(true)
+                }
+            });
+        }
+    }
+
+    const removeFav = () => {
+        let local = localStorage.getItem('jwt')
+        if(local !== null){
+            let myHeaders = new Headers()
+            myHeaders.append('Authorization', local);
+            fetch("http://projettutore2back/removeGameFromLibrary",
+            {
+                method: 'post',
+                headers : myHeaders,
+                body : "game="+detailGame.appid
+            })
+            .then(reponse => {
+                if (reponse.status === 200) {
+                    return reponse.json()
+                } else {
+                    return reponse.status
+                }
+            })
+            .then(function (json) {
+                if(json === 1){
+                    setFav(false)
+                }
+            });
+        }
+    }
 
     useEffect(() => {
         async function getValue() {
@@ -35,9 +88,36 @@ const Detail = (props: {
                     }
                 })
                 .then(function (json) {
+                    console.log(json)
                     return json;
                 });
         }
+
+        async function isFav(appid: number){
+            let local = localStorage.getItem('jwt')
+            if(local !== null){
+                let myHeaders = new Headers()
+                myHeaders.append('Authorization', local);
+                fetch("http://projettutore2back/libraryContains",
+                {
+                    method: 'post',
+                    headers : myHeaders,
+                    body : "appid="+appid
+                })
+                .then(reponse => {
+                    if (reponse.status === 200) {
+                        return reponse.json()
+                    } else {
+                        return reponse.status
+                    }
+                })
+                .then(function (json) {
+                    if(json === 1){
+                        setFav(true)
+                    }
+                });
+            }
+        }   
 
         setDetailGame(undefined);
         getValue()
@@ -48,9 +128,11 @@ const Detail = (props: {
                         setError(x);
                     } else {
                         setDetailGame(x);
+                        isFav(x.appid)
                     }
                 }
             )
+ 
     }, [props.isClickForDetail]);
 
     useEffect(() => {
@@ -122,16 +204,16 @@ const Detail = (props: {
                         <div className="xl:w-1/12 lg:w-1/12 text-center justify-center place-self-center text-white w-full">
                             {props.isConected ?
                                 <div>
-                                    {true ? <button className="w-full" onClick={() => {
-                                            console.log('add')
+                                    {fav ? <button className="w-full" onClick={() => {
+                                            removeFav()
                                         }}>
-                                            <i className="fa fa-heart-o fa-3x w-full" aria-hidden="true"/>
+                                            <i className="fa fa-heart fa-3x w-full" aria-hidden="true"/>
                                         </button>
                                         :
                                         <button className="w-full" onClick={() => {
-                                            console.log('add')
+                                            addFav()
                                         }}>
-                                            <i className="fa fa-heart fa-3x w-full" aria-hidden="true"/>
+                                            <i className="fa fa-heart-o fa-3x w-full" aria-hidden="true"/>
                                         </button>}
                                 </div> : ""}
 
