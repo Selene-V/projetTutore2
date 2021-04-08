@@ -24,7 +24,7 @@ const Home = (props: {
         G: [],
         Publisher: [],
         "Steamspy Tags": [],
-        "Positive Reviews": "90-100",
+        "Reviews": "90-100",
         "Minimum Age": 3,
         Platforms: [],
     })
