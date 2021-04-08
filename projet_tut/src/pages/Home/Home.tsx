@@ -19,14 +19,16 @@ const Home = (props: {
     const [infoGame, setInfoGame] = useState<any>();
     const [error, setError] = useState<number>(0);
     const [searchInfo, setSearchInfo] = useState<any>({
-        Categories: [],
+        Category: [],
         Developer: [],
-        G: [],
         Publisher: [],
+        Sort:"",
+        "Game Name":"",
         "Steamspy Tags": [],
         "Reviews": "90-100",
         "Minimum Age": 3,
         Platforms: [],
+        Genre:[],
     })
 
     let traiterSearchNameDebounce = debounce(searchInfo, 1200);

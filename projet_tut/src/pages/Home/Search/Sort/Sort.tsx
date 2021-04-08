@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 
 const Short = (props: { searchInfo: any; setSearchInfo: any }) => {
     const listOption = [
+        {option: "Pertinence", value: "", sorder: "", disorder: ""},
         {option: "Game Name", value: "name", sorder: "A - Z", disorder: "Z - A"},
         {option: "Release Date", value: "release_date", sorder: "Recent - Old", disorder: "Old - Recent"},
         {option: "Developer", value: "developer", sorder: "A - Z", disorder: "Z - A"},
@@ -15,17 +16,26 @@ const Short = (props: { searchInfo: any; setSearchInfo: any }) => {
     function takeInformation() {
         let reponse = {...props.searchInfo}
         let value = "";
-        if (clickButon) {
-            value = optionSelected.value + "-asc";
+        if (optionSelected.value === "") {
+            value = "";
         } else {
-            value = optionSelected.value + "-desc";
+            if (clickButon) {
+                value = optionSelected.value + "-asc";
+            } else {
+                value = optionSelected.value + "-desc";
+            }
+            reponse["Sort"] = value;
+            props.setSearchInfo(reponse)
         }
-        reponse["Sort"] = value;
-        props.setSearchInfo(reponse)
     }
 
     function changeValue() {
         const takeIndex = parseInt((document.getElementById("sort-select") as HTMLInputElement).value);
+        if(takeIndex===0){
+            let reponse = {...props.searchInfo}
+            reponse["Sort"]="";
+            props.setSearchInfo(reponse)
+        }
         if (takeIndex !== null) {
             setOptionSelected(listOption[takeIndex]);
             setClickButon(true);
@@ -44,8 +54,11 @@ const Short = (props: { searchInfo: any; setSearchInfo: any }) => {
                 </select>
             </div>
             <div className="w-1/2 my-auto">
-                <button onClick={() => setClickButon(!clickButon)}
-                        className="text-black py-1 px-2 rounded-md bg-gray-300">{clickButon ? optionSelected.sorder : optionSelected.disorder}</button>
+                {optionSelected.option === "Pertinence" ? ""
+                    :
+                    <button onClick={() => setClickButon(!clickButon)}
+                            className="text-black py-1 px-2 rounded-md bg-gray-300">{clickButon ? optionSelected.sorder : optionSelected.disorder}</button>
+                }
             </div>
         </div>
     );
