@@ -31,9 +31,11 @@ const Connection = (props: { setOnclickConection: any; setOnclickRegister: any; 
             api.then(
                 x => {
                     console.log(x)
-                    if (x!==1) {
+                    if (x.length < 50) {
                         setError(x);
                     } else {
+                        localStorage.setItem('jwt',x)
+                        props.setIsConected(true)
                         props.setOnclickConection(false)
                     }
                 }

@@ -24,6 +24,7 @@ const Menu = (props: { isConected: any; setOnclickConection: any; setIsConected:
                                             onClick={() => {
                                                 props.setOnclickConection(true)
                                                 props.setIsConected(undefined)
+                                                localStorage.removeItem('jwt')
                                             }
                                             }>
                                         Sign out
