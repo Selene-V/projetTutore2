@@ -10,7 +10,7 @@ const Menu = (props: { isConected: any; setOnclickConection: any; setIsConected:
                         className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                         <div className="ml-3 relative">
                             <div>
-                                {props.isConected === undefined ?
+                                {props.isConected === null ?
                                     <button className="bg-gray-500 p-2 flex text-sm rounded-lg text-lg font-medium text-gray-100
                                                    transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:transform-none delay-100 hover:bg-gray-100 hover:text-gray-500"
                                             aria-haspopup="true"
@@ -33,7 +33,7 @@ const Menu = (props: { isConected: any; setOnclickConection: any; setIsConected:
                                             aria-haspopup="true"
                                             onClick={() => {
                                                 props.setOnclickConection(true)
-                                                props.setIsConected(undefined)
+                                                props.setIsConected(null)
                                                 localStorage.removeItem('jwt')
                                             }
                                             }>

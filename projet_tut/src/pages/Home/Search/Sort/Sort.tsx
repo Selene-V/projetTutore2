@@ -13,21 +13,7 @@ const Short = (props: { searchInfo: any; setSearchInfo: any }) => {
     const [optionSelected, setOptionSelected] = useState(listOption[0])
     const [clickButon, setClickButon] = useState(true);
 
-    function takeInformation() {
-        let reponse = {...props.searchInfo}
-        let value = "";
-        if (optionSelected.value === "") {
-            value = "";
-        } else {
-            if (clickButon) {
-                value = optionSelected.value + "-asc";
-            } else {
-                value = optionSelected.value + "-desc";
-            }
-            reponse["Sort"] = value;
-            props.setSearchInfo(reponse)
-        }
-    }
+
 
     function changeValue() {
         const takeIndex = parseInt((document.getElementById("sort-select") as HTMLInputElement).value);
@@ -43,7 +29,21 @@ const Short = (props: { searchInfo: any; setSearchInfo: any }) => {
     }
 
     useEffect(() => {
-        takeInformation();
+ 
+            let reponse = {...props.searchInfo}
+            let value = "";
+            if (optionSelected.value === "") {
+                value = "";
+            } else {
+                if (clickButon) {
+                    value = optionSelected.value + "-asc";
+                } else {
+                    value = optionSelected.value + "-desc";
+                }
+                reponse["Sort"] = value;
+                props.setSearchInfo(reponse)
+            }
+        
     }, [clickButon, optionSelected])
 
     return (

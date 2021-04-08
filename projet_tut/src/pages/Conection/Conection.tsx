@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import Input from "../../componant/Input/Input";
 
-const Connection = (props: { setOnclickConection: any; setOnclickRegister: any; setIsConected: any; setFavoritesGames: any; }) => {
+const Connection = (props: { setOnclickConection: any; setOnclickRegister: any; setIsConected: any;}) => {
 
     const [takeInfo, setTakeInfo] = useState({
         Email: "",
@@ -34,30 +34,8 @@ const Connection = (props: { setOnclickConection: any; setOnclickRegister: any; 
                         setError(x);
                     } else {
                         localStorage.setItem('jwt',x)
-                        props.setIsConected(true)
+                        props.setIsConected(x)
                         props.setOnclickConection(false)
-                        
-                        let myHeaders = new Headers()
-                        myHeaders.set('Authorizaton', x);
-                        myHeaders.set('Content-Type','application/x-www-form-urlencoded');
-                        const favorites = fetch("http://projettutore2back/displayLibrary&page=",
-                        {
-                            method: 'post',
-                            headers : myHeaders,
-                        })
-                        .then(reponse => {
-
-                                return reponse.status
-
-                        })
-                        .then(function (json) {
-                            console.log(json)
-                            return json;
-                        })
-                        .catch(function(error) {
-                            console.log(error);
-                          });
-                        favorites.then(y => {props.setFavoritesGames(y)});
                     }
                 }
             )

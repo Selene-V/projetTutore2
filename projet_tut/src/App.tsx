@@ -9,12 +9,10 @@ import Favoris from "./pages/Favoris/Favoris";
 
 function App() {
     const [isClickForDetail, setIsClickForDetail] = useState("");
-    const [isConected, setIsConected] = useState();
+    const [isConected, setIsConected] = useState(localStorage.getItem('jwt'));
     const [onclickConection, setOnclickConection] = useState(false);
     const [onclickRegister, setOnclickRegister] = useState(false);
     const [onclickFavoris, setOnclickFavoris] = useState(false);
-
-    const [favoritesGames, setFavoritesGames] = useState([]);
 
     useEffect(() => {
         setIsClickForDetail(isClickForDetail);
@@ -25,7 +23,7 @@ function App() {
             <div className="App">
                 <header className="App-header font-medium ">
                     <Conection setOnclickConection={setOnclickConection} setOnclickRegister={setOnclickRegister}
-                               setIsConected={setIsConected} setFavoritesGames={setFavoritesGames}/>
+                               setIsConected={setIsConected}/>
                 </header>
             </div>
         );
@@ -45,7 +43,7 @@ function App() {
             <div>
                 <header className="App-header font-medium ">
                     <Menu isConected={isConected} setOnclickConection={setOnclickConection} setIsConected={setIsConected} setOnclickFavoris={setOnclickFavoris}/>
-                    <Favoris tableInfo={favoritesGames} setIsClickForDetail={setIsClickForDetail} isClickForDetail={isClickForDetail}/>
+                    <Favoris setIsClickForDetail={setIsClickForDetail} isClickForDetail={isClickForDetail}/>
                 </header>
             </div>
         )

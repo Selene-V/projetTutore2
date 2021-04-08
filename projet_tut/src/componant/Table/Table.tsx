@@ -14,7 +14,7 @@ const Table = (props: {
 
         if(props.choiceDisign){
             return (
-                <div>
+                <div className="text-black">
                     {props.tableInfo.map((value, index) =>
                         <div key={index} className="bg-white rounded-lg xl:flex lg:flex lg:space-x-2 xl:space-x-2 w-11/12 mx-auto my-2 h-max">
                             <div className="lg:relative lg:flex-none xl:w-4/12 lg:w-4/12">
