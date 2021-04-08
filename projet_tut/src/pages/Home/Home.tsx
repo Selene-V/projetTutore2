@@ -32,6 +32,7 @@ const Home = (props: {
     let traiterSearchNameDebounce = debounce(searchInfo, 1200);
 
     async function searchAll() {
+        console.log(transformeInStringParam());
         return await fetch("http://projettutore2back/advancedSearch",
             {
                 method: 'post',
@@ -119,21 +120,21 @@ const Home = (props: {
 
                     break;
                 case "Game Name":
-                    if (copieTable["Positive Reviews"] !== "") {
+                    if (copieTable["Game Name"] !== "") {
                         allInfo += "&name=" + copieTable["Game Name"]
                     }
 
 
                     break;
                 case "Sort":
-                    if (copieTable["Positive Reviews"] !== "") {
+                    if (copieTable["Sort"] !== "") {
                         allInfo += "&sorting=" + copieTable["Sort"]
                     }
 
                     break;
-                case "Positive Reviews":
-                    if (copieTable["Positive Reviews"] !== "") {
-                        let table = copieTable["Positive Reviews"].split('-');
+                case "Reviews":
+                    if (copieTable["Reviews"] !== "") {
+                        let table = copieTable["Reviews"].split('-');
                         allInfo += "&review_rate_low=" + table[0];
                         allInfo += "&review_rate_high=" + table[1];
                     }

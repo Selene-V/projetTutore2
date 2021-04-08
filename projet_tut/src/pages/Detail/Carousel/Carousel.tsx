@@ -9,7 +9,6 @@ const Carousel = (props: { img: any; }) => {
 }</style>`)
     })
     const [curentPoint, setCurentPoint] = useState(0);
-console.log(props.img.length);
     return (
         <div className="carousel relative">
             <div className="carousel-inner relative overflow-hidden">

@@ -12,7 +12,6 @@ const Connection = (props: { setOnclickConection: any; setOnclickRegister: any; 
 
     function isGoodInformation() {
         if (takeInfo.Email !== "" && takeInfo.Password !== "") {
-            console.log("email=" + takeInfo.Email + "&password=" + takeInfo.Password)
             const api = fetch("http://projettutore2back/connection",
                 {
                     method: 'post',
