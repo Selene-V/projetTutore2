@@ -97,18 +97,16 @@ const Detail = (props: {
             <div className="lg:w-1/12 xl:w-1/12"/>
             <div className="lg:w-10/12 xl:w-10/12">
                 <div className="mt-8 text-2xl my-4">
-                    <div className="ml-4 text-white justify-between lg:flex xl:flex">
-                        <div className="w-full
-                        lg:w-3/12 img_size
-                        ">
+                    <div className="ml-4 text-white justify-between lg:flex xl:flex w-full">
+                        <div className="w-full lg:w-3/12 img_size">
                             <img src={detailGame.image.headerImage} className="sizeImg mx-auto" alt="test"/>
                         </div>
-                        <div className="ml-4 text-white text-center lg:w-8/12 text-left xl:w-8/12 text-left">
+                        <div className="ml-4 text-white text-center lg:w-7/12 text-left xl:w-7/12 text-left">
                             <div className="mt-5 text-5xl lg:flex xl:flex">
                                 <p className="xl:text-5xl lg:text-5xl">{detailGame.name}</p>
                             </div>
                             <div className="mt-5 space-x-3 text-lg">
-                                <div className="text-left sm:text-center">
+                                <div className="sm:text-center xl:text-left lg:text-left">
                                     <p className="text-sm xl:text-2xl lg:text-2xl">{detailGame.releaseDate}</p>
                                 </div>
                                 <div className="space-x-2 inline-flex content-center lg:flex xl:flex">
@@ -121,23 +119,20 @@ const Detail = (props: {
                                 </div>
                             </div>
                         </div>
-                        <div className="w-1/12 text-center justify-center place-self-center text-white ">
+                        <div className="xl:w-1/12 lg:w-1/12 text-center justify-center place-self-center text-white w-full">
                             {props.isConected ?
                                 <div>
-                                    <button className='bg-red-500' onClick={() => {console.log('add')}}>
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                         stroke="currentColor">
-                                        <path
-                                            d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
-                                    </svg>
-                                    </button>
-                                    <button className='bg-red-500' onClick={() => {console.log('add')}}>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                        <path fillRule="evenodd"
-                                              d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
-                                              clipRule="evenodd"/>
-                                    </svg>
-                                    </button>
+                                    {true ? <button className="w-full" onClick={() => {
+                                            console.log('add')
+                                        }}>
+                                            <i className="fa fa-heart-o fa-3x w-full" aria-hidden="true"/>
+                                        </button>
+                                        :
+                                        <button className="w-full" onClick={() => {
+                                            console.log('add')
+                                        }}>
+                                            <i className="fa fa-heart fa-3x w-full" aria-hidden="true"/>
+                                        </button>}
                                 </div> : ""}
 
                         </div>
@@ -146,7 +141,7 @@ const Detail = (props: {
                         <div className="lg:w-3/5 xl:w-3/5 text-lg">
                             <Carousel img={detailGame.image.screenshots}/>
                             <div className="lg:mt-8 lg:space-x-5 xl:space-x-5 xl:mt-8 lg:flex xl:flex">
-                                    <TagCloud tagCloud={detailGame.tagCloud}/>
+                                <TagCloud tagCloud={detailGame.tagCloud}/>
                                 <div className="xl:w-1/2 lg:w-1/2 xl:space-y-2 lg:space-y-2 h-max sm:w-full">
                                     <Category categories={detailGame.categories}/>
                                     <Genre genre={detailGame.genres}/>
