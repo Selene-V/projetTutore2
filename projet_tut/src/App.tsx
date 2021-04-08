@@ -14,6 +14,8 @@ function App() {
     const [onclickRegister, setOnclickRegister] = useState(false);
     const [onclickFavoris, setOnclickFavoris] = useState(false);
 
+    const [favoritesGames, setFavoritesGames] = useState([]);
+
     useEffect(() => {
         setIsClickForDetail(isClickForDetail);
     }, [isClickForDetail]);
@@ -23,7 +25,7 @@ function App() {
             <div className="App">
                 <header className="App-header font-medium ">
                     <Conection setOnclickConection={setOnclickConection} setOnclickRegister={setOnclickRegister}
-                               setIsConected={setIsConected}/>
+                               setIsConected={setIsConected} setFavoritesGames={setFavoritesGames}/>
                 </header>
             </div>
         );
@@ -42,8 +44,8 @@ function App() {
         return (
             <div>
                 <header className="App-header font-medium ">
-                    <Menu isConected={isConected} setOnclickConection={setOnclickConection} setIsConected={setIsConected}/>
-                    <Favoris tableInfo={[]} setIsClickForDetail={setIsClickForDetail} isClickForDetail={isClickForDetail}/>
+                    <Menu isConected={isConected} setOnclickConection={setOnclickConection} setIsConected={setIsConected} setOnclickFavoris={setOnclickFavoris}/>
+                    <Favoris tableInfo={favoritesGames} setIsClickForDetail={setIsClickForDetail} isClickForDetail={isClickForDetail}/>
                 </header>
             </div>
         )
@@ -52,7 +54,7 @@ function App() {
     return (
         <div className="App">
             <header className="App-header font-medium ">
-                <Menu isConected={isConected} setOnclickConection={setOnclickConection} setIsConected={setIsConected}/>
+                <Menu isConected={isConected} setOnclickConection={setOnclickConection} setIsConected={setIsConected} setOnclickFavoris={setOnclickFavoris}/>
                 {isClickForDetail ?
                     <Detail setIsClickForDetail={setIsClickForDetail} isClickForDetail={isClickForDetail}
                             isConected={isConected}

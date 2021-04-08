@@ -1,6 +1,6 @@
 import React from "react";
 
-const Menu = (props: { isConected: any; setOnclickConection: any; setIsConected: any }) => {
+const Menu = (props: { isConected: any; setOnclickConection: any; setIsConected: any; setOnclickFavoris: any }) => {
 
     return (
         <nav className="bg-gray-800 w-full">
@@ -18,6 +18,16 @@ const Menu = (props: { isConected: any; setOnclickConection: any; setIsConected:
                                         Sign in
                                     </button>
                                     :
+                                    <div className="flex space-x-2">
+                                    <button className="bg-gray-500 p-2 flex text-sm rounded-lg text-lg font-medium text-gray-100
+                                                   transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:transform-none delay-100 hover:bg-gray-100 hover:text-gray-500"
+                                            aria-haspopup="true"
+                                            onClick={() => {
+                                                props.setOnclickFavoris(true)
+                                            }
+                                            }>
+                                        Favorites
+                                    </button>
                                     <button className="bg-gray-500 p-2 flex text-sm rounded-lg text-lg font-medium text-gray-100
                                                    transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:transform-none delay-100 hover:bg-gray-100 hover:text-gray-500"
                                             aria-haspopup="true"
@@ -29,6 +39,7 @@ const Menu = (props: { isConected: any; setOnclickConection: any; setIsConected:
                                             }>
                                         Sign out
                                     </button>
+                                    </div>
                                 }
                             </div>
                         </div>
