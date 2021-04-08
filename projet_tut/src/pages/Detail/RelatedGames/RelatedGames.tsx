@@ -5,7 +5,7 @@ const RelatedGames = (props: {
     relatedGames: any[];
     setIsClickForDetail: any;
     isClickForDetail: string;
-    choiceDisign:boolean;
+    choiceDisign: boolean;
 }) => {
     return (
         <div className="mt-4 bg-white rounded-xl">
@@ -20,7 +20,7 @@ const RelatedGames = (props: {
                                    setIsClickForDetail={props.setIsClickForDetail}
                                    isClickForDetail={props.isClickForDetail}
                                    choiceDisign={props.choiceDisign}
-                             />
+                                   setdesactivatePage={null}/>
                         </div>
                     </div>
                 </div>

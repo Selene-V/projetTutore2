@@ -7,6 +7,7 @@ const Table = (props: {
     setIsClickForDetail: any;
     isClickForDetail: string;
     choiceDisign:boolean;
+    setdesactivatePage:any
 }) => {
 
     if (props.tableInfo !== undefined) {
@@ -48,7 +49,12 @@ const Table = (props: {
                                                 {value.description.shortDescription}
                                             </p>
                                             <button
-                                                onClick={() => props.setIsClickForDetail(value.id)}
+                                                onClick={() => {
+                                                    props.setIsClickForDetail(value.id);
+                                                    if(props.setdesactivatePage!==null){
+                                                        props.setdesactivatePage(false);
+                                                    }
+                                                }}
                                                 className="transition duration-500 xl:float-right lg:float-right hover:bg-green-200 px-5 py-2 rounded-lg border-2 hover:border-opacity-0 border-gray-400">Look
                                             </button>
                                         </div>
@@ -71,7 +77,10 @@ const Table = (props: {
                 <tbody>
                 {props.tableInfo.map((value, index) => (
                     <tr key={index}
-                        onClick={() => props.setIsClickForDetail(value.id)}
+                        onClick={() => {
+                            props.setIsClickForDetail(value.id)
+                            props.setdesactivatePage(false);
+                        }}
                         className={
                             index & 1?"bg-gray-200 border-b border-gray-200 hover:bg-green-400 hover:text-gray-50 transition ease-in-out duration-150"
                             :

@@ -22,13 +22,13 @@ const Home = (props: {
         Category: [],
         Developer: [],
         Publisher: [],
-        Sort:"",
-        "Game Name":"",
+        Sort: "",
+        "Game Name": "",
         "Steamspy Tags": [],
         "Reviews": "90-100",
         "Minimum Age": 3,
         Platforms: [],
-        Genre:[],
+        Genre: [],
     })
 
     let traiterSearchNameDebounce = debounce(searchInfo, 1200);
@@ -90,7 +90,9 @@ const Home = (props: {
                                         <Table tableInfo={infoGame}
                                                setIsClickForDetail={props.setIsClickForDetail}
                                                isClickForDetail={props.isClickForDetail}
-                                               choiceDisign={true}/>
+                                               choiceDisign={true}
+                                               setdesactivatePage={null}
+                                        />
                                     </div>
                                     <Pagination actualyPage={actualyPage}
                                                 setActualyPage={setActualyPage}
