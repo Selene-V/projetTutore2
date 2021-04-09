@@ -33,11 +33,11 @@ const Registration = (props: { setOnclickRegister: (arg0: boolean) => void; setO
                 });
             api.then(
                 x => {
-                    if (x !==1) {
+                    if (x !==true) {
                         setError(x);
                     } else {
-                        props.setOnclickConection(true)
                         props.setOnclickRegister(false)
+                        props.setOnclickConection(true)
                     }
                 }
             )
