@@ -47,8 +47,13 @@ const Favoris = (props: { setOnclickFavoris: any; setIsClickForDetail: any; isCl
                         setTable(null);
                         setError(x);
                     } else {
-                        setTable(x.games);
-                        setMaxPage(x.nbPages);
+                        if (x === false) {
+                            setTable(x)
+                        } else {
+                            setTable(x.games);
+                            setMaxPage(x.nbPages);
+                        }
+
                     }
                 }
             )
@@ -57,7 +62,7 @@ const Favoris = (props: { setOnclickFavoris: any; setIsClickForDetail: any; isCl
     function display() {
         switch (true) {
             case table === undefined: {
-                return (<Loading/>)
+                return (<div className="justify-center"><Loading/></div>)
             }
             case table === null: {
                 return (
@@ -74,12 +79,16 @@ const Favoris = (props: { setOnclickFavoris: any; setIsClickForDetail: any; isCl
             default: {
                 return (
                     <div>
-                        <Table tableInfo={table} setIsClickForDetail={props.setIsClickForDetail}
-                               isClickForDetail={props.isClickForDetail} choiceDisign={true} setdesactivatePage={props.setOnclickFavoris}/>
-                        <Pagination actualyPage={actualyPage}
-                                    setActualyPage={setActualyPage}
-                                    gamesByPage={maxPage}
-                        />
+                        {table === false ? <div className="text-center">You have 0 favorite</div> :
+                            <div>
+                                <Table tableInfo={table} setIsClickForDetail={props.setIsClickForDetail}
+                                       isClickForDetail={props.isClickForDetail} choiceDisign={true}
+                                       setdesactivatePage={props.setOnclickFavoris}/>
+                                <Pagination actualyPage={actualyPage}
+                                            setActualyPage={setActualyPage}
+                                            gamesByPage={maxPage}
+                                />
+                            </div>}
                         <div className="mx-auto center my-4 ml-4">
                             <button
                                 className="w-1/4 justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-red-400 hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
