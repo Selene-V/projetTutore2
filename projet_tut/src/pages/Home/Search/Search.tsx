@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useState} from "react";
 import Input from "../../../componant/Input/Input";
 import Sort from "./Sort/Sort";
 
@@ -9,7 +9,7 @@ const Search = (props: {
 }) => {
     const [classCss, setClassCss] = useState("transition ease-out duration-100 transform opacity-0 scale-95");
     const [changeZIndex, setChangeZIndex] = useState("h-0 overflow-hidden");
-    const [choiceDate, setChoiceDate] = useState("Fork");
+    const [choiceDate, setChoiceDate] = useState("Between");
 
     function change() {
         if (classCss === "transition ease-out duration-100 transform opacity-0 scale-95") {
@@ -23,7 +23,7 @@ const Search = (props: {
 
     function displayDate() {
         switch (true) {
-            case choiceDate === "Fork": {
+            case choiceDate === "Between": {
 
                 delete props.searchInfo['Precise Date'];
                 delete props.searchInfo['Year'];
@@ -131,7 +131,7 @@ const Search = (props: {
                         ]}
                            contentTable={false} setTable={props.setSearchInfo}
                     />
-                    <Input table={props.searchInfo} name="Positive Reviews" type={undefined} select={
+                    <Input table={props.searchInfo} name="Reviews" type={undefined} select={
                         [
                             {content: "Excellent", return: "90-100"},
                             {content: "Verry Good", return: "75-90"},
@@ -145,7 +145,7 @@ const Search = (props: {
                 </div>
                 <div className="flex justify-center items-end">
                     <div className="w-1/3">
-                        <Input table={props.searchInfo} name="Categories" type="text" select={null} contentTable={true}
+                        <Input table={props.searchInfo} name="Category" type="text" select={null} contentTable={true}
                                setTable={props.setSearchInfo}/>
                     </div>
                     <div className="w-1/3">
@@ -153,7 +153,7 @@ const Search = (props: {
                                setTable={props.setSearchInfo}/>
                     </div>
                     <div className="w-1/3">
-                        <Input table={props.searchInfo} name="Steamspy Tags" type="text" select={null} contentTable={true}
+                        <Input table={props.searchInfo} name="Steamspy Tag" type="text" select={null} contentTable={true}
                                setTable={props.setSearchInfo}/>
                     </div>
                 </div>
@@ -161,7 +161,7 @@ const Search = (props: {
                     <div className="w-4/12 my-auto h-full">
                         <select className="text-black w-7/12 px-2"
                                 onChange={(event) => setChoiceDate(event.target.value)}>
-                            <option value="Fork">Fork</option>
+                            <option value="Between">Between</option>
                             <option value="Precise Date">Precise Date</option>
                             <option value="Year">Year</option>
                         </select>

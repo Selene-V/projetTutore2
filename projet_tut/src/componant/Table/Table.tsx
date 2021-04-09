@@ -7,20 +7,20 @@ const Table = (props: {
     setIsClickForDetail: any;
     isClickForDetail: string;
     choiceDisign:boolean;
+    setdesactivatePage:any
 }) => {
-    console.log(props.tableInfo[0])
 
     if (props.tableInfo !== undefined) {
 
 
         if(props.choiceDisign){
             return (
-                <div>
+                <div className="text-black">
                     {props.tableInfo.map((value, index) =>
                         <div key={index} className="bg-white rounded-lg xl:flex lg:flex lg:space-x-2 xl:space-x-2 w-11/12 mx-auto my-2 h-max">
                             <div className="lg:relative lg:flex-none xl:w-4/12 lg:w-4/12">
                                 <img className="xl:absolute lg:absolute w-full h-full inset-0 xl:object-cover lg:object-cover"
-                                     src={value.image.headerImage}/>
+                                     src={value.image.headerImage} alt={value.name}/>
                             </div>
                             <div className="text-left w-full px-5 py-3 space-y-4">
                                 <div className="justify-center text-center lg:flex lg:justify-between xl:flex xl:justify-between">
@@ -49,7 +49,12 @@ const Table = (props: {
                                                 {value.description.shortDescription}
                                             </p>
                                             <button
-                                                onClick={() => props.setIsClickForDetail(value.id)}
+                                                onClick={() => {
+                                                    props.setIsClickForDetail(value.id);
+                                                    if(props.setdesactivatePage!==null){
+                                                        props.setdesactivatePage(false);
+                                                    }
+                                                }}
                                                 className="transition duration-500 xl:float-right lg:float-right hover:bg-green-200 px-5 py-2 rounded-lg border-2 hover:border-opacity-0 border-gray-400">Look
                                             </button>
                                         </div>
@@ -72,7 +77,12 @@ const Table = (props: {
                 <tbody>
                 {props.tableInfo.map((value, index) => (
                     <tr key={index}
-                        onClick={() => props.setIsClickForDetail(value.id)}
+                        onClick={() => {
+                            props.setIsClickForDetail(value.id)
+                            if(props.setdesactivatePage!==null){
+                                props.setdesactivatePage(false);
+                            }
+                        }}
                         className={
                             index & 1?"bg-gray-200 border-b border-gray-200 hover:bg-green-400 hover:text-gray-50 transition ease-in-out duration-150"
                             :

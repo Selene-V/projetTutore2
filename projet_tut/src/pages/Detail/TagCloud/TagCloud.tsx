@@ -2,7 +2,7 @@ import React from "react";
 
 const TagCloud = (props: { tagCloud: string[]; }) => {
     return (
-        <div className="bg-white rounded-xl lg:w-1/2 xl:w-1/2">
+        <div className="bg-white rounded-xl lg:w-1/2 xl:w-1/2 overflow-x-auto">
             <div className="bg-green-500 rounded-t-xl">
                 <p className="ml-2">Tag Cloud</p>
             </div>

@@ -3,13 +3,12 @@ import "./Carousel.css"
 
 const Carousel = (props: { img: any; }) => {
 
-    props.img.map((value: string, index: string) => {
+    props.img.forEach((value: string, index: string) => {
         document.head.insertAdjacentHTML("beforeend", `<style>#carousel-` + index + `:checked ~ .control-` + index + `{
     display: block;
 }</style>`)
     })
     const [curentPoint, setCurentPoint] = useState(0);
-console.log(props.img.length);
     return (
         <div className="carousel relative">
             <div className="carousel-inner relative overflow-hidden">
@@ -45,12 +44,12 @@ console.log(props.img.length);
                 }
 
                 <div className={props.img.length < 3 ?
-                    "hidden carousel-indicators lg:flex xl:flex h-16 justify-between"
+                    "hidden carousel-indicators lg:flex xl:flex h-20 justify-between"
                     :
-                    "hidden carousel-indicators lg:flex xl:flex h-16 overflow-y-auto justify-between"
+                    "hidden carousel-indicators lg:flex xl:flex h-20 overflow-x-auto"
                 }>
                     {props.img.map((value: any, index: number) => (
-                        <div className="inline-block mr-2" key={index}>
+                        <div className="inline-block mx-1 mt-2" key={index}>
                             {index !== curentPoint ?
                                 <label htmlFor={"carousel-" + index}
                                        onClick={() => setCurentPoint(index)}

@@ -1,15 +1,17 @@
 import React, {useState} from "react";
 import Input from "../../componant/Input/Input";
+import Error from "../../componant/Error/Error";
 
-const Connection = (props: { setOnclickConection: any; setOnclickRegister: any }) => {
+const Connection = (props: { setOnclickConection: any; setOnclickRegister: any; setIsConected: any; }) => {
 
     const [takeInfo, setTakeInfo] = useState({
         Email: "",
         Password: "",
     });
+    const [error, setError] = useState("");
 
     function isGoodInformation() {
-        if (takeInfo.Email !== ""&& takeInfo.Password !=="") {
+        if (takeInfo.Email !== "" && takeInfo.Password !== "") {
             const api = fetch("http://projettutore2back/connection",
                 {
                     method: 'post',
@@ -27,9 +29,12 @@ const Connection = (props: { setOnclickConection: any; setOnclickRegister: any }
                 });
             api.then(
                 x => {
-                    if (typeof x === 'number') {
-                        // probleme serveur
+                    console.log(x)
+                    if (x.length < 50) {
+                        setError(x);
                     } else {
+                        localStorage.setItem('jwt', x)
+                        props.setIsConected(x)
                         props.setOnclickConection(false)
                     }
                 }
@@ -57,7 +62,7 @@ const Connection = (props: { setOnclickConection: any; setOnclickRegister: any }
                         <Input setTable={setTakeInfo} table={takeInfo} name={"Password"} type={"password"} select={null}
                                contentTable={false}/>
                     </div>
-
+                    <p className="text-base text-red-500">{error}</p>
                     <div>
                         <button
                             className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-500 hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"

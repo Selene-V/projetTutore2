@@ -1,10 +1,9 @@
-import React, {useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import Switch from "./Switch/Switch";
 import Table from "../../componant/Table/Table";
 import Pagination from "./Pagination/Pagination";
 import Icons from "./Icons/Icons";
 import Search from "./Search/Search";
-import Sort from "./Search/Sort/Sort";
 import Loading from "../../componant/Loading/Loading";
 import Error from "../../componant/Error/Error";
 
@@ -20,19 +19,22 @@ const Home = (props: {
     const [infoGame, setInfoGame] = useState<any>();
     const [error, setError] = useState<number>(0);
     const [searchInfo, setSearchInfo] = useState<any>({
-        Categories: [],
+        Category: [],
         Developer: [],
-        G: [],
         Publisher: [],
+        Sort: "",
+        "Game Name": "",
         "Steamspy Tags": [],
-        "Positive Reviews": "90-100",
+        "Reviews": "90-100",
         "Minimum Age": 3,
         Platforms: [],
+        Genre: [],
     })
 
     let traiterSearchNameDebounce = debounce(searchInfo, 1200);
 
     async function searchAll() {
+        console.log(transformeInStringParam());
         return await fetch("http://projettutore2back/advancedSearch",
             {
                 method: 'post',
@@ -88,7 +90,9 @@ const Home = (props: {
                                         <Table tableInfo={infoGame}
                                                setIsClickForDetail={props.setIsClickForDetail}
                                                isClickForDetail={props.isClickForDetail}
-                                               choiceDisign={true}/>
+                                               choiceDisign={true}
+                                               setdesactivatePage={null}
+                                        />
                                     </div>
                                     <Pagination actualyPage={actualyPage}
                                                 setActualyPage={setActualyPage}
@@ -107,86 +111,86 @@ const Home = (props: {
         allInfo += "page=" + actualyPage;
         for (const key in copieTable) {
             switch (key) {
-                case "Platform": {
+                case "Platform":
                     if (copieTable["Platform"].length !== 0) {
                         allInfo += "&platforms=" + (copieTable["Platform"].join("+")).replace(" ", "~")
                     }
-                }
+
                     break;
-                case "Developer": {
+                case "Developer":
                     if (copieTable["Developer"].length !== 0) {
                         allInfo += "&developer=" + (copieTable["Developer"].join("+")).replace(" ", "~")
                     }
-                }
-                    break;
-                case "Game Name": {
-                    if (copieTable["Positive Reviews"] !== "") {
-                        allInfo += "&name=" + copieTable["Game Name"]
-                    }
-                }
 
                     break;
-                case "Sort": {
-                    if (copieTable["Positive Reviews"] !== "") {
+                case "Game Name":
+                    if (copieTable["Game Name"] !== "") {
+                        allInfo += "&name=" + copieTable["Game Name"]
+                    }
+
+
+                    break;
+                case "Sort":
+                    if (copieTable["Sort"] !== "") {
                         allInfo += "&sorting=" + copieTable["Sort"]
                     }
-                }
+
                     break;
-                case "Positive Reviews": {
-                    if (copieTable["Positive Reviews"] !== "") {
-                        let table = copieTable["Positive Reviews"].split('-');
+                case "Reviews":
+                    if (copieTable["Reviews"] !== "") {
+                        let table = copieTable["Reviews"].split('-');
                         allInfo += "&review_rate_low=" + table[0];
                         allInfo += "&review_rate_high=" + table[1];
                     }
-                }
+
                     break;
-                case "End Date": {
+                case "End Date":
                     allInfo += "&release_date_end=" + copieTable["End Date"]
-                }
+
                     break;
-                case "Start Date": {
+                case "Start Date":
                     allInfo += "&release_date_begin=" + copieTable["Start Date"]
-                }
+
                     break;
-                case "Steamspy Tags": {
+                case "Steamspy Tag":
                     if (copieTable["Steamspy Tags"].length !== 0) {
                         allInfo += "&steamspy_tags=" + (copieTable["Steamspy Tags"].join("+")).replace(" ", "~")
                     }
-                }
+
                     break;
-                case "Publisher": {
+                case "Publisher":
                     if (copieTable["Publisher"].length !== 0) {
                         allInfo += "&publisher=";
                         allInfo += (copieTable["Publisher"].join("+")).replace(" ", "~")
                     }
-                }
+
                     break;
-                case "Genre": {
+                case "Genre":
                     if (copieTable["Genre"].length !== 0) {
                         allInfo += "&genres=" + (copieTable["Genre"].join("+")).replace(" ", "~")
                     }
-                }
+
                     break;
-                case "Minimum Age": {
+                case "Minimum Age":
                     allInfo += "&required_age=" + copieTable["Minimum Age"];
-                }
+
                     break;
-                case "Categories": {
-                    if (copieTable["Categories"].length !== 0) {
-                        allInfo += "&categories=" + (copieTable["Categories"].join("+")).replace(" ", "~")
+                case "Category":
+                    if (copieTable["Category"].length !== 0) {
+                        allInfo += "&categories=" + (copieTable["Category"].join("+")).replace(" ", "~")
                     }
-                }
+
                     break;
-                case "Precise Date": {
+                case "Precise Date":
                     allInfo += "&release_date=" + copieTable["Precise Date"]
-                }
+
                     break;
-                case "Year": {
+                case "Year":
                     allInfo += "&release_date=" + copieTable["Year"]
-                }
+
                     break;
-                default: {
-                }
+                default:
+
             }
         }
         return allInfo;

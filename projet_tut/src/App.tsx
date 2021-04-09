@@ -5,22 +5,25 @@ import Menu from "./componant/Menu/Menu";
 import React, {useEffect, useState} from "react";
 import Conection from "./pages/Conection/Conection";
 import Registration from "./pages/Registration/Registration";
+import Favoris from "./pages/Favoris/Favoris";
 
 function App() {
     const [isClickForDetail, setIsClickForDetail] = useState("");
-    const [isConected, setIsConected] = useState(false);
+    const [isConected, setIsConected] = useState(localStorage.getItem('jwt'));
     const [onclickConection, setOnclickConection] = useState(false);
     const [onclickRegister, setOnclickRegister] = useState(false);
+    const [onclickFavoris, setOnclickFavoris] = useState(false);
 
     useEffect(() => {
         setIsClickForDetail(isClickForDetail);
-    });
+    }, [isClickForDetail]);
 
     if (onclickConection) {
         return (
             <div className="App">
                 <header className="App-header font-medium ">
-                    <Conection setOnclickConection={setOnclickConection} setOnclickRegister={setOnclickRegister}/>
+                    <Conection setOnclickConection={setOnclickConection} setOnclickRegister={setOnclickRegister}
+                               setIsConected={setIsConected}/>
                 </header>
             </div>
         );
@@ -35,11 +38,21 @@ function App() {
             </div>
         )
     }
+    if(onclickFavoris){
+        return (
+            <div>
+                <header className="App-header font-medium ">
+                    <Menu isConected={isConected} setOnclickConection={setOnclickConection} setIsConected={setIsConected} setOnclickFavoris={setOnclickFavoris}/>
+                    <Favoris setOnclickFavoris={setOnclickFavoris} setIsClickForDetail={setIsClickForDetail} isClickForDetail={isClickForDetail}/>
+                </header>
+            </div>
+        )
+    }
 
     return (
         <div className="App">
             <header className="App-header font-medium ">
-                <Menu isConected={isConected} setOnclickConection={setOnclickConection}/>
+                <Menu isConected={isConected} setOnclickConection={setOnclickConection} setIsConected={setIsConected} setOnclickFavoris={setOnclickFavoris}/>
                 {isClickForDetail ?
                     <Detail setIsClickForDetail={setIsClickForDetail} isClickForDetail={isClickForDetail}
                             isConected={isConected}

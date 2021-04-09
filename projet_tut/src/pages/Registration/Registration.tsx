@@ -9,6 +9,8 @@ const Registration = (props: { setOnclickRegister: (arg0: boolean) => void; setO
         "Password Verification": ""
     });
 
+    const [error, setError] = useState("");
+
     function isGoodInformation() {
         console.log(safeValue.Email);
         console.log(safeValue.Password);
@@ -35,8 +37,8 @@ const Registration = (props: { setOnclickRegister: (arg0: boolean) => void; setO
             api.then(
                 x => {
                     console.log("test")
-                    if (typeof x === 'number') {
-                        // probleme serveur
+                    if (x !==1) {
+                        setError(x);
                     } else {
                         console.log(x);
                         props.setOnclickConection(true)
@@ -61,6 +63,7 @@ const Registration = (props: { setOnclickRegister: (arg0: boolean) => void; setO
                     <Input setTable={setSafeValue} table={safeValue} name={"Password Verification"} type={"password"}
                            select={null} contentTable={false}/>
                 </div>
+                <p className="text-base text-red-500">{error}</p>
                 <div className="flex space-x-4 my-8 mx-10 h-2/12">
                     <button
                         onClick={() => isGoodInformation()}
