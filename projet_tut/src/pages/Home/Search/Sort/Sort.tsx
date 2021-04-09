@@ -13,8 +13,10 @@ const Short = (props: { searchInfo: any; setSearchInfo: (arg0: any) => void; }) 
     const [optionSelected, setOptionSelected] = useState(listOption[0])
     const [clickButon, setClickButon] = useState(true);
 
-
-
+    /**
+     * change the value for the sort according to the type of sorting (game name -> Az - Za) according to the listOption
+     * and save it in searchInfo
+     */
     function changeValue() {
         const takeIndex = parseInt((document.getElementById("sort-select") as HTMLInputElement).value);
         if(takeIndex===0){

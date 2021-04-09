@@ -21,6 +21,9 @@ const Detail = (props: { isClickForDetail: string; isConected: any; setIsClickFo
     const [relatedGames, setRelatedGames] = useState<any>();
     const [fav, setFav] = useState(false)
  
+    /**
+     * Add a game in favorites
+     */
     const addFav = () => {
         let local = localStorage.getItem('jwt')
         if(local !== null){
@@ -47,6 +50,9 @@ const Detail = (props: { isClickForDetail: string; isConected: any; setIsClickFo
         }
     }
 
+    /**
+     * remove a games from the favorites
+     */
     const removeFav = () => {
         let local = localStorage.getItem('jwt')
         if(local !== null){
@@ -74,6 +80,9 @@ const Detail = (props: { isClickForDetail: string; isConected: any; setIsClickFo
     }
 
     useEffect(() => {
+        /**
+         * get all information of a game
+         */
         async function getValue() {
             return await fetch("http://projettutore2back/game/" + props.isClickForDetail)
                 .then(reponse => {
@@ -88,6 +97,9 @@ const Detail = (props: { isClickForDetail: string; isConected: any; setIsClickFo
                 });
         }
 
+        /**
+         * check if the game send in params is a fav of the user
+         */
         async function isFav(appid: number){
             let local = localStorage.getItem('jwt')
             if(local !== null){
@@ -131,6 +143,9 @@ const Detail = (props: { isClickForDetail: string; isConected: any; setIsClickFo
     }, [props.isClickForDetail]);
 
     useEffect(() => {
+        /**
+         * call an api point to get games associated to the one who send in params
+         */
         async function getRelatedGame() {
             if (detailGame) {
                 return await fetch("http://projettutore2back/relatedGames", {

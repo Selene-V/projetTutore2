@@ -8,6 +8,9 @@ const Search = (props: { searchInfo: { [x: string]: any; }; setSearchInfo: (arg0
     const [changeZIndex, setChangeZIndex] = useState("h-0 overflow-hidden");
     const [choiceDate, setChoiceDate] = useState("Between");
 
+    /**
+     * add the animation and some other css for the search div
+     */
     function change() {
         if (classCss === "transition ease-out duration-100 transform opacity-0 scale-95") {
             setClassCss("transition ease-in duration-75 transform opacity-100 scale-100")
@@ -18,6 +21,9 @@ const Search = (props: { searchInfo: { [x: string]: any; }; setSearchInfo: (arg0
         }
     }
 
+    /**
+     * display the right div according to the value of choice date
+     */
     function displayDate() {
         switch (true) {
             case choiceDate === "Between": {

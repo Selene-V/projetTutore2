@@ -33,6 +33,9 @@ const Home = (props: {
 
     let traiterSearchNameDebounce = debounce(searchInfo, 1200);
 
+    /**
+     * call the api point for the research with in params all the search conditions
+     */
     async function searchAll() {
         return await fetch("http://projettutore2back/advancedSearch",
             {
@@ -51,6 +54,9 @@ const Home = (props: {
             });
     }
 
+    /**
+     * display the right component depending on the result of value of infoGame
+     */
     function display() {
         switch (true) {
             case infoGame === undefined: {
@@ -103,6 +109,9 @@ const Home = (props: {
         }
     }
 
+    /**
+     * return the param in the right form before send it to the api point
+     */
     function transformeInStringParam() {
         let copieTable = {...traiterSearchNameDebounce}
         let allInfo = "";
