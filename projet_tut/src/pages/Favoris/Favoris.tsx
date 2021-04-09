@@ -33,7 +33,6 @@ const Favoris = (props: { setOnclickFavoris: any; setIsClickForDetail: any; isCl
                         }
                     })
                     .then(function (json) {
-                        console.log(json)
                         return json;
                     });
             }
@@ -89,11 +88,15 @@ const Favoris = (props: { setOnclickFavoris: any; setIsClickForDetail: any; isCl
                                             gamesByPage={maxPage}
                                 />
                             </div>}
-                        <div className="mx-auto center my-4 ml-4">
-                            <button
-                                className="w-1/4 justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-red-400 hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                                onClick={() => props.setOnclickFavoris(false)}>Back
-                            </button>
+                        <div className="flex">
+                            <div className="w-4/12"/>
+                            <div className="mx-auto w-1/12 justify-center">
+                                <button
+                                    className="w-full justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-red-400 hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                    onClick={() => props.setOnclickFavoris(false)}>Back
+                                </button>
+                            </div>
+                            <div className="w-4/12"/>
                         </div>
                     </div>
                 )

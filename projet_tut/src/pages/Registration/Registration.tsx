@@ -12,12 +12,7 @@ const Registration = (props: { setOnclickRegister: (arg0: boolean) => void; setO
     const [error, setError] = useState("");
 
     function isGoodInformation() {
-        console.log(safeValue.Email);
-        console.log(safeValue.Password);
-        console.log(safeValue["Password Verification"]);
-        console.log("email=" + safeValue.Email + "&password=" + safeValue.Password + "&confPass=" + safeValue["Password Verification"])
         if (safeValue.Email!=="" && safeValue.Password!=="" && safeValue["Password Verification"] !=="") {
-            console.log("test")
             const api = fetch("http://projettutore2back/register",
                 {
                     method: 'post',
@@ -33,14 +28,11 @@ const Registration = (props: { setOnclickRegister: (arg0: boolean) => void; setO
                 .then(function (json) {
                     return json;
                 });
-            console.log("tatata")
             api.then(
                 x => {
-                    console.log("test")
                     if (x !==1) {
                         setError(x);
                     } else {
-                        console.log(x);
                         props.setOnclickConection(true)
                         props.setOnclickRegister(false)
                     }

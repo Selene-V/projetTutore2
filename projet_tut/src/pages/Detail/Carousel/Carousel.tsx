@@ -43,7 +43,7 @@ const Carousel = (props: { img: any; }) => {
                     )
                 }
 
-                <div className={props.img.length < 3 ?
+                <div className={props.img.length < 12 ?
                     "hidden carousel-indicators lg:flex xl:flex h-20 justify-between"
                     :
                     "hidden carousel-indicators lg:flex xl:flex h-20 overflow-x-auto"

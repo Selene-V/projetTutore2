@@ -29,7 +29,6 @@ const Connection = (props: { setOnclickConection: any; setOnclickRegister: any; 
                 });
             api.then(
                 x => {
-                    console.log(x)
                     if (x.length < 50) {
                         setError(x);
                     } else {

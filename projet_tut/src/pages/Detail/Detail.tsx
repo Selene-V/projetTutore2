@@ -88,7 +88,6 @@ const Detail = (props: {
                     }
                 })
                 .then(function (json) {
-                    console.log(json)
                     return json;
                 });
         }
