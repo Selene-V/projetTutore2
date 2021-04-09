@@ -33,6 +33,7 @@ const Menu = (props: { isConected: any; setOnclickConection: any; setIsConected:
                                             aria-haspopup="true"
                                             onClick={() => {
                                                 props.setOnclickConection(true)
+                                                props.setOnclickFavoris(false)
                                                 props.setIsConected(null)
                                                 localStorage.removeItem('jwt')
                                             }
