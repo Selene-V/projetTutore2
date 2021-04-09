@@ -34,7 +34,6 @@ const Home = (props: {
     let traiterSearchNameDebounce = debounce(searchInfo, 1200);
 
     async function searchAll() {
-        console.log(transformeInStringParam());
         return await fetch("http://projettutore2back/advancedSearch",
             {
                 method: 'post',

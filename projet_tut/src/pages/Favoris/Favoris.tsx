@@ -33,7 +33,6 @@ const Favoris = (props: { setOnclickFavoris: any; setIsClickForDetail: any; isCl
                         }
                     })
                     .then(function (json) {
-                        console.log(json)
                         return json;
                     });
             }
