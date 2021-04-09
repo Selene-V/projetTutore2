@@ -5,7 +5,7 @@ import Error from "../../componant/Error/Error";
 import Pagination from "../Home/Pagination/Pagination";
 
 
-const Favoris = (props: { setOnclickFavoris: any; setIsClickForDetail: any; isClickForDetail: string; }) => {
+const Favoris = (props: { setIsClickForDetail: any; isClickForDetail: string; setOnclickFavoris: (arg0: boolean) => void; }) => {
     const [table, setTable] = useState<any>();
     const [maxPage, setMaxPage] = useState(1);
     const [actualyPage, setActualyPage] = useState(1);

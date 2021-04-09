@@ -1,10 +1,6 @@
 import React from "react";
 
-const Icons = (props: {
-    tableInfo: any[];
-    setIsClickForDetail: any;
-    isClickForDetail: string;
-}) => {
+const Icons = (props: { tableInfo: any[]; setIsClickForDetail: (arg0: any) => void; }) => {
     return (
         <div className="text-sm flex justify-center flex-wrap -mx-6 overflow-hidden mt-2 lg:-mx-12 lg:text-xl xl:-mx-12 xl:text-xl">
             {props.tableInfo.map((value:any) => (

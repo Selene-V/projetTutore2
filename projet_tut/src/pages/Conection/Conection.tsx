@@ -1,8 +1,7 @@
 import React, {useState} from "react";
 import Input from "../../componant/Input/Input";
-import Error from "../../componant/Error/Error";
 
-const Connection = (props: { setOnclickConection: any; setOnclickRegister: any; setIsConected: any; }) => {
+const Connection = (props: { setIsConected: (arg0: any) => void; setOnclickConection: (arg0: boolean) => void; setOnclickRegister: (arg0: boolean) => void; }) => {
 
     const [takeInfo, setTakeInfo] = useState({
         Email: "",

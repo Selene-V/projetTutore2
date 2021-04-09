@@ -14,11 +14,7 @@ import Error from "../../componant/Error/Error";
 import Platform from "../../Platform";
 import Genre from "./Genre/Genre";
 
-const Detail = (props: {
-    setIsClickForDetail: any;
-    isClickForDetail: any;
-    isConected: any;
-}) => {
+const Detail = (props: { isClickForDetail: string; isConected: any; setIsClickForDetail: (arg0: any) => void; }) => {
 
     const [detailGame, setDetailGame] = useState<any>();
     const [error, setError] = useState<number>(0);

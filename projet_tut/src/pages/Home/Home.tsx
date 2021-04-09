@@ -11,7 +11,7 @@ import debounce from './function/useDebounce'
 
 const Home = (props: {
     setIsClickForDetail: any;
-    isClickForDetail: string;
+    isClickForDetail: any;
 }) => {
     const [switchButton, setSwitchButton] = useState(false);
     const [actualyPage, setActualyPage] = useState(1);
@@ -76,7 +76,6 @@ const Home = (props: {
                                 <div className="z-30 mb-5 place-items-auto  rounded-3xl">
                                     <Icons tableInfo={infoGame}
                                            setIsClickForDetail={props.setIsClickForDetail}
-                                           isClickForDetail={props.isClickForDetail}
                                     />
                                     <Pagination actualyPage={actualyPage}
                                                 setActualyPage={setActualyPage}

@@ -1,12 +1,7 @@
 import React from "react";
 import Table from "../../../componant/Table/Table";
 
-const RelatedGames = (props: {
-    relatedGames: any[];
-    setIsClickForDetail: any;
-    isClickForDetail: string;
-    choiceDisign: boolean;
-}) => {
+const RelatedGames = (props: { relatedGames: any[]; setIsClickForDetail: any; isClickForDetail: string; choiceDisign: boolean; }) => {
     return (
         <div className="mt-4 bg-white rounded-xl">
             <div className="bg-green-500 rounded-t-xl">

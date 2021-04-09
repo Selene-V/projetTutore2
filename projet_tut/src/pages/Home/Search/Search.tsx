@@ -3,10 +3,7 @@ import Input from "../../../componant/Input/Input";
 import Sort from "./Sort/Sort";
 
 
-const Search = (props: {
-    setSearchInfo: any
-    searchInfo: any
-}) => {
+const Search = (props: { searchInfo: { [x: string]: any; }; setSearchInfo: (arg0: any) => void; }) => {
     const [classCss, setClassCss] = useState("transition ease-out duration-100 transform opacity-0 scale-95");
     const [changeZIndex, setChangeZIndex] = useState("h-0 overflow-hidden");
     const [choiceDate, setChoiceDate] = useState("Between");

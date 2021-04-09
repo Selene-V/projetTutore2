@@ -1,6 +1,6 @@
 import React from "react";
 
-const Pagination = (props: { actualyPage: number, setActualyPage: any, gamesByPage: number }) => {
+const Pagination = (props: { actualyPage: any; setActualyPage: (arg0: number) => void; gamesByPage:any; }) => {
     return (
         <div className="flex">
             <div

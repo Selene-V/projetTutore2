@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 
-const Short = (props: { searchInfo: any; setSearchInfo: any }) => {
+const Short = (props: { searchInfo: any; setSearchInfo: (arg0: any) => void; }) => {
     const listOption = [
         {option: "Pertinence", value: "", sorder: "", disorder: ""},
         {option: "Game Name", value: "name", sorder: "A - Z", disorder: "Z - A"},
