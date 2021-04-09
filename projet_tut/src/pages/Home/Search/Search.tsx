@@ -134,10 +134,10 @@ const Search = (props: {
                     <Input table={props.searchInfo} name="Reviews" type={undefined} select={
                         [
                             {content: "Excellent", return: "90-100"},
-                            {content: "Verry Good", return: "75-90"},
+                            {content: "Very Good", return: "75-90"},
                             {content: "Good", return: "50-75"},
                             {content: "Bad", return: "25-50"},
-                            {content: "Verry Bad", return: "10-25"},
+                            {content: "Very Bad", return: "10-25"},
                             {content: "Mediocre", return: "0-10"},
                         ]}
                            contentTable={false} setTable={props.setSearchInfo}

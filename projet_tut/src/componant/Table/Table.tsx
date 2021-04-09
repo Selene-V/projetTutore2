@@ -55,7 +55,7 @@ const Table = (props: {
                                                         props.setdesactivatePage(false);
                                                     }
                                                 }}
-                                                className="transition duration-500 xl:float-right lg:float-right hover:bg-green-200 px-5 py-2 rounded-lg border-2 hover:border-opacity-0 border-gray-400">Look
+                                                className="transition duration-500 xl:float-right lg:float-right hover:bg-green-200 px-5 py-2 rounded-lg border-2 hover:border-opacity-0 border-gray-400">Details
                                             </button>
                                         </div>
                                     </div>

@@ -78,7 +78,7 @@ const Favoris = (props: { setOnclickFavoris: any; setIsClickForDetail: any; isCl
             default: {
                 return (
                     <div>
-                        {table === false ? <div className="text-center">You have 0 favorite</div> :
+                        {table === false ? <div className="text-center">You have 0 favorites</div> :
                             <div>
                                 <Table tableInfo={table} setIsClickForDetail={props.setIsClickForDetail}
                                        isClickForDetail={props.isClickForDetail} choiceDisign={true}
