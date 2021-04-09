@@ -1,13 +1,13 @@
 import React, {useState} from "react";
 import Input from "../../componant/Input/Input";
+import Error from "../../componant/Error/Error";
 
-const Connection = (props: { setOnclickConection: any; setOnclickRegister: any; setIsConected: any;}) => {
+const Connection = (props: { setOnclickConection: any; setOnclickRegister: any; setIsConected: any; }) => {
 
     const [takeInfo, setTakeInfo] = useState({
         Email: "",
         Password: "",
     });
-
     const [error, setError] = useState("");
 
     function isGoodInformation() {
@@ -33,7 +33,7 @@ const Connection = (props: { setOnclickConection: any; setOnclickRegister: any; 
                     if (x.length < 50) {
                         setError(x);
                     } else {
-                        localStorage.setItem('jwt',x)
+                        localStorage.setItem('jwt', x)
                         props.setIsConected(x)
                         props.setOnclickConection(false)
                     }

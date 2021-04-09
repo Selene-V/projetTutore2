@@ -79,7 +79,9 @@ const Table = (props: {
                     <tr key={index}
                         onClick={() => {
                             props.setIsClickForDetail(value.id)
-                            props.setdesactivatePage(false);
+                            if(props.setdesactivatePage!==null){
+                                props.setdesactivatePage(false);
+                            }
                         }}
                         className={
                             index & 1?"bg-gray-200 border-b border-gray-200 hover:bg-green-400 hover:text-gray-50 transition ease-in-out duration-150"
