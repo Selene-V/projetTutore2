@@ -11,6 +11,9 @@ const Registration = (props: { setOnclickRegister: (arg0: boolean) => void; setO
 
     const [error, setError] = useState("");
 
+    /**
+     * this function call one API point to check if information returned is good
+     */
     function isGoodInformation() {
         if (safeValue.Email!=="" && safeValue.Password!=="" && safeValue["Password Verification"] !=="") {
             const api = fetch("http://projettutore2back/register",

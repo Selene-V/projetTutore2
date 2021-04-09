@@ -14,6 +14,7 @@ const Table = (props: {
 
 
         if(props.choiceDisign){
+            //design line by line
             return (
                 <div className="text-black">
                     {props.tableInfo.map((value, index) =>
@@ -65,6 +66,7 @@ const Table = (props: {
                     )}
                 </div>);
         }
+        // design thumbnail
         return (
             <table className="rounded-t-lg m-4 w-11/12 mx-auto bg-gray-500 text-center">
                 <thead>

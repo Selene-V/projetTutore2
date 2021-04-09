@@ -9,6 +9,9 @@ const Connection = (props: { setIsConected: (arg0: any) => void; setOnclickConec
     });
     const [error, setError] = useState("");
 
+    /**
+     * this function call one API point to check if information returned is good
+     */
     function isGoodInformation() {
         if (takeInfo.Email !== "" && takeInfo.Password !== "") {
             const api = fetch("http://projettutore2back/connection",

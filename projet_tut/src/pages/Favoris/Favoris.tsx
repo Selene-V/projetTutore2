@@ -58,6 +58,9 @@ const Favoris = (props: { setIsClickForDetail: any; isClickForDetail: string; se
             )
     }, [actualyPage]);
 
+    /**
+     * Allows to display different display according to the result of the API
+     */
     function display() {
         switch (true) {
             case table === undefined: {
