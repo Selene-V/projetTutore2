@@ -240,6 +240,7 @@ const Home = (props: {
                     </div>
                     <div>
                         {
+                            
                             display()
                         }
                     </div>
