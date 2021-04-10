@@ -19,7 +19,7 @@ const Detail = (props: { isClickForDetail: string; isConected: any; setIsClickFo
     const [detailGame, setDetailGame] = useState<any>();
     const [error, setError] = useState<number>(0);
     const [relatedGames, setRelatedGames] = useState<any>();
-    const [fav, setFav] = useState<boolean|undefined>()
+    const [fav, setFav] = useState(false)
 
     /**
      * Add a game in favorites
@@ -215,8 +215,6 @@ const Detail = (props: { isClickForDetail: string; isConected: any; setIsClickFo
                             className="xl:w-1/12 lg:w-1/12 text-center justify-center place-self-center text-white w-full">
                             {props.isConected ?
                                 <div>
-                                    {fav === undefined ? "" :
-                                        <div>
                                             {fav ? <button className="w-full" onClick={() => {
                                                     removeFav()
                                                 }}>
@@ -228,7 +226,6 @@ const Detail = (props: { isClickForDetail: string; isConected: any; setIsClickFo
                                                 }}>
                                                     <i className="fa fa-heart-o fa-3x w-full" aria-hidden="true"/>
                                                 </button>}
-                                        </div>}
                                 </div> : ""}
 
                         </div>
